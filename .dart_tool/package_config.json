@@ -134,6 +134,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -410,7 +416,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-02-06T11:10:06.489954Z",
+  "generated": "2023-02-06T18:55:03.701144Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }
