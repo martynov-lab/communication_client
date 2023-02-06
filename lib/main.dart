@@ -1,40 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:communication_client/presentation/main_app_builder.dart';
+import 'package:communication_client/presentation/main_app_runner.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Communication client'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: const Center(),
-    );
-  }
+  const env = String.fromEnvironment("env", defaultValue: "dev");
+  const runner = MainAppRunner(env);
+  final builder = MainAppBuilder();
+  runner.run(builder);
 }
