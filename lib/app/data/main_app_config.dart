@@ -1,4 +1,4 @@
-import 'package:communication_client/domain/app_config.dart';
+import 'package:communication_client/app/domain/app_config.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: AppConfig)

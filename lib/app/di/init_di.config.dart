@@ -8,11 +8,12 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../data/dio_container.dart' as _i4;
-import '../data/main_app_config.dart' as _i3;
+import '../data/dio_container.dart' as _i5;
+import '../data/main_app_config.dart' as _i4;
+import '../domain/app_config.dart' as _i3;
 
-const String _dev = 'dev';
 const String _prod = 'prod';
+const String _dev = 'dev';
 const String _test = 'test';
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -27,18 +28,18 @@ _i1.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  gh.singleton<_i3.DevAppConfig>(
-    _i3.DevAppConfig(),
-    registerFor: {_dev},
-  );
-  gh.singleton<_i4.DioContainer>(_i4.DioContainer(get<dynamic>()));
-  gh.singleton<_i3.ProdAppConfig>(
-    _i3.ProdAppConfig(),
+  gh.singleton<_i3.AppConfig>(
+    _i4.ProdAppConfig(),
     registerFor: {_prod},
   );
-  gh.singleton<_i3.TestAppConfig>(
-    _i3.TestAppConfig(),
+  gh.singleton<_i3.AppConfig>(
+    _i4.DevAppConfig(),
+    registerFor: {_dev},
+  );
+  gh.singleton<_i3.AppConfig>(
+    _i4.TestAppConfig(),
     registerFor: {_test},
   );
+  gh.singleton<_i5.DioContainer>(_i5.DioContainer(get<_i3.AppConfig>()));
   return get;
 }

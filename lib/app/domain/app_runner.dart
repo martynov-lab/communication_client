@@ -1,4 +1,4 @@
-import 'package:communication_client/domain/app_builder.dart';
+import 'package:communication_client/app/domain/app_builder.dart';
 
 abstract class AppRunner {
   Future<void> preloadData();
