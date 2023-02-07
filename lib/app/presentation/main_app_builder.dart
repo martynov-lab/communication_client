@@ -5,15 +5,14 @@ import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'root_screen.dart';
+
 class MainAppBuilder implements AppBuilder {
   @override
   Widget buildApp() {
     return const _GlobalProviders(
       child: MaterialApp(
-        home: Scaffold(
-            body: Center(
-          child: Text("Hello"),
-        )),
+        home: RootScreen(),
       ),
     );
   }
