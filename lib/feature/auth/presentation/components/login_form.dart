@@ -1,4 +1,5 @@
 import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
+import 'package:communication_client/feature/auth/presentation/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,53 +27,61 @@ class LoginForm extends StatelessWidget {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 40),
-            child: AppTextField(
-              controller: _userNameController,
-              labelText: 'Логин',
-              icon: Icons.person,
-            ),
-
-            // input(context, const Icon(Icons.person), 'Логин',
-            //     _userNameController, false),
+          const SizedBox(
+            height: 40,
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: AppTextField(
-              controller: _passwordController,
-              labelText: 'Пароль',
-              icon: Icons.person,
-            ),
-
-            // inputPassword(
-            //     const Icon(Icons.lock), 'Пароль', _passwordController),
+          AppTextField(
+            controller: _userNameController,
+            labelText: 'Логин',
+            icon: Icons.person,
           ),
           const SizedBox(
             height: 20,
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: AppButton(
-                    text: 'Вход',
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        isLoginButtonEnabled
-                            ? _onFormSubmitted(context.read<AuthCubit>())
-                            : null;
-                      }
-                    },
-                    isActive: true,
-                  ),
-                ),
-              ],
-            ),
+          AppTextField(
+            isObscure: true,
+            controller: _passwordController,
+            labelText: 'Пароль',
+            icon: Icons.lock,
+          ),
+          // const SizedBox(
+          //   height: 2,
+          // ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 3),
+                child: Text('Еще не зарегестрирован? '),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => const RegisterScreen())));
+                },
+                child: const Text('Регистрация'),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          AppButton(
+            text: 'Вход',
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                isLoginButtonEnabled
+                    ? _onFormSubmitted(context.read<AuthCubit>())
+                    : null;
+              }
+            },
+            isActive: true,
+          ),
+          const SizedBox(
+            height: 20,
           ),
         ],
       ),

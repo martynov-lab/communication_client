@@ -5,8 +5,9 @@ class AppTextField extends StatelessWidget {
   final String labelText;
   final bool isObscure;
   final IconData? icon;
+  bool showObscureText = false;
 
-  const AppTextField({
+  AppTextField({
     Key? key,
     required this.controller,
     required this.labelText,
@@ -50,18 +51,20 @@ class AppTextField extends StatelessWidget {
                 ),
               )
             : null,
-        suffixIcon: IconButton(
-            icon: isObscure
-                ? const Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
-                  )
-                : const Icon(
-                    Icons.visibility_off,
-                    color: Colors.grey,
-                  ),
-            onPressed: () {} //_toggle,
-            ),
+        suffixIcon: isObscure
+            ? IconButton(
+                icon: showObscureText
+                    ? const Icon(
+                        Icons.visibility,
+                        color: Colors.grey,
+                      )
+                    : const Icon(
+                        Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
+                onPressed: () {} //_toggle,
+                )
+            : null,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../components/login_form.dart';
 
@@ -10,6 +11,25 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark, // For Android (light icons)
+          statusBarBrightness: Brightness.dark, // For iOS (light icons)
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios_new,
+        //     color: Colors.grey,
+        //   ),
+        //   onPressed: (() {
+        //     Navigator.of(context).pop();
+        //   }),
+        // ),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(

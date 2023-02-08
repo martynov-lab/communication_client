@@ -12,6 +12,7 @@ class MainAppBuilder implements AppBuilder {
   Widget buildApp() {
     return const _GlobalProviders(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: RootScreen(),
       ),
     );

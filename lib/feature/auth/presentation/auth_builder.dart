@@ -2,6 +2,8 @@ import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/presentation/components/app_snackbar/top_snack_bar.dart';
+
 class AuthBuilder extends StatelessWidget {
   final WidgetBuilder isUnauthorized;
   final ValueWidgetBuilder isAuthorized;
@@ -35,19 +37,36 @@ class AuthBuilder extends StatelessWidget {
             ),
         listener: ((context, state) {
           state.whenOrNull(
-            error: (error) => _showSnackBar,
+            error: (error) => showTopSnackBar(
+              context,
+              CustomSnackBar.error(
+                message: error,
+                button: GestureDetector(
+                  child: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
+                  onTap: () => localAnimationController.reverse(),
+                ),
+              ),
+              //persistent: true,
+              onAnimationControllerInit: (controller) =>
+                  localAnimationController = controller,
+            ),
+
+            // _showSnackBar(context, error),
           );
         }));
   }
 
-  void _showSnackBar(BuildContext context, dynamic error) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        duration: const Duration(seconds: 5),
-        content: SingleChildScrollView(
-          child: Text(
-            error.toString(),
-            maxLines: 5,
-          ),
-        )));
-  }
+  // void _showSnackBar(BuildContext context, dynamic error) {
+  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       duration: const Duration(seconds: 5),
+  //       content: SingleChildScrollView(
+  //         child: Text(
+  //           error.toString(),
+  //           maxLines: 5,
+  //         ),
+  //       )));
+  // }
 }
