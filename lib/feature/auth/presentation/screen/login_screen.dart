@@ -24,14 +24,10 @@ class LoginScreen extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  Image.asset(
-                    'assets/logo/logo_login.png',
-                    fit: BoxFit.contain,
-                  ),
                   Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 20),
                     child: const Text(
-                      'ProTime',
+                      'Communication',
                       style: TextStyle(
                         fontFamily: 'RedHatDisplay',
                         fontSize: 40,

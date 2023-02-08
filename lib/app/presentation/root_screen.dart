@@ -3,7 +3,7 @@ import 'package:communication_client/feature/main/presentation/main_screen.dart'
 import 'package:flutter/material.dart';
 
 import '../../feature/auth/presentation/screen/login_screen.dart';
-import 'app_loader.dart';
+import 'components/app_loader.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});

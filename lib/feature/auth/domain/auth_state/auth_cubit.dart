@@ -9,4 +9,19 @@ part 'auth_cubit.freezed.dart';
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepository;
   AuthCubit(this.authRepository) : super(AuthState.unauthorized());
+
+  Future<void> signIn({
+    required String username,
+    required String password,
+  }) async {
+    emit(AuthState.loading());
+    try {
+      final UserEntity userEntity =
+          await authRepository.signIn(username: username, password: password);
+      emit(AuthState.authorized(userEntity));
+    } catch (error) {
+      emit(AuthState.error(error));
+      rethrow;
+    }
+  }
 }

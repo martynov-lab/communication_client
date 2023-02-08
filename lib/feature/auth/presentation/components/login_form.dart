@@ -1,4 +1,6 @@
+import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/presentation/components/app_button.dart';
 import '../../../../app/presentation/components/app_text_field.dart';
@@ -6,8 +8,8 @@ import '../../../../app/presentation/components/app_text_field.dart';
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
 
-  final _userNameController = TextEditingController(text: 'ivanov123456');
-  final _passwordController = TextEditingController(text: 'protime_admin');
+  final _userNameController = TextEditingController(text: 'ivanov');
+  final _passwordController = TextEditingController(text: '123456');
   final _formKey = GlobalKey<FormState>();
   // late LoginBloc _loginBloc;
   // late AuthenticationBloc _authenticationBloc;
@@ -61,7 +63,9 @@ class LoginForm extends StatelessWidget {
                     text: 'Вход',
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        isLoginButtonEnabled ? _onFormSubmitted(context) : null;
+                        isLoginButtonEnabled
+                            ? _onFormSubmitted(context.read<AuthCubit>())
+                            : null;
                       }
                     },
                     isActive: true,
@@ -81,14 +85,18 @@ class LoginForm extends StatelessWidget {
   //   });
   // }
 
-  void _onFormSubmitted(BuildContext context) {
+  void _onFormSubmitted(AuthCubit authCubit) {
+    authCubit.signIn(
+      username: _userNameController.text,
+      password: _passwordController.text,
+    );
     // _loginBloc.add(
     //   LoginButtonPressed(
     //     username: _userNameController.text,
     //     password: _passwordController.text,
     //   ),
     // );
-    FocusScope.of(context).requestFocus(FocusNode());
+    //FocusScope.of(context).requestFocus(FocusNode());
   }
 
   // @override

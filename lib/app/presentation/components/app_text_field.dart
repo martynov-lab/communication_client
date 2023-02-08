@@ -19,7 +19,7 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       validator: emptyValidator,
       controller: controller,
-      maxLength: 1,
+      maxLines: 1,
       obscureText: isObscure,
       style: const TextStyle(fontSize: 16, color: Colors.grey),
       onEditingComplete: () => FocusScope.of(context).unfocus(),
@@ -36,6 +36,10 @@ class AppTextField extends StatelessWidget {
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           borderSide: BorderSide(color: Colors.grey, width: 2),
+        ),
+        errorBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderSide: BorderSide(color: Colors.red, width: 2),
         ),
         prefixIcon: icon != null
             ? Padding(
