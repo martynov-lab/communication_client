@@ -1,0 +1,4 @@
+#Wed Feb 08 09:47:52 MSK 2023
+base.0=/Users/arovit/Development/Project/communication_client/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
