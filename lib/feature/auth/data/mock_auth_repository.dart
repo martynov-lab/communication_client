@@ -27,7 +27,7 @@ class MockAuthRepository implements AuthRepository {
       return UserEntity(
         id: '-1',
         email: 'testEmail@test.ru ',
-        userName: username,
+        username: username,
       );
     });
   }
@@ -42,7 +42,7 @@ class MockAuthRepository implements AuthRepository {
       return UserEntity(
         id: '-1',
         email: email,
-        userName: username,
+        username: username,
       );
     });
   }

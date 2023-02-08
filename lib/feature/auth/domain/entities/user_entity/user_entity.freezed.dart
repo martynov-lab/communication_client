@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEntity {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $UserEntityCopyWith<$Res> {
   $Res call(
       {String id,
       String email,
-      String userName,
+      String username,
       String? accessToken,
       String? refreshToken});
 }
@@ -56,7 +56,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? userName = null,
+    Object? username = null,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
@@ -69,9 +69,9 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       accessToken: freezed == accessToken
           ? _value.accessToken
@@ -96,7 +96,7 @@ abstract class _$$_UserEntityCopyWith<$Res>
   $Res call(
       {String id,
       String email,
-      String userName,
+      String username,
       String? accessToken,
       String? refreshToken});
 }
@@ -114,7 +114,7 @@ class __$$_UserEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? userName = null,
+    Object? username = null,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
@@ -127,9 +127,9 @@ class __$$_UserEntityCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       accessToken: freezed == accessToken
           ? _value.accessToken
@@ -149,7 +149,7 @@ class _$_UserEntity implements _UserEntity {
   const _$_UserEntity(
       {required this.id,
       required this.email,
-      required this.userName,
+      required this.username,
       this.accessToken,
       this.refreshToken});
 
@@ -158,7 +158,7 @@ class _$_UserEntity implements _UserEntity {
   @override
   final String email;
   @override
-  final String userName;
+  final String username;
   @override
   final String? accessToken;
   @override
@@ -166,7 +166,7 @@ class _$_UserEntity implements _UserEntity {
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, email: $email, userName: $userName, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'UserEntity(id: $id, email: $email, username: $username, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -176,8 +176,8 @@ class _$_UserEntity implements _UserEntity {
             other is _$_UserEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -186,7 +186,7 @@ class _$_UserEntity implements _UserEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, email, userName, accessToken, refreshToken);
+      Object.hash(runtimeType, id, email, username, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +199,7 @@ abstract class _UserEntity implements UserEntity {
   const factory _UserEntity(
       {required final String id,
       required final String email,
-      required final String userName,
+      required final String username,
       final String? accessToken,
       final String? refreshToken}) = _$_UserEntity;
 
@@ -208,7 +208,7 @@ abstract class _UserEntity implements UserEntity {
   @override
   String get email;
   @override
-  String get userName;
+  String get username;
   @override
   String? get accessToken;
   @override

@@ -10,7 +10,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('MainScreen')),
-      body: Center(child: Text(userEntity.userName)),
+      body: Center(child: Text(userEntity.username)),
     );
   }
 }

@@ -8,7 +8,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../feature/auth/data/dev_auth_repository.dart' as _i9;
 import '../../feature/auth/data/mock_auth_repository.dart' as _i6;
+import '../../feature/auth/data/network_auth_repository.dart' as _i8;
 import '../../feature/auth/domain/auth_repository.dart' as _i5;
 import '../data/dio_container.dart' as _i7;
 import '../data/main_app_config.dart' as _i4;
@@ -47,5 +49,13 @@ _i1.GetIt $initGetIt(
     registerFor: {_test},
   );
   gh.singleton<_i7.DioContainer>(_i7.DioContainer(get<_i3.AppConfig>()));
+  gh.factory<_i5.AuthRepository>(
+    () => _i8.NetWorkAuthRepository(get<_i7.DioContainer>()),
+    registerFor: {_prod},
+  );
+  gh.factory<_i5.AuthRepository>(
+    () => _i9.DevAuthRepository(get<_i7.DioContainer>()),
+    registerFor: {_dev},
+  );
   return get;
 }

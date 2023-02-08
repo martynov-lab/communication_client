@@ -7,7 +7,7 @@ class UserEntity with _$UserEntity {
   const factory UserEntity({
     required String id,
     required String email,
-    required String userName,
+    required String username,
     String? accessToken,
     String? refreshToken,
   }) = _UserEntity;
