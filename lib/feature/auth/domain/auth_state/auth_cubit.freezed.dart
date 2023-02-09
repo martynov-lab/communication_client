@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'unauthorized':
+      return _AuthStateUnauthorized.fromJson(json);
+    case 'authorized':
+      return _AuthStateAuthorized.fromJson(json);
+    case 'loading':
+      return _AuthStateLoading.fromJson(json);
+    case 'error':
+      return _AuthStateError.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'AuthState',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$AuthState {
   @optionalTypeArgs
@@ -66,6 +83,7 @@ mixin _$AuthState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -102,9 +120,16 @@ class __$$_AuthStateUnauthorizedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
-  _$_AuthStateUnauthorized();
+  _$_AuthStateUnauthorized({final String? $type})
+      : $type = $type ?? 'unauthorized';
+
+  factory _$_AuthStateUnauthorized.fromJson(Map<String, dynamic> json) =>
+      _$$_AuthStateUnauthorizedFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -117,6 +142,7 @@ class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
         (other.runtimeType == runtimeType && other is _$_AuthStateUnauthorized);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -193,10 +219,20 @@ class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthStateUnauthorizedToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthStateUnauthorized implements AuthState {
   factory _AuthStateUnauthorized() = _$_AuthStateUnauthorized;
+
+  factory _AuthStateUnauthorized.fromJson(Map<String, dynamic> json) =
+      _$_AuthStateUnauthorized.fromJson;
 }
 
 /// @nodoc
@@ -241,12 +277,19 @@ class __$$_AuthStateAuthorizedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AuthStateAuthorized implements _AuthStateAuthorized {
-  _$_AuthStateAuthorized(this.userEntity);
+  _$_AuthStateAuthorized(this.userEntity, {final String? $type})
+      : $type = $type ?? 'authorized';
+
+  factory _$_AuthStateAuthorized.fromJson(Map<String, dynamic> json) =>
+      _$$_AuthStateAuthorizedFromJson(json);
 
   @override
   final UserEntity userEntity;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -262,6 +305,7 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
                 other.userEntity == userEntity));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, userEntity);
 
@@ -345,11 +389,21 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthStateAuthorizedToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthStateAuthorized implements AuthState {
   factory _AuthStateAuthorized(final UserEntity userEntity) =
       _$_AuthStateAuthorized;
+
+  factory _AuthStateAuthorized.fromJson(Map<String, dynamic> json) =
+      _$_AuthStateAuthorized.fromJson;
 
   UserEntity get userEntity;
   @JsonKey(ignore: true)
@@ -374,9 +428,15 @@ class __$$_AuthStateLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AuthStateLoading implements _AuthStateLoading {
-  _$_AuthStateLoading();
+  _$_AuthStateLoading({final String? $type}) : $type = $type ?? 'loading';
+
+  factory _$_AuthStateLoading.fromJson(Map<String, dynamic> json) =>
+      _$$_AuthStateLoadingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -389,6 +449,7 @@ class _$_AuthStateLoading implements _AuthStateLoading {
         (other.runtimeType == runtimeType && other is _$_AuthStateLoading);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -465,10 +526,20 @@ class _$_AuthStateLoading implements _AuthStateLoading {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthStateLoadingToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthStateLoading implements AuthState {
   factory _AuthStateLoading() = _$_AuthStateLoading;
+
+  factory _AuthStateLoading.fromJson(Map<String, dynamic> json) =
+      _$_AuthStateLoading.fromJson;
 }
 
 /// @nodoc
@@ -503,12 +574,19 @@ class __$$_AuthStateErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AuthStateError implements _AuthStateError {
-  _$_AuthStateError(this.error);
+  _$_AuthStateError(this.error, {final String? $type})
+      : $type = $type ?? 'error';
+
+  factory _$_AuthStateError.fromJson(Map<String, dynamic> json) =>
+      _$$_AuthStateErrorFromJson(json);
 
   @override
   final dynamic error;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -523,6 +601,7 @@ class _$_AuthStateError implements _AuthStateError {
             const DeepCollectionEquality().equals(other.error, error));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
@@ -606,10 +685,20 @@ class _$_AuthStateError implements _AuthStateError {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthStateErrorToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthStateError implements AuthState {
   factory _AuthStateError(final dynamic error) = _$_AuthStateError;
+
+  factory _AuthStateError.fromJson(Map<String, dynamic> json) =
+      _$_AuthStateError.fromJson;
 
   dynamic get error;
   @JsonKey(ignore: true)

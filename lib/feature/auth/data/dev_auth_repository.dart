@@ -48,9 +48,20 @@ class DevAuthRepository implements AuthRepository {
     required String username,
     required String email,
     required String password,
-  }) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  }) async {
+    try {
+      final response = await dioContainer.dio.put(
+        '/auth/token',
+        data: {
+          'username': username,
+          'email': email,
+          'password': password,
+        },
+      );
+      return UserDto.fromJson(response.data['data']).toEntity();
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override

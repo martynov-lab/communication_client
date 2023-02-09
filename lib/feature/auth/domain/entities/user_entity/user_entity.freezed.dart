@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+UserEntity _$UserEntityFromJson(Map<String, dynamic> json) {
+  return _UserEntity.fromJson(json);
+}
+
 /// @nodoc
 mixin _$UserEntity {
   String get id => throw _privateConstructorUsedError;
@@ -22,6 +26,7 @@ mixin _$UserEntity {
   String? get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserEntityCopyWith<UserEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -144,7 +149,7 @@ class __$$_UserEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_UserEntity implements _UserEntity {
   const _$_UserEntity(
       {required this.id,
@@ -152,6 +157,9 @@ class _$_UserEntity implements _UserEntity {
       required this.username,
       this.accessToken,
       this.refreshToken});
+
+  factory _$_UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_UserEntityFromJson(json);
 
   @override
   final String id;
@@ -184,6 +192,7 @@ class _$_UserEntity implements _UserEntity {
                 other.refreshToken == refreshToken));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, email, username, accessToken, refreshToken);
@@ -193,6 +202,13 @@ class _$_UserEntity implements _UserEntity {
   @pragma('vm:prefer-inline')
   _$$_UserEntityCopyWith<_$_UserEntity> get copyWith =>
       __$$_UserEntityCopyWithImpl<_$_UserEntity>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserEntityToJson(
+      this,
+    );
+  }
 }
 
 abstract class _UserEntity implements UserEntity {
@@ -202,6 +218,9 @@ abstract class _UserEntity implements UserEntity {
       required final String username,
       final String? accessToken,
       final String? refreshToken}) = _$_UserEntity;
+
+  factory _UserEntity.fromJson(Map<String, dynamic> json) =
+      _$_UserEntity.fromJson;
 
   @override
   String get id;
