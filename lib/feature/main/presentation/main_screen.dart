@@ -32,6 +32,15 @@ class MainScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(
+              Icons.refresh,
+              color: Colors.grey,
+            ),
+            onPressed: (() {
+              context.read<AuthCubit>().getProfile();
+            }),
+          ),
+          IconButton(
+            icon: const Icon(
               Icons.exit_to_app_rounded,
               color: Colors.grey,
             ),
@@ -41,7 +50,16 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(child: Text(userEntity.username)),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(userEntity.username),
+          const SizedBox(height: 20),
+          Text(userEntity.accessToken.toString()),
+          const SizedBox(height: 20),
+          Text(userEntity.refreshToken.toString()),
+        ],
+      ),
     );
   }
 }

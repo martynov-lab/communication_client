@@ -188,8 +188,50 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_secure_storage",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-7.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_linux",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_linux-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_macos",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_macos-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_platform_interface",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_platform_interface-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_web",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_web-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_windows",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_windows-1.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/arovit/Development/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/arovit/Development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -273,7 +315,7 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/js-0.6.5",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/js-0.6.4",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -394,6 +436,12 @@
     {
       "name": "pool",
       "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/pool-1.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "pretty_dio_logger",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dartlang.org/pretty_dio_logger-1.2.0-beta-1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -554,7 +602,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-02-09T05:44:18.158632Z",
+  "generated": "2023-02-09T12:10:08.746478Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

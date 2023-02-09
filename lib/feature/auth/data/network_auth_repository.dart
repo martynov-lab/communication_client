@@ -1,4 +1,5 @@
 import 'package:communication_client/app/data/dio_container.dart';
+import 'package:communication_client/app/data/secure_storage.dart';
 import 'package:communication_client/feature/auth/data/dto/user_dto.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
@@ -8,13 +9,23 @@ import 'package:injectable/injectable.dart';
 @prod
 class NetWorkAuthRepository implements AuthRepository {
   final DioContainer dioContainer;
+  final SecureStorage secureStorage;
 
-  NetWorkAuthRepository(this.dioContainer);
+  NetWorkAuthRepository(this.dioContainer, this.secureStorage);
 
   @override
-  Future getProfile() {
-    // TODO: implement getProfile
-    throw UnimplementedError();
+  Future getProfile() async {
+    try {
+      final response = await dioContainer.dio.get("/auth/user");
+      print('Response.statusCode: ${response.statusCode}');
+      print('Response.data: ${response.data}');
+      final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+      return user;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
@@ -24,6 +35,9 @@ class NetWorkAuthRepository implements AuthRepository {
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+
       return user;
     } catch (_) {
       rethrow;
@@ -43,6 +57,8 @@ class NetWorkAuthRepository implements AuthRepository {
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
       return user;
     } catch (_) {
       rethrow;
@@ -64,7 +80,10 @@ class NetWorkAuthRepository implements AuthRepository {
           'password': password,
         },
       );
-      return UserDto.fromJson(response.data['data']).toEntity();
+      final user = UserDto.fromJson(response.data['data']).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+      return user;
     } catch (_) {
       rethrow;
     }

@@ -1,3 +1,4 @@
+import 'package:communication_client/app/data/secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../app/data/dio_container.dart';
@@ -9,22 +10,31 @@ import 'dto/user_dto.dart';
 @dev
 class DevAuthRepository implements AuthRepository {
   final DioContainer dioContainer;
+  final SecureStorage secureStorage;
 
-  DevAuthRepository(this.dioContainer);
+  DevAuthRepository(this.dioContainer, this.secureStorage);
 
   @override
-  Future getProfile() {
-    // TODO: implement getProfile
-    throw UnimplementedError();
+  Future getProfile() async {
+    try {
+      final response = await dioContainer.dio.get("/auth/user");
+      final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+      return user;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
   Future refrechToken({String? refreshToken}) async {
     try {
       final response = await dioContainer.dio.post("/auth/token/$refreshToken");
-      print('Response.statusCode: ${response.statusCode}');
-      print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+
       return user;
     } catch (_) {
       rethrow;
@@ -41,9 +51,9 @@ class DevAuthRepository implements AuthRepository {
         "/auth/token",
         data: {"username": username, "password": password},
       );
-      print('Response.statusCode: ${response.statusCode}');
-      print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
       return user;
     } catch (_) {
       rethrow;
@@ -65,7 +75,10 @@ class DevAuthRepository implements AuthRepository {
           'password': password,
         },
       );
-      return UserDto.fromJson(response.data['data']).toEntity();
+      final user = UserDto.fromJson(response.data['data']).toEntity();
+      secureStorage.setAccessToken(user.accessToken);
+      secureStorage.setAccessToken(user.refreshToken);
+      return user;
     } catch (_) {
       rethrow;
     }

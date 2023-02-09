@@ -29,37 +29,39 @@ class RegisterScreen extends StatelessWidget {
           }),
         ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            //top: 120,
-            left: 30,
-            right: 30,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 20),
-                    child: const Text(
-                      'Communication',
-                      style: TextStyle(
-                        fontFamily: 'RedHatDisplay',
-                        fontSize: 40,
-                        fontWeight: FontWeight.w900,
-                        color: Color.fromARGB(255, 93, 134, 239),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              //top: 120,
+              left: 30,
+              right: 30,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(top: 10, bottom: 20),
+                      child: const Text(
+                        'Communication',
+                        style: TextStyle(
+                          fontFamily: 'RedHatDisplay',
+                          fontSize: 40,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromARGB(255, 93, 134, 239),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  RegisterForm(),
-                ],
-              ),
-            ],
+                    RegisterForm(),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
