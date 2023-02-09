@@ -18,9 +18,16 @@ class NetWorkAuthRepository implements AuthRepository {
   }
 
   @override
-  Future refrechToken({required String refreshToken}) {
-    // TODO: implement refrechToken
-    throw UnimplementedError();
+  Future refrechToken({String? refreshToken}) async {
+    try {
+      final response = await dioContainer.dio.post("/auth/token/$refreshToken");
+      print('Response.statusCode: ${response.statusCode}');
+      print('Response.data: ${response.data}');
+      final user = UserDto.fromJson(response.data["data"]).toEntity();
+      return user;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override

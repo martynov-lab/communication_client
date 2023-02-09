@@ -12,7 +12,7 @@ class MockAuthRepository implements AuthRepository {
   }
 
   @override
-  Future refrechToken({required String refreshToken}) {
+  Future refrechToken({String? refreshToken}) {
     // TODO: implement refrechToken
     throw UnimplementedError();
   }

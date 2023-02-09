@@ -17,5 +17,5 @@ abstract class AuthRepository {
     required String oldPassword,
     required String newPassword,
   });
-  Future<dynamic> refrechToken({required String refreshToken});
+  Future<dynamic> refrechToken({String? refreshToken});
 }

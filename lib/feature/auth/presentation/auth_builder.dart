@@ -1,3 +1,4 @@
+import 'package:communication_client/app/domain/error_entity/error_entity.dart';
 import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,25 +38,11 @@ class AuthBuilder extends StatelessWidget {
             ),
         listener: ((context, state) {
           state.whenOrNull(
-            error: (error) => showTopSnackBar(
-              context,
-              CustomSnackBar.error(
-                message: error,
-                button: GestureDetector(
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                  ),
-                  onTap: () => localAnimationController.reverse(),
-                ),
-              ),
-              //persistent: true,
-              onAnimationControllerInit: (controller) =>
-                  localAnimationController = controller,
-            ),
+              error: (error) =>
+                  showErrorSnackBar(context, ErrorEntity.fromException(error))
 
-            // _showSnackBar(context, error),
-          );
+              // _showSnackBar(context, error),
+              );
         }));
   }
 

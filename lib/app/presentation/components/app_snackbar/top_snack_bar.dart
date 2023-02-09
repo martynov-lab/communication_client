@@ -1,3 +1,4 @@
+import 'package:communication_client/app/domain/error_entity/error_entity.dart';
 import 'package:communication_client/app/presentation/components/app_snackbar/tap_bounce_container.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,44 @@ typedef ControllerCallback = void Function(AnimationController);
 OverlayEntry? _previousEntry;
 
 late AnimationController localAnimationController;
+
+void showErrorSnackBar(BuildContext context, ErrorEntity error) {
+  showTopSnackBar(
+    context,
+    CustomSnackBar.error(
+      message: "Error: ${error.errorMessage}, Message: ${error.message}",
+      button: GestureDetector(
+        child: const Icon(
+          Icons.close,
+          color: Colors.white,
+        ),
+        onTap: () => localAnimationController.reverse(),
+      ),
+    ),
+    //persistent: true,
+    onAnimationControllerInit: (controller) =>
+        localAnimationController = controller,
+  );
+}
+
+void showSnackBar(BuildContext context, String message) {
+  showTopSnackBar(
+    context,
+    CustomSnackBar.error(
+      message: message,
+      button: GestureDetector(
+        child: const Icon(
+          Icons.close,
+          color: Colors.white,
+        ),
+        onTap: () => localAnimationController.reverse(),
+      ),
+    ),
+    //persistent: true,
+    onAnimationControllerInit: (controller) =>
+        localAnimationController = controller,
+  );
+}
 
 void showTopSnackBar(
   BuildContext context,
