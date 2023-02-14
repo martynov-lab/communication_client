@@ -1,27 +1,24 @@
-import 'package:communication_client/app/data/dio_container.dart';
-import 'package:communication_client/app/data/secure_storage.dart';
 import 'package:communication_client/feature/auth/data/dto/user_dto.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../app/domain/app_api.dart';
+
 @Injectable(as: AuthRepository)
 @prod
 class NetWorkAuthRepository implements AuthRepository {
-  final DioContainer dioContainer;
-  final SecureStorage secureStorage;
+  final AppApi api;
 
-  NetWorkAuthRepository(this.dioContainer, this.secureStorage);
+  NetWorkAuthRepository(this.api);
 
   @override
-  Future getProfile() async {
+  Future<UserEntity> getProfile() async {
     try {
-      final response = await dioContainer.dio.get("/auth/user");
+      final response = await api.getProfile();
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
-      secureStorage.setAccessToken(user.accessToken);
-      secureStorage.setAccessToken(user.refreshToken);
       return user;
     } catch (_) {
       rethrow;
@@ -29,14 +26,13 @@ class NetWorkAuthRepository implements AuthRepository {
   }
 
   @override
-  Future refrechToken({String? refreshToken}) async {
+  Future<UserEntity> refrechToken({String? refreshToken}) async {
     try {
-      final response = await dioContainer.dio.post("/auth/token/$refreshToken");
+      print('RefreshToken: $refreshToken');
+      final response = await api.refrechToken(refreshToken: refreshToken);
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
-      secureStorage.setAccessToken(user.accessToken);
-      secureStorage.setAccessToken(user.refreshToken);
 
       return user;
     } catch (_) {
@@ -50,15 +46,10 @@ class NetWorkAuthRepository implements AuthRepository {
     required String password,
   }) async {
     try {
-      final response = await dioContainer.dio.post(
-        "/auth/token",
-        data: {"username": username, "password": password},
-      );
+      final response = await api.signIn(username: username, password: password);
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();
-      secureStorage.setAccessToken(user.accessToken);
-      secureStorage.setAccessToken(user.refreshToken);
       return user;
     } catch (_) {
       rethrow;
@@ -66,23 +57,15 @@ class NetWorkAuthRepository implements AuthRepository {
   }
 
   @override
-  Future signUp({
+  Future<UserEntity> signUp({
     required String username,
     required String email,
     required String password,
   }) async {
     try {
-      final response = await dioContainer.dio.put(
-        '/auth/token',
-        data: {
-          'username': username,
-          'email': email,
-          'password': password,
-        },
-      );
+      final response = await api.signUp(
+          username: username, email: email, password: password);
       final user = UserDto.fromJson(response.data['data']).toEntity();
-      secureStorage.setAccessToken(user.accessToken);
-      secureStorage.setAccessToken(user.refreshToken);
       return user;
     } catch (_) {
       rethrow;
@@ -91,14 +74,12 @@ class NetWorkAuthRepository implements AuthRepository {
 
   @override
   Future updatePassword(
-      {required String oldPassword, required String newPassword}) {
-    // TODO: implement updatePassword
+      {required String oldPassword, required String newPassword}) async {
     throw UnimplementedError();
   }
 
   @override
-  Future updateUser({String? username, String? email}) {
-    // TODO: implement updateUser
+  Future updateUser({String? username, String? email}) async {
     throw UnimplementedError();
   }
 }

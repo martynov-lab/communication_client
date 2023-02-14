@@ -8,13 +8,14 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../feature/auth/data/dev_auth_repository.dart' as _i9;
+import '../../feature/auth/data/dev_auth_repository.dart' as _i10;
 import '../../feature/auth/data/mock_auth_repository.dart' as _i6;
-import '../../feature/auth/data/network_auth_repository.dart' as _i10;
+import '../../feature/auth/data/network_auth_repository.dart' as _i11;
 import '../../feature/auth/domain/auth_repository.dart' as _i5;
-import '../data/dio_container.dart' as _i7;
+import '../../feature/auth/domain/auth_state/auth_cubit.dart' as _i9;
+import '../data/dio_app_api.dart' as _i8;
 import '../data/main_app_config.dart' as _i4;
-import '../data/secure_storage.dart' as _i8;
+import '../domain/app_api.dart' as _i7;
 import '../domain/app_config.dart' as _i3;
 
 const String _prod = 'prod';
@@ -49,20 +50,15 @@ _i1.GetIt $initGetIt(
     () => _i6.MockAuthRepository(),
     registerFor: {_test},
   );
-  gh.singleton<_i7.DioContainer>(_i7.DioContainer(get<_i3.AppConfig>()));
-  gh.singleton<_i8.SecureStorage>(_i8.SecureStorage());
+  gh.singleton<_i7.AppApi>(_i8.DioAppApi(get<_i3.AppConfig>()));
+  gh.lazySingleton<_i9.AuthCubit>(
+      () => _i9.AuthCubit(get<_i5.AuthRepository>()));
   gh.factory<_i5.AuthRepository>(
-    () => _i9.DevAuthRepository(
-      get<_i7.DioContainer>(),
-      get<_i8.SecureStorage>(),
-    ),
+    () => _i10.DevAuthRepository(get<_i7.AppApi>()),
     registerFor: {_dev},
   );
   gh.factory<_i5.AuthRepository>(
-    () => _i10.NetWorkAuthRepository(
-      get<_i7.DioContainer>(),
-      get<_i8.SecureStorage>(),
-    ),
+    () => _i11.NetWorkAuthRepository(get<_i7.AppApi>()),
     registerFor: {_prod},
   );
   return get;

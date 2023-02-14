@@ -2,11 +2,13 @@ import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_cubit.g.dart';
 
+@lazySingleton
 class AuthCubit extends HydratedCubit<AuthState> {
   final AuthRepository authRepository;
   AuthCubit(this.authRepository) : super(AuthState.unauthorized());
@@ -60,14 +62,19 @@ class AuthCubit extends HydratedCubit<AuthState> {
     }
   }
 
-  Future<void> refreshToken() async {
+  Future<String?> refreshToken() async {
     final refreshToken =
         state.whenOrNull(authorized: ((userEntity) => userEntity.refreshToken));
     try {
-      final UserEntity userEntity = await authRepository.refrechToken(
+      return await authRepository
+          .refrechToken(
         refreshToken: refreshToken,
-      );
-      emit(AuthState.authorized(userEntity));
+      )
+          .then((value) {
+        final UserEntity userEntity = value;
+        emit(AuthState.authorized(userEntity));
+        return userEntity.accessToken;
+      });
     } catch (error, st) {
       addError(error, st);
     }
