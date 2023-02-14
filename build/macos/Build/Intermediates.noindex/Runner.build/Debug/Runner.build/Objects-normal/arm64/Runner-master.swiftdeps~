@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
-options: "ce777241ee6838d8b29e185898346ec6269061e37c678c624face8d472dc0507"
-build_start_time: [1675795822, 756553173]
-build_end_time: [1675795822, 814295053]
-inputs:
-  "/Users/arovit/Development/Project/communication_client/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1675795800, 55346488]
-  "/Users/arovit/Development/Project/communication_client/macos/Runner/AppDelegate.swift": !private [1664437869, 936365127]
-  "/Users/arovit/Development/Project/communication_client/macos/Runner/MainFlutterWindow.swift": !private [1664437869, 937220335]
