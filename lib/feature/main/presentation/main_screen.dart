@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../auth/domain/entities/user_entity/user_entity.dart';
+import '../../auth/presentation/screen/user_screen.dart';
 
 class MainScreen extends StatelessWidget {
   final UserEntity userEntity;
@@ -32,33 +33,20 @@ class MainScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.refresh,
+              Icons.account_box,
               color: Colors.grey,
             ),
             onPressed: (() {
-              context.read<AuthCubit>().getProfile();
-            }),
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.exit_to_app_rounded,
-              color: Colors.grey,
-            ),
-            onPressed: (() {
-              context.read<AuthCubit>().logout();
+              // context.read<AuthCubit>().getProfile();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => UserScreen())));
             }),
           ),
         ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(userEntity.username),
-          const SizedBox(height: 20),
-          Text(userEntity.accessToken.toString()),
-          const SizedBox(height: 20),
-          Text(userEntity.refreshToken.toString()),
-        ],
+        children: [],
       ),
     );
   }
