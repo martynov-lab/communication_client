@@ -75,11 +75,19 @@ class NetWorkAuthRepository implements AuthRepository {
   @override
   Future updatePassword(
       {required String oldPassword, required String newPassword}) async {
-    throw UnimplementedError();
+    try {} catch (_) {
+      rethrow;
+    }
   }
 
   @override
-  Future updateUser({String? username, String? email}) async {
-    throw UnimplementedError();
+  Future<UserEntity> updateUser({String? username, String? email}) async {
+    try {
+      final response = await api.updateUser(username: username, email: email);
+      final user = UserDto.fromJson(response.data['data']).toEntity();
+      return user;
+    } catch (_) {
+      rethrow;
+    }
   }
 }
