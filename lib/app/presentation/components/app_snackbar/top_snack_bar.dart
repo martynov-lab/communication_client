@@ -32,7 +32,7 @@ void showErrorSnackBar(BuildContext context, ErrorEntity error) {
 void showSnackBar(BuildContext context, String message) {
   showTopSnackBar(
     context,
-    CustomSnackBar.error(
+    CustomSnackBar.info(
       message: message,
       button: GestureDetector(
         child: const Icon(

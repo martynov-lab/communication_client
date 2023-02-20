@@ -1,4 +1,7 @@
+import 'package:communication_client/app/domain/error_entity/error_entity.dart';
 import 'package:communication_client/app/presentation/components/app_button.dart';
+import 'package:communication_client/app/presentation/components/app_loader.dart';
+import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
 import 'package:communication_client/app/presentation/components/app_text_field.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:flutter/material.dart';
@@ -12,25 +15,43 @@ class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Личный кабинет'),
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.exit_to_app_rounded,
-                color: Colors.grey,
-              ),
-              onPressed: (() {
-                Navigator.pop(context);
-                context.read<AuthCubit>().logout();
-              }),
+      appBar: AppBar(
+        title: const Text('Личный кабинет'),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.exit_to_app_rounded,
+              color: Colors.grey,
             ),
-          ],
-        ),
-        body: BlocBuilder<AuthCubit, AuthState>(builder: ((context, state) {
+            onPressed: (() {
+              Navigator.pop(context);
+              context.read<AuthCubit>().logout();
+            }),
+          ),
+        ],
+      ),
+      body: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            authorized: (userEntity) {
+              if (userEntity.userState?.hasData == true) {
+                showSnackBar(context, userEntity.userState?.data);
+              }
+              if (userEntity.userState?.hasError == true) {
+                showErrorSnackBar(context,
+                    ErrorEntity.fromException(userEntity.userState?.data));
+              }
+            },
+          );
+        },
+        builder: (context, state) {
           final userEntity = state.whenOrNull(
             authorized: (userEntity) => userEntity,
           );
+          if (userEntity?.userState?.connectionState ==
+              ConnectionState.waiting) {
+            return const AppLoader();
+          }
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
@@ -78,7 +99,9 @@ class UserScreen extends StatelessWidget {
               ],
             ),
           );
-        })));
+        },
+      ),
+    );
   }
 }
 
@@ -116,6 +139,8 @@ class __UserUpdateDialogState extends State<_UserUpdateDialog> {
               AppButton(
                   text: "Применить",
                   onPressed: () {
+                    Navigator.pop(context);
+                    // context.read<AuthCubit>().getProfile();
                     context.read<AuthCubit>().userUpdate(
                           usernameController.text,
                           emailController.text,
