@@ -5,6 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../app/domain/error_entity/error_entity.dart';
+
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_cubit.g.dart';
@@ -113,6 +115,27 @@ class AuthCubit extends HydratedCubit<AuthState> {
       });
     } catch (error, st) {
       addError(error, st);
+    }
+  }
+
+  Future<void> passwordUpdate({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      _updateUserState(const AsyncSnapshot.waiting());
+      await Future.delayed(const Duration(seconds: 1));
+
+      if (newPassword.trim().isEmpty == true) {
+        throw ErrorEntity(message: "Новый пароль пустой");
+      }
+
+      final message = await authRepository.updatePassword(
+          newPassword: newPassword, oldPassword: oldPassword);
+
+      _updateUserState(AsyncSnapshot.withData(ConnectionState.done, message));
+    } catch (error) {
+      _updateUserState(AsyncSnapshot.withError(ConnectionState.done, error));
     }
   }
 

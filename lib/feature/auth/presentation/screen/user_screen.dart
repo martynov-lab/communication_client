@@ -82,7 +82,13 @@ class UserScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                      onPressed: (() {}),
+                      onPressed: (() {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              const _UserUpdatePasswordDialog(),
+                        );
+                      }),
                       child: const Text('Обновить пароль'),
                     ),
                     TextButton(
@@ -149,6 +155,55 @@ class __UserUpdateDialogState extends State<_UserUpdateDialog> {
             ],
           ),
         ),
+      ],
+    );
+  }
+}
+
+class _UserUpdatePasswordDialog extends StatefulWidget {
+  const _UserUpdatePasswordDialog({super.key});
+
+  @override
+  State<_UserUpdatePasswordDialog> createState() =>
+      __UserUpdatePasswordDialogState();
+}
+
+class __UserUpdatePasswordDialogState extends State<_UserUpdatePasswordDialog> {
+  final newController = TextEditingController();
+  final oldController = TextEditingController();
+
+  @override
+  void dispose() {
+    newController.dispose();
+    oldController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              AppTextField(
+                  controller: oldController, labelText: "old password"),
+              const SizedBox(height: 16),
+              AppTextField(
+                  controller: newController, labelText: "new password"),
+              const SizedBox(height: 16),
+              AppButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    context.read<AuthCubit>().passwordUpdate(
+                        newPassword: newController.text,
+                        oldPassword: oldController.text);
+                  },
+                  text: "Применить"),
+            ],
+          ),
+        )
       ],
     );
   }
