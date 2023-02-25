@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../auth/domain/entities/user_entity/user_entity.dart';
 import '../../auth/presentation/screen/user_screen.dart';
+import '../../post/presentation/post_list.dart';
 
 class MainScreen extends StatelessWidget {
   final UserEntity userEntity;
@@ -44,10 +45,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
-      ),
+      body: const PostList(),
     );
   }
 }
