@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,8 +14,17 @@ part 'post_cubit.g.dart';
 
 class PostCubit extends HydratedCubit<PostState> {
   final PostRepository postRepository;
-  PostCubit(this.postRepository)
-      : super(const PostState(asyncSnapshot: AsyncSnapshot.nothing()));
+  final AuthCubit authCubit;
+  late final StreamSubscription authSub;
+  PostCubit(this.postRepository, this.authCubit)
+      : super(const PostState(asyncSnapshot: AsyncSnapshot.nothing())) {
+    authSub = authCubit.stream.listen((event) {
+      event.mapOrNull(
+        authorized: (value) => fetchPosts(),
+        unauthorized: (value) => logOut(),
+      );
+    });
+  }
 
   Future<void> fetchPosts() async {
     await postRepository.fetchPost().then((value) {
@@ -24,6 +36,13 @@ class PostCubit extends HydratedCubit<PostState> {
     }).catchError((error) {
       addError(error);
     });
+  }
+
+  void logOut() {
+    emit(state.copyWith(
+      postList: [],
+      asyncSnapshot: const AsyncSnapshot.nothing(),
+    ));
   }
 
   @override
@@ -41,5 +60,11 @@ class PostCubit extends HydratedCubit<PostState> {
   @override
   Map<String, dynamic>? toJson(PostState state) {
     return state.toJson();
+  }
+
+  @override
+  Future<void> close() {
+    authSub.cancel();
+    return super.close();
   }
 }

@@ -1,3 +1,4 @@
+import 'package:communication_client/app/presentation/components/app_dialog.dart';
 import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,13 +33,19 @@ class MainScreen extends StatelessWidget {
         //   }),
         // ),
         actions: [
+          // IconButton(
+          //   icon: const Icon(
+          //     Icons.email_outlined,
+          //     color: Colors.grey,
+          //   ),
+          //   onPressed: () {},
+          // ),
           IconButton(
             icon: const Icon(
               Icons.account_box,
               color: Colors.grey,
             ),
             onPressed: (() {
-              // context.read<AuthCubit>().getProfile();
               Navigator.push(context,
                   MaterialPageRoute(builder: ((context) => UserScreen())));
             }),
@@ -46,6 +53,18 @@ class MainScreen extends StatelessWidget {
         ],
       ),
       body: const PostList(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: ((context) => AppDialog(
+                    val1: "name",
+                    val2: "content",
+                    onPressed: (value1, value2) {},
+                  )));
+        },
+      ),
     );
   }
 }
