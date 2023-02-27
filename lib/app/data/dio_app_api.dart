@@ -93,8 +93,14 @@ class DioAppApi implements AppApi {
   }
 
   @override
-  Future<Response> fetchPosts() async {
-    return await dio.get('/data/posts');
+  Future<Response> fetchPosts() {
+    return dio.get('/data/posts');
+  }
+
+  @override
+  Future<Response> createPost(Map args) {
+    return dio.post('/data/posts',
+        data: {"name": args["name"], "content": args["content"]});
   }
 
   @override

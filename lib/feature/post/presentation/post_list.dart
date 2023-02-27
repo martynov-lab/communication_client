@@ -16,7 +16,7 @@ class PostList extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(10.0),
               child: ListView.builder(
-                  shrinkWrap: true,
+                  //shrinkWrap: true,
                   itemCount: state.postList.length,
                   itemBuilder: ((context, index) {
                     return PostItem(postEntity: state.postList[index]);

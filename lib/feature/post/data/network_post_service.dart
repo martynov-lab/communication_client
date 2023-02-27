@@ -18,4 +18,14 @@ class NetworkPostService implements PostRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<String> createPost(Map args) async {
+    try {
+      final response = await api.createPost(args);
+      return response.data["message "];
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

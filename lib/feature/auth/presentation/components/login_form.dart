@@ -9,8 +9,8 @@ import '../../../../app/presentation/components/app_text_field.dart';
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
 
-  final _userNameController = TextEditingController(text: 'ivanov');
-  final _passwordController = TextEditingController(text: '1234');
+  final _userNameController = TextEditingController(text: 'test1');
+  final _passwordController = TextEditingController(text: '123456Aa');
   final _formKey = GlobalKey<FormState>();
   // late LoginBloc _loginBloc;
   // late AuthenticationBloc _authenticationBloc;
