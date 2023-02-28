@@ -1,8 +1,8 @@
 import 'package:communication_client/app/presentation/components/app_loader.dart';
-import 'package:communication_client/feature/post/domain/post_state/post_cubit.dart';
 import 'package:communication_client/feature/post/presentation/post_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../domain/state/post_state/post_cubit.dart';
 
 class PostList extends StatelessWidget {
   const PostList({super.key});

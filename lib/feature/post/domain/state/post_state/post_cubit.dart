@@ -1,13 +1,10 @@
 import 'dart:async';
-
 import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-
-import '../entities/post/post_entity.dart';
-
+import '../../entities/post/post_entity.dart';
 part 'post_state.dart';
 part 'post_cubit.freezed.dart';
 part 'post_cubit.g.dart';
@@ -28,7 +25,7 @@ class PostCubit extends HydratedCubit<PostState> {
 
   Future<void> fetchPosts() async {
     emit(state.copyWith(asyncSnapshot: const AsyncSnapshot.waiting()));
-    await postRepository.fetchPost().then((value) {
+    await postRepository.fetchPosts().then((value) {
       final Iterable iterable = value;
       emit(state.copyWith(
           postList: iterable.map((post) => PostEntity.fromJson(post)).toList(),

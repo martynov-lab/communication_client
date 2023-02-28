@@ -1,4 +1,5 @@
 abstract class PostRepository {
-  Future fetchPost();
+  Future fetchPosts();
+  Future fetchPost(String id);
   Future createPost(Map args);
 }

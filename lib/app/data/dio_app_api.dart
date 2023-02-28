@@ -104,6 +104,11 @@ class DioAppApi implements AppApi {
   }
 
   @override
+  Future<Response> fetchPost(String id) {
+    return dio.get('/data/posts/$id');
+  }
+
+  @override
   Future request(String path) async {
     return await dio.request(path);
   }
