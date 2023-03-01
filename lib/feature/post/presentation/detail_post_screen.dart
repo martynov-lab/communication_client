@@ -3,6 +3,7 @@ import 'package:communication_client/app/presentation/components/app_loader.dart
 import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:communication_client/feature/post/domain/state/detail_state/detail_cubit.dart';
+import 'package:communication_client/feature/post/domain/state/post_state/post_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,19 @@ class _DetailPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<DetailCubit>().deletePost().then((_) {
+                context.read<PostCubit>().fetchPosts();
+                Navigator.of(context).pop();
+              });
+            },
+            icon: const Icon(Icons.delete_outline_rounded),
+          ),
+        ],
+      ),
       body: BlocConsumer<DetailCubit, DetailState>(
         listener: (context, state) {
           if (state.asyncSnapshot.hasError) {
@@ -37,6 +50,9 @@ class _DetailPostView extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          if (state.asyncSnapshot.connectionState == ConnectionState.waiting) {
+            return const AppLoader();
+          }
           if (state.postEntity != null) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -55,9 +71,7 @@ class _DetailPostView extends StatelessWidget {
               ),
             );
           }
-          if (state.asyncSnapshot.connectionState == ConnectionState.waiting) {
-            return const AppLoader();
-          }
+
           return const Center(
             child: Text('Ошибка'),
           );

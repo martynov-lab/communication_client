@@ -39,4 +39,13 @@ class NetworkPostService implements PostRepository {
       rethrow;
     }
   }
+
+  @override
+  Future deletePost(String id) async {
+    try {
+      await api.deletePost(id);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

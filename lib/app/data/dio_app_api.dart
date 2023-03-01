@@ -109,6 +109,11 @@ class DioAppApi implements AppApi {
   }
 
   @override
+  Future deletePost(String id) {
+    return dio.delete('/data/posts/$id');
+  }
+
+  @override
   Future request(String path) async {
     return await dio.request(path);
   }
