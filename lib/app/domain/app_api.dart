@@ -22,7 +22,7 @@ abstract class AppApi {
   Future<dynamic> refrechToken({String? refreshToken});
   Future<dynamic> request(String path);
   Future<dynamic> fetch(RequestOptions requestOptions);
-  Future<dynamic> fetchPosts();
+  Future<dynamic> fetchPosts(int fetchLimit, int offset);
   Future<dynamic> fetchPost(String id);
 
   Future<dynamic> deletePost(String id);

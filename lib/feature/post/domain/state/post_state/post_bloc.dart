@@ -6,28 +6,34 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import '../../entities/post/post_entity.dart';
 part 'post_state.dart';
-part 'post_cubit.freezed.dart';
-part 'post_cubit.g.dart';
+part 'post_event.dart';
+part 'post_bloc.freezed.dart';
 
-class PostCubit extends HydratedCubit<PostState> {
+class PostBloc extends Bloc<PostEvent, PostState> {
   final PostRepository postRepository;
   final AuthCubit authCubit;
   late final StreamSubscription authSub;
-  PostCubit(this.postRepository, this.authCubit)
+  PostBloc(this.postRepository, this.authCubit)
       : super(const PostState(asyncSnapshot: AsyncSnapshot.nothing())) {
     authSub = authCubit.stream.listen((event) {
       event.mapOrNull(
-        authorized: (value) => fetchPosts(),
-        unauthorized: (value) => logOut(),
+        authorized: (value) => add(PostEvent.fetch()),
+        unauthorized: (value) => add(PostEvent.logout()),
       );
     });
+
+    on<_PostEventFetch>(fetchPosts);
+    on<_PostEventCreatePost>(createPost);
+    on<_PostEventLogout>(logOut);
   }
 
-  Future<void> fetchPosts() async {
-    emit(state.copyWith(asyncSnapshot: const AsyncSnapshot.waiting()));
-    await postRepository.fetchPosts().then((value) {
+  Future<void> fetchPosts(PostEvent event, Emitter emitter) async {
+    emitter(state.copyWith(asyncSnapshot: const AsyncSnapshot.waiting()));
+    await postRepository
+        .fetchPosts(state.fetchLimit, state.offset)
+        .then((value) {
       final Iterable iterable = value;
-      emit(state.copyWith(
+      emitter(state.copyWith(
           postList: iterable.map((post) => PostEntity.fromJson(post)).toList(),
           asyncSnapshot:
               const AsyncSnapshot.withData(ConnectionState.done, true)));
@@ -36,37 +42,38 @@ class PostCubit extends HydratedCubit<PostState> {
     });
   }
 
-  Future<void> createPost(Map args) async {
-    await postRepository.createPost(args).then((value) {
-      fetchPosts();
+  Future<void> createPost(PostEvent event, Emitter emitter) async {
+    await postRepository
+        .createPost((event as _PostEventCreatePost).args)
+        .then((value) {
+      add(PostEvent.fetch());
     }).catchError((error) {
       addError(error);
     });
   }
 
-  void logOut() {
-    emit(state.copyWith(
+  void logOut(PostEvent event, Emitter emitter) {
+    emitter(state.copyWith(
       postList: [],
       asyncSnapshot: const AsyncSnapshot.nothing(),
     ));
   }
 
-  @override
-  void addError(Object error, [StackTrace? stackTrace]) {
-    emit(state.copyWith(
+  void stateError(Object error, Emitter emitter) {
+    addError(error);
+    emitter(state.copyWith(
         asyncSnapshot: AsyncSnapshot.withError(ConnectionState.done, error)));
-    super.addError(error, stackTrace);
   }
 
-  @override
-  PostState? fromJson(Map<String, dynamic> json) {
-    return PostState.fromJson(json);
-  }
+  // @override
+  // PostState? fromJson(Map<String, dynamic> json) {
+  //   return PostState.fromJson(json);
+  // }
 
-  @override
-  Map<String, dynamic>? toJson(PostState state) {
-    return state.toJson();
-  }
+  // @override
+  // Map<String, dynamic>? toJson(PostState state) {
+  //   return state.toJson();
+  // }
 
   @override
   Future<void> close() {

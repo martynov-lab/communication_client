@@ -4,7 +4,7 @@ import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.d
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../feature/post/domain/state/post_state/post_cubit.dart';
+import '../../feature/post/domain/state/post_state/post_bloc.dart';
 import 'root_screen.dart';
 
 class MainAppBuilder implements AppBuilder {
@@ -29,9 +29,9 @@ class _GlobalProviders extends StatelessWidget {
       providers: [
         BlocProvider(create: ((context) => locator.get<AuthCubit>())),
         BlocProvider(
-            create: ((context) => PostCubit(
+            create: ((context) => PostBloc(
                 locator.get<PostRepository>(), locator.get<AuthCubit>())
-              ..fetchPosts())),
+              ..add(PostEvent.fetch()))),
       ],
       child: child,
     );

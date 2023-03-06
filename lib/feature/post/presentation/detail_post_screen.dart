@@ -3,12 +3,11 @@ import 'package:communication_client/app/presentation/components/app_loader.dart
 import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:communication_client/feature/post/domain/state/detail_state/detail_cubit.dart';
-import 'package:communication_client/feature/post/domain/state/post_state/post_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/di/init_di.dart';
+import '../domain/state/post_state/post_bloc.dart';
 
 class DatailPostScreen extends StatelessWidget {
   final String id;
@@ -33,7 +32,7 @@ class _DetailPostView extends StatelessWidget {
           IconButton(
             onPressed: () {
               context.read<DetailCubit>().deletePost().then((_) {
-                context.read<PostCubit>().fetchPosts();
+                context.read<PostBloc>().add(PostEvent.fetch());
                 Navigator.of(context).pop();
               });
             },

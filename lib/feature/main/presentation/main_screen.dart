@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../auth/domain/entities/user_entity/user_entity.dart';
 import '../../auth/presentation/screen/user_screen.dart';
-import '../../post/domain/state/post_state/post_cubit.dart';
+import '../../post/domain/state/post_state/post_bloc.dart';
 import '../../post/presentation/post_list.dart';
 
 class MainScreen extends StatelessWidget {
@@ -47,10 +47,10 @@ class MainScreen extends StatelessWidget {
                     val1: "name",
                     val2: "content",
                     onPressed: (value1, value2) async {
-                      context.read<PostCubit>().createPost({
-                        "name": value1,
-                        "content": value2,
-                      });
+                      context.read<PostBloc>().add(PostEvent.createPost({
+                            "name": value1,
+                            "content": value2,
+                          }));
                     },
                   ));
         },
