@@ -28,13 +28,18 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   Future<void> fetchPosts(PostEvent event, Emitter emitter) async {
+    if (state.asyncSnapshot?.connectionState == ConnectionState.waiting) return;
     emitter(state.copyWith(asyncSnapshot: const AsyncSnapshot.waiting()));
     await postRepository
         .fetchPosts(state.fetchLimit, state.offset)
         .then((value) {
       final Iterable iterable = value;
+      final fetchedList =
+          iterable.map((post) => PostEntity.fromJson(post)).toList();
+      final mergeList = [...state.postList, ...fetchedList];
       emitter(state.copyWith(
-          postList: iterable.map((post) => PostEntity.fromJson(post)).toList(),
+          offset: state.offset + fetchedList.length,
+          postList: mergeList,
           asyncSnapshot:
               const AsyncSnapshot.withData(ConnectionState.done, true)));
     }).catchError((error) {

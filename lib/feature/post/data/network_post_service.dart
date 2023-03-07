@@ -14,6 +14,7 @@ class NetworkPostService implements PostRepository {
   Future<Iterable> fetchPosts(int fetchLimit, int offset) async {
     try {
       final response = await api.fetchPosts(fetchLimit, offset);
+      if (response.data is! Iterable) throw Exception(response.data["message"]);
       return response.data;
     } catch (_) {
       rethrow;
