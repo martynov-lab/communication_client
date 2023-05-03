@@ -19,15 +19,15 @@ class MockAuthRepository implements AuthRepository {
 
   @override
   Future signIn({
-    required String username,
+    required String email,
     required String password,
   }) {
     return Future.delayed(const Duration(seconds: 2), () {
       //throw Exception("test");
       return UserEntity(
         id: '-1',
-        email: 'testEmail@test.ru ',
-        username: username,
+        email: email,
+        username: 'username',
       );
     });
   }

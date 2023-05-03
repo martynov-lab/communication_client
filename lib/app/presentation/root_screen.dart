@@ -1,5 +1,5 @@
 import 'package:communication_client/feature/auth/presentation/auth_builder.dart';
-import 'package:communication_client/feature/main/presentation/main_screen.dart';
+import 'package:communication_client/feature/main/presentation/screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/auth/presentation/screen/login_screen.dart';

@@ -5,7 +5,7 @@ abstract class AuthRepository {
     required String password,
   });
   Future<dynamic> signIn({
-    required String username,
+    required String email,
     required String password,
   });
   Future<dynamic> getProfile();

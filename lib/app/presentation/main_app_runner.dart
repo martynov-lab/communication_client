@@ -13,9 +13,8 @@ class MainAppRunner implements AppRunner {
   @override
   Future<void> preloadData() async {
     WidgetsFlutterBinding.ensureInitialized();
-    //init app
+
     initDi(env);
-    //init config
   }
 
   @override

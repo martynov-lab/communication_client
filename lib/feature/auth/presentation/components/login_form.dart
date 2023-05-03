@@ -9,7 +9,7 @@ import '../../../../app/presentation/components/app_text_field.dart';
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
 
-  final _userNameController = TextEditingController(text: 'test1');
+  final _userEmailController = TextEditingController(text: 'test@test.com');
   final _passwordController = TextEditingController(text: '123456Aa');
   final _formKey = GlobalKey<FormState>();
   // late LoginBloc _loginBloc;
@@ -18,7 +18,7 @@ class LoginForm extends StatelessWidget {
   // bool _obscurePassword = true;
 
   bool get isLoginButtonEnabled =>
-      _userNameController.text.isNotEmpty &&
+      _userEmailController.text.isNotEmpty &&
       _passwordController.text.isNotEmpty;
 
   @override
@@ -31,9 +31,9 @@ class LoginForm extends StatelessWidget {
             height: 40,
           ),
           AppTextField(
-            controller: _userNameController,
-            labelText: 'Логин',
-            icon: Icons.person,
+            controller: _userEmailController,
+            labelText: 'Email',
+            icon: Icons.email,
           ),
           const SizedBox(
             height: 20,
@@ -96,7 +96,7 @@ class LoginForm extends StatelessWidget {
 
   void _onFormSubmitted(AuthCubit authCubit) {
     authCubit.signIn(
-      username: _userNameController.text,
+      email: _userEmailController.text,
       password: _passwordController.text,
     );
     // _loginBloc.add(

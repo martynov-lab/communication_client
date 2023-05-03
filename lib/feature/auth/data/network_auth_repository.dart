@@ -44,11 +44,11 @@ class NetWorkAuthRepository implements AuthRepository {
 
   @override
   Future<UserEntity> signIn({
-    required String username,
+    required String email,
     required String password,
   }) async {
     try {
-      final response = await api.signIn(username: username, password: password);
+      final response = await api.signIn(email: email, password: password);
       print('Response.statusCode: ${response.statusCode}');
       print('Response.data: ${response.data}');
       final user = UserDto.fromJson(response.data["data"]).toEntity();

@@ -17,13 +17,13 @@ class AuthCubit extends HydratedCubit<AuthState> {
   AuthCubit(this.authRepository) : super(AuthState.unauthorized());
 
   Future<void> signIn({
-    required String username,
+    required String email,
     required String password,
   }) async {
     emit(AuthState.loading());
     try {
       final UserEntity userEntity =
-          await authRepository.signIn(username: username, password: password);
+          await authRepository.signIn(email: email, password: password);
       emit(AuthState.authorized(userEntity));
     } catch (error, st) {
       addError(error, st);
@@ -46,6 +46,10 @@ class AuthCubit extends HydratedCubit<AuthState> {
     } catch (error, st) {
       addError(error, st);
     }
+  }
+
+  Future<void> logout() async {
+    emit(AuthState.unauthorized());
   }
 
   Future<void> getProfile() async {
@@ -139,7 +143,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
     }
   }
 
-  void logout() => emit(AuthState.unauthorized());
+  // void logout() => emit(AuthState.unauthorized());
 
   @override
   AuthState? fromJson(Map<String, dynamic> json) {
@@ -151,6 +155,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   @override
   Map<String, dynamic>? toJson(AuthState state) {
+    //сохроняем состояние только если авторизован
     return state
             .whenOrNull(
                 authorized: (userEntity) => AuthState.authorized(userEntity))

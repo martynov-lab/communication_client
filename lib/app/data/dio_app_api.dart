@@ -45,11 +45,11 @@ class DioAppApi implements AppApi {
 
   @override
   Future<Response> signIn(
-      {required String username, required String password}) async {
+      {required String email, required String password}) async {
     try {
       return await dio.post(
-        "/auth/token",
-        data: {"username": username, "password": password},
+        "/auth/singin",
+        data: {"email": email, "password": password},
       );
     } catch (_) {
       rethrow;
@@ -62,8 +62,8 @@ class DioAppApi implements AppApi {
       required String email,
       required String password}) async {
     try {
-      return await dio.put(
-        '/auth/token',
+      return await dio.post(
+        '/auth/singup',
         data: {
           'username': username,
           'email': email,
