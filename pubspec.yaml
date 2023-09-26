@@ -28,6 +28,10 @@ dependencies:
   firebase_core: ^2.10.0
   cloud_firestore: ^4.5.3
   cloud_firestore_web: ^3.4.2
+  # checks for an active internet connection
+  internet_connection_checker: ^1.0.0+1
+  # loading indicators
+  flutter_spinkit: ^5.2.0
 
 dev_dependencies:
   flutter_test:
@@ -38,9 +42,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
 
   fonts:
     - family: Lato
@@ -107,3 +110,36 @@ flutter:
         - asset: fonts/RedHatDisplay-Light.ttf
           weight: 300
           style: normal
+    - family: SF_Text
+      fonts:
+        - asset: fonts/Inter-Black.ttf
+          weight: 900
+          style: normal
+        - asset: fonts/Inter-ExtraBold.ttf
+          weight: 800
+          style: normal
+        - asset: fonts/Inter-Bold.ttf
+          weight: 700
+          style: normal
+        - asset: fonts/Inter-SemiBold.ttf
+          weight: 600
+          style: normal
+        - asset: fonts/Inter-Medium.ttf
+          weight: 500
+          style: normal
+        - asset: fonts/Inter-Regular.ttf
+          weight: 400
+          style: normal
+        - asset: fonts/Inter-Light.ttf
+          weight: 300
+          style: normal
+        - asset: fonts/Inter-ExtraLight.ttf
+          weight: 200
+          style: normal
+        - asset: fonts/Inter-Thin.ttf
+          weight: 100
+          style: normal
+
+    - family: CustomIcon
+      fonts:
+        - asset: fonts/CustomIcon.ttf

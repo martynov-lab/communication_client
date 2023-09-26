@@ -54,69 +54,69 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   Future<void> getProfile() async {
     try {
-      _updateUserState(const AsyncSnapshot.waiting());
-      final UserEntity newUserEntity = await authRepository.getProfile();
-      emit(state.maybeWhen(
-          orElse: () => state,
-          authorized: (userEntity) => AuthState.authorized(userEntity.copyWith(
-              email: newUserEntity.email, username: newUserEntity.username))));
-      _updateUserState(const AsyncSnapshot.withData(
-          ConnectionState.done, "Success get date"));
+      // _updateUserState(const AsyncSnapshot.waiting());
+      // final UserEntity newUserEntity = await authRepository.getProfile();
+      // emit(state.maybeWhen(
+      //     orElse: () => state,
+      //     authorized: (userEntity) => AuthState.authorized(userEntity.copyWith(
+      //         email: newUserEntity.email, username: newUserEntity.username))));
+      // _updateUserState(const AsyncSnapshot.withData(
+      //     ConnectionState.done, "Success get date"));
     } catch (error) {
       _updateUserState(AsyncSnapshot.withError(ConnectionState.done, error));
     }
   }
 
   void _updateUserState(AsyncSnapshot asyncSnapshot) {
-    emit(state.maybeWhen(
-      orElse: () => state,
-      authorized: (userEntity) {
-        return AuthState.authorized(
-            userEntity.copyWith(userState: asyncSnapshot));
-      },
-    ));
+    // emit(state.maybeWhen(
+    //   orElse: () => state,
+    //   authorized: (userEntity) {
+    //     return AuthState.authorized(
+    //         userEntity.copyWith(userState: asyncSnapshot));
+    //   },
+    // ));
   }
 
   Future<void> userUpdate(String? username, String? email) async {
     try {
-      _updateUserState(const AsyncSnapshot.waiting());
-      // await Future.delayed(const Duration(seconds: 1));
-      final bool isEmptyUserName = username?.trim().isEmpty == true;
-      final bool isEmptyEmail = email?.trim().isEmpty == true;
+      // _updateUserState(const AsyncSnapshot.waiting());
+      // // await Future.delayed(const Duration(seconds: 1));
+      // final bool isEmptyUserName = username?.trim().isEmpty == true;
+      // final bool isEmptyEmail = email?.trim().isEmpty == true;
 
-      final UserEntity newUserEntity = await authRepository.updateUser(
-        username: isEmptyUserName ? null : username,
-        email: isEmptyEmail ? null : email,
-      );
-      emit(
-        state.maybeWhen(
-            orElse: () => state,
-            authorized: (userEntity) =>
-                AuthState.authorized(userEntity.copyWith(
-                  email: newUserEntity.email,
-                  username: newUserEntity.username,
-                ))),
-      );
-      _updateUserState(
-          const AsyncSnapshot.withData(ConnectionState.done, "Success update"));
+      // final UserEntity newUserEntity = await authRepository.updateUser(
+      //   username: isEmptyUserName ? null : username,
+      //   email: isEmptyEmail ? null : email,
+      // );
+      // emit(
+      //   state.maybeWhen(
+      //       orElse: () => state,
+      //       authorized: (userEntity) =>
+      //           AuthState.authorized(userEntity.copyWith(
+      //             email: newUserEntity.email,
+      //             username: newUserEntity.username,
+      //           ))),
+      // );
+      // _updateUserState(
+      //     const AsyncSnapshot.withData(ConnectionState.done, "Success update"));
     } catch (error) {
       _updateUserState(AsyncSnapshot.withError(ConnectionState.done, error));
     }
   }
 
   Future<String?> refreshToken() async {
-    final refreshToken =
-        state.whenOrNull(authorized: ((userEntity) => userEntity.refreshToken));
+    // final refreshToken =
+    //     state.whenOrNull(authorized: ((userEntity) => userEntity.refreshToken));
     try {
-      return await authRepository
-          .refrechToken(
-        refreshToken: refreshToken,
-      )
-          .then((value) {
-        final UserEntity userEntity = value;
-        emit(AuthState.authorized(userEntity));
-        return userEntity.accessToken;
-      });
+      // return await authRepository
+      //     .refrechToken(
+      //   refreshToken: refreshToken,
+      // )
+      //     .then((value) {
+      //   final UserEntity userEntity = value;
+      //   emit(AuthState.authorized(userEntity));
+      //   return userEntity.accessToken;
+      // });
     } catch (error, st) {
       addError(error, st);
     }

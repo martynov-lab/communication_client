@@ -38,16 +38,15 @@ class Signaling {
       peerConnection?.addTrack(track, localStream!);
     });
 
-    // Code for collecting ICE candidates below
+    // Code for collecting ICE candidates
     var callerCandidatesCollection = roomRef.collection('callerCandidates');
 
     peerConnection?.onIceCandidate = (RTCIceCandidate candidate) {
       print('Got candidate: ${candidate.toMap()}');
       callerCandidatesCollection.add(candidate.toMap());
     };
-    // Finish Code for collecting ICE candidate
 
-    // Add code for creating a room
+    // Creating a room
     RTCSessionDescription offer = await peerConnection!.createOffer();
     await peerConnection!.setLocalDescription(offer);
     print('Created offer: $offer');

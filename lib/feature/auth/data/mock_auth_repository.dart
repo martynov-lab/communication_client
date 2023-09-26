@@ -25,9 +25,9 @@ class MockAuthRepository implements AuthRepository {
     return Future.delayed(const Duration(seconds: 2), () {
       //throw Exception("test");
       return UserEntity(
-        id: '-1',
         email: email,
-        username: 'username',
+        userName: 'username',
+        firstname: '',
       );
     });
   }
@@ -40,9 +40,9 @@ class MockAuthRepository implements AuthRepository {
   }) {
     return Future.delayed(const Duration(seconds: 2), () {
       return UserEntity(
-        id: '-1',
         email: email,
-        username: username,
+        userName: 'username',
+        firstname: '',
       );
     });
   }

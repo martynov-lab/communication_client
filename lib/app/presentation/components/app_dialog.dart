@@ -1,67 +1,45 @@
+import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
-import 'app_button.dart';
-import 'app_text_field.dart';
-
-class AppDialog extends StatefulWidget {
-  final String val1;
-  final String val2;
-  final Function(String val1, String val2) onPressed;
-  const AppDialog({
-    super.key,
-    required this.val1,
-    required this.val2,
-    required this.onPressed,
-  });
-
-  @override
-  State<AppDialog> createState() => _AppDialogState();
-}
-
-class _AppDialogState extends State<AppDialog> {
-  final val1Controller = TextEditingController();
-  final val2Controller = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    val1Controller.dispose();
-    val2Controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SimpleDialog(
-      children: [
-        Form(
-          key: formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                AppTextField(
-                    controller: val1Controller, labelText: widget.val1),
-                const SizedBox(height: 16),
-                AppTextField(
-                    controller: val2Controller, labelText: widget.val2),
-                const SizedBox(height: 16),
-                AppButton(
+// contains all dialog templates
+class AppDialog {
+  static Future openDialog({
+    required BuildContext context,
+    required String titile,
+    required String message,
+    required String textButtomCencel,
+    required String textButtomOK,
+    required Function functionCencel,
+    required Function functionOK,
+  }) =>
+      showDialog(
+          context: context,
+          builder: (contextB) => AlertDialog(
+                title: Text(titile),
+                titleTextStyle: const TextStyle(
+                    fontFamily: Font.inter,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
+                content: Text(message),
+                contentTextStyle: const TextStyle(
+                    fontFamily: Font.inter,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey),
+                actions: [
+                  TextButton(
                     onPressed: () {
-                      if (formKey.currentState?.validate() == true) {
-                        Navigator.pop(context);
-                        widget.onPressed(
-                          val1Controller.text,
-                          val2Controller.text,
-                        );
-                      }
+                      functionCencel();
                     },
-                    text: "Применить"),
-              ],
-            ),
-          ),
-        )
-      ],
-    );
-  }
+                    child: Text(textButtomCencel),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      functionOK();
+                    },
+                    child: Text(textButtomOK),
+                  )
+                ],
+              ));
 }

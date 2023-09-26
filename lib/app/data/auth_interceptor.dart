@@ -9,7 +9,7 @@ class AuthInterceptor extends QueuedInterceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final accessToken = locator.get<AuthCubit>().state.whenOrNull(
-          authorized: (userEntity) => userEntity.accessToken,
+        // authorized: (userEntity) => userEntity.accessToken,
         );
 
     if (accessToken == null) {
