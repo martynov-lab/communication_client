@@ -12,19 +12,28 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  # di
   injectable: ^1.5.3
   get_it: ^7.2.0
   injectable_generator: ^1.5.4
+  # serialization and codogeneration
   freezed: ^2.1.0+1
   freezed_annotation: ^2.1.0
   json_serializable: ^6.5.1
+  # http client
   dio: ^4.0.6
+  # logger
   pretty_dio_logger: ^1.1.1
+  # state manager
   flutter_bloc: ^8.1.1
+  bloc_concurrency: ^0.2.2
+  # storage
   hydrated_bloc: ^8.1.0
   path_provider: ^2.0.11
   flutter_secure_storage: ^7.0.1
+  # webrtc
   flutter_webrtc: ^0.9.24
+  # firebase
   firebase_core: ^2.10.0
   cloud_firestore: ^4.5.3
   cloud_firestore_web: ^3.4.2

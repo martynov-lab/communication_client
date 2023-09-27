@@ -377,7 +377,7 @@ class MainScreen extends StatelessWidget {
                     left: 70,
                   ),
                   child: Text(
-                    'Добро пожаловать в Letsmeet!',
+                    'Добро пожаловать в Connect!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: ColorApp.blueButton,
