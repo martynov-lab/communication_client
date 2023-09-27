@@ -1,3 +1,5 @@
- abstract interface class VideoRoomRepository {
-
- }
+abstract interface class VideoRoomRepository {
+  Future<String> createRoom();
+  Future<void> joinRoom();
+  Future<void> hangUp();
+}

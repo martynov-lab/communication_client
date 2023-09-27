@@ -683,10 +683,10 @@
       "name": "communication_client",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-09-27T19:43:42.313707Z",
+  "generated": "2023-09-27T20:06:02.928763Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }

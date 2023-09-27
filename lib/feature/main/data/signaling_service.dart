@@ -1,7 +1,28 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:communication_client/feature/main/domain/repository/video_room_repository.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
+
+final class SignalingService implements VideoRoomRepository {
+  @override
+  Future<String> createRoom() {
+    // TODO: implement createRoom
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> hangUp() {
+    // TODO: implement hangUp
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> joinRoom() {
+    // TODO: implement joinRoom
+    throw UnimplementedError();
+  }
+}
 
 typedef StreamStateCallback = void Function(MediaStream stream);
 
