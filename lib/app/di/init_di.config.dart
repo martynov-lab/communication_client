@@ -9,14 +9,18 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../feature/auth/data/mock_auth_repository.dart' as _i6;
-import '../../feature/auth/data/network_auth_repository.dart' as _i10;
+import '../../feature/auth/data/network_auth_repository.dart' as _i14;
 import '../../feature/auth/domain/auth_repository.dart' as _i5;
-import '../../feature/auth/domain/auth_state/auth_cubit.dart' as _i9;
-import '../../feature/post/data/network_post_service.dart' as _i12;
-import '../../feature/post/domain/repository/post_repository.dart' as _i11;
-import '../data/dio_app_api.dart' as _i8;
+import '../../feature/auth/domain/auth_state/auth_cubit.dart' as _i13;
+import '../../feature/main/data/firebase_signaling_service.dart' as _i9;
+import '../../feature/main/data/mock_signaling_service.dart' as _i8;
+import '../../feature/main/data/signaling_service.dart' as _i10;
+import '../../feature/main/domain/repository/video_room_repository.dart' as _i7;
+import '../../feature/post/data/network_post_service.dart' as _i16;
+import '../../feature/post/domain/repository/post_repository.dart' as _i15;
+import '../data/dio_app_api.dart' as _i12;
 import '../data/main_app_config.dart' as _i4;
-import '../domain/app_api.dart' as _i7;
+import '../domain/app_api.dart' as _i11;
 import '../domain/app_config.dart' as _i3;
 
 const String _prod = 'prod';
@@ -51,18 +55,30 @@ _i1.GetIt $initGetIt(
     () => _i6.MockAuthRepository(),
     registerFor: {_test},
   );
-  gh.singleton<_i7.AppApi>(_i8.DioAppApi(get<_i3.AppConfig>()));
-  gh.lazySingleton<_i9.AuthCubit>(
-      () => _i9.AuthCubit(get<_i5.AuthRepository>()));
+  gh.factory<_i7.VideoRoomRepository>(
+    () => _i8.MockSignalingServise(),
+    registerFor: {_test},
+  );
+  gh.factory<_i7.VideoRoomRepository>(
+    () => _i9.FirebaseSignalingService(),
+    registerFor: {_dev},
+  );
+  gh.factory<_i7.VideoRoomRepository>(
+    () => _i10.SignalingServise(),
+    registerFor: {_prod},
+  );
+  gh.singleton<_i11.AppApi>(_i12.DioAppApi(get<_i3.AppConfig>()));
+  gh.lazySingleton<_i13.AuthCubit>(
+      () => _i13.AuthCubit(get<_i5.AuthRepository>()));
   gh.factory<_i5.AuthRepository>(
-    () => _i10.NetWorkAuthRepository(get<_i7.AppApi>()),
+    () => _i14.NetWorkAuthRepository(get<_i11.AppApi>()),
     registerFor: {
       _prod,
       _dev,
     },
   );
-  gh.factory<_i11.PostRepository>(
-    () => _i12.NetworkPostService(get<_i7.AppApi>()),
+  gh.factory<_i15.PostRepository>(
+    () => _i16.NetworkPostService(get<_i11.AppApi>()),
     registerFor: {
       _prod,
       _dev,

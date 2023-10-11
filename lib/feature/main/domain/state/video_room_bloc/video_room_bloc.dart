@@ -23,7 +23,7 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
     try {
       emitter(const VideoRoomState.loading());
       // ... логика создания комнаты await _repository.createRooom(idRoom: event.id);
-      emitter(const VideoRoomState.created());
+      emitter(const VideoRoomState.created('1'));
     } on Exception {
       emitter(const VideoRoomState.error('Некритичная ошибка'));
     } on Object {
@@ -39,7 +39,7 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
     try {
       emitter(const VideoRoomState.loading());
       // ... логика присоединения к комнате await _repository.joinRoom(idRoom: event.id);
-      emitter(const VideoRoomState.created());
+      emitter(const VideoRoomState.created('1'));
     } on Exception {
       emitter(const VideoRoomState.error('Некритичная ошибка'));
     } on Object {
@@ -55,7 +55,7 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
     try {
       emitter(const VideoRoomState.loading());
       // ... логика удаления комнаты await _repository.deleteRoom(idRoom: event.id);
-      emitter(const VideoRoomState.created());
+      emitter(const VideoRoomState.created('1'));
     } on Exception {
       emitter(const VideoRoomState.error('Некритичная ошибка'));
     } on Object {

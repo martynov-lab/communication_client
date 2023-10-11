@@ -3,8 +3,8 @@ import 'package:flutter_webrtc/src/native/rtc_video_renderer_impl.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: VideoRoomRepository)
-@prod
-class SignalingServise implements VideoRoomRepository {
+@test
+class MockSignalingServise implements VideoRoomRepository {
   @override
   Future<String> createRoom(RTCVideoRenderer remoteRenderer) {
     // TODO: implement createRoom

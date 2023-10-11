@@ -411,7 +411,7 @@ mixin _$VideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) =>
@@ -420,7 +420,7 @@ mixin _$VideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) =>
@@ -429,7 +429,7 @@ mixin _$VideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -523,7 +523,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -535,7 +535,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -547,7 +547,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -643,7 +643,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -655,7 +655,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -667,7 +667,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -728,6 +728,8 @@ abstract class _$$_CreatedVideoRoomStateCopyWith<$Res> {
   factory _$$_CreatedVideoRoomStateCopyWith(_$_CreatedVideoRoomState value,
           $Res Function(_$_CreatedVideoRoomState) then) =
       __$$_CreatedVideoRoomStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId});
 }
 
 /// @nodoc
@@ -737,37 +739,62 @@ class __$$_CreatedVideoRoomStateCopyWithImpl<$Res>
   __$$_CreatedVideoRoomStateCopyWithImpl(_$_CreatedVideoRoomState _value,
       $Res Function(_$_CreatedVideoRoomState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? roomId = null,
+  }) {
+    return _then(_$_CreatedVideoRoomState(
+      null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
-  const _$_CreatedVideoRoomState();
+  const _$_CreatedVideoRoomState(this.roomId);
+
+  @override
+  final String roomId;
 
   @override
   String toString() {
-    return 'VideoRoomState.created()';
+    return 'VideoRoomState.created(roomId: $roomId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreatedVideoRoomState);
+        (other.runtimeType == runtimeType &&
+            other is _$_CreatedVideoRoomState &&
+            (identical(other.roomId, roomId) || other.roomId == roomId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, roomId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CreatedVideoRoomStateCopyWith<_$_CreatedVideoRoomState> get copyWith =>
+      __$$_CreatedVideoRoomStateCopyWithImpl<_$_CreatedVideoRoomState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
-    return created();
+    return created(roomId);
   }
 
   @override
@@ -775,11 +802,11 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
-    return created?.call();
+    return created?.call(roomId);
   }
 
   @override
@@ -787,13 +814,13 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created();
+      return created(roomId);
     }
     return orElse();
   }
@@ -840,7 +867,13 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
 }
 
 abstract class _CreatedVideoRoomState implements VideoRoomState {
-  const factory _CreatedVideoRoomState() = _$_CreatedVideoRoomState;
+  const factory _CreatedVideoRoomState(final String roomId) =
+      _$_CreatedVideoRoomState;
+
+  String get roomId;
+  @JsonKey(ignore: true)
+  _$$_CreatedVideoRoomStateCopyWith<_$_CreatedVideoRoomState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -883,7 +916,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -895,7 +928,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -907,7 +940,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -1031,7 +1064,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() created,
+    required TResult Function(String roomId) created,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -1043,7 +1076,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? created,
+    TResult? Function(String roomId)? created,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -1055,7 +1088,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? created,
+    TResult Function(String roomId)? created,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),

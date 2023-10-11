@@ -29,7 +29,7 @@ void showErrorSnackBar(BuildContext context, ErrorEntity error) {
   );
 }
 
-void showSnackBar(BuildContext context, String message) {
+void showInfoSnackBar(BuildContext context, String message) {
   showTopSnackBar(
     context,
     CustomSnackBar.info(

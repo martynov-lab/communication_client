@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import '../../../auth/domain/entities/user_entity/user_entity.dart';
 import '../../../auth/presentation/screen/user_screen.dart';
-import '../../data/signaling_service.dart';
+import '../../data/firebase_signaling_service.dart';
 
 // class MainScreen extends StatefulWidget {
 //   // final UserEntity userEntity;

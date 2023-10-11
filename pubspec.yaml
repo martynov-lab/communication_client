@@ -41,6 +41,8 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   # loading indicators
   flutter_spinkit: ^5.2.0
+  # utils
+  # modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:
