@@ -6,6 +6,7 @@ import 'package:communication_client/feature/main/domain/state/video_room_bloc/v
 import 'package:communication_client/feature/main/presentation/screen/video_room.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 class HomeButtons extends StatelessWidget {
   const HomeButtons({
@@ -18,60 +19,57 @@ class HomeButtons extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         //Создать встречу
-        BlocProvider(
-          create: (context) => VideoRoomBloc(),
-          child: BlocListener<VideoRoomBloc, VideoRoomState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                created: (String roomId) {
-                  Navigator.push(
-                      context, FadeRoute(page: VideoRoom(roomId: roomId)));
-                },
-              );
-            },
-            child: GestureDetector(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(30),
-                //height: 160,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(18),
-                    ),
-                    color: ColorApp.blueButton),
-                child: const Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Icon(
-                      CustomIcon.video,
-                      color: ColorApp.backgroundLight,
-                      size: 60,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 20,
-                        bottom: 10,
-                      ),
-                      child: Text(
-                        'Создать встречу',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontFamily: Font.inter,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              onTap: () {
-                context
-                    .read<VideoRoomBloc>()
-                    .add(const VideoRoomEvent.creatRoom());
+        BlocListener<VideoRoomBloc, VideoRoomState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              created: (String roomId, RTCVideoRenderer localRenderer) {
+                Navigator.push(
+                    context, FadeRoute(page: VideoRoom(roomId: roomId)));
               },
+            );
+          },
+          child: GestureDetector(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(30),
+              //height: 160,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(18),
+                  ),
+                  color: ColorApp.blueButton),
+              child: const Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    CustomIcon.video,
+                    color: ColorApp.backgroundLight,
+                    size: 60,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 20,
+                      bottom: 10,
+                    ),
+                    child: Text(
+                      'Создать встречу',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontFamily: Font.inter,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            onTap: () {
+              context
+                  .read<VideoRoomBloc>()
+                  .add(const VideoRoomEvent.creatRoom());
+            },
           ),
         ),
         const SizedBox(height: 15),

@@ -7,10 +7,7 @@ import 'package:communication_client/feature/main/presentation/screen/footter.da
 import 'package:communication_client/feature/main/presentation/screen/home_screen_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_webrtc/flutter_webrtc.dart';
 import '../../../auth/domain/entities/user_entity/user_entity.dart';
-import '../../../auth/presentation/screen/user_screen.dart';
-import '../../data/firebase_signaling_service.dart';
 
 // class MainScreen extends StatefulWidget {
 //   // final UserEntity userEntity;

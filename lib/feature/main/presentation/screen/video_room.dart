@@ -1,12 +1,12 @@
 import 'dart:io';
-import 'package:communication_client/app/presentation/components/app_bottomshet.dart';
 import 'package:communication_client/app/presentation/components/app_button.dart';
 import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
 import 'package:communication_client/app/presentation/components/custom_icons.dart';
 import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:communication_client/feature/main/domain/state/video_room_bloc/video_room_bloc.dart';
 import 'package:communication_client/feature/main/presentation/components/button_room.dart';
-import 'package:communication_client/feature/main/presentation/components/chat_video_room/chat_video_room.dart';
+import 'package:communication_client/feature/main/presentation/components/grid_with_video.dart';
+import 'package:communication_client/feature/main/presentation/components/list_without_video.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,27 +25,23 @@ class VideoRoom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> actions = [
-      // AppButton(
-      //   text: 'Завершить для всех',
-      //   onPressed: () {
-      //     context.read<VideoRoomCubit>().deleteRoom(hash: hash ?? '');
-      //     Navigator.of(context).pop();
-      //   },
-      //   colorButton: const Color.fromARGB(255, 93, 134, 239),
-      //   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-      //   isActive: true,
-      // ),
-      // const SizedBox(height: 20),
-      // AppButton(
-      //   text: 'Выйти',
-      //   onPressed: () {
-      //     context.read<VideoConferenceCubit>().leaveRoom();
-      //     Navigator.of(context).popUntil(ModalRoute.withName('/'));
-      //   },
-      //   colorButton: const Color.fromARGB(255, 211, 47, 47),
-      //   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-      //   isActive: true,
-      // ),
+      AppButton(
+        text: 'Завершить для всех',
+        onPressed: () {
+          // context.read<VideoRoomCubit>().deleteRoom(hash: hash ?? '');
+          Navigator.of(context).pop();
+        },
+        isActive: true,
+      ),
+      const SizedBox(height: 20),
+      AppButton(
+        text: 'Выйти',
+        onPressed: () {
+          // context.read<VideoConferenceCubit>().leaveRoom();
+          Navigator.of(context).popUntil(ModalRoute.withName('/'));
+        },
+        isActive: true,
+      ),
     ];
 
     return BlocConsumer<VideoRoomBloc, VideoRoomState>(
@@ -76,10 +72,12 @@ class VideoRoom extends StatelessWidget {
           ),
           centerTitle: false,
           titleSpacing: 0.0,
+          elevation: 0,
+          backgroundColor: ColorApp.backgroundDark,
           title: Transform(
             transform: Matrix4.translationValues(-35.0, 0.0, 0.0),
             child: GestureDetector(
-              child: const Text('Letsmeet',
+              child: const Text('Connect',
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 18,
@@ -101,44 +99,44 @@ class VideoRoom extends StatelessWidget {
                   CustomIcon.settings,
                   color: ColorApp.grey,
                 ))
-            //   IconButton(
-            //       icon: isShare
-            //           ? const Icon(
-            //               Icons.screen_share_outlined, // mobile_screen_share
-            //               color: Colors.blue,
-            //               size: 30,
-            //             )
-            //           : const Icon(
-            //               Icons.screen_share_outlined, // mobile_screen_share
-            //               color: Colors.white,
-            //               size: 30,
-            //             ),
-            //       onPressed: () {
-            //         if (statusVideo == false) {
-            //           _videoConferenceBloc.action
-            //               .add(VideoConferenceChangeMediaStatus(
-            //             roomId: widget.room.roomId,
-            //             audioStatus: statusAudio,
-            //             videoStatus: true, //!isShare,
-            //           ));
-            //           //шара экрана
-            //           _videoConferenceBloc.action
-            //               .add(VideoConferenceScreenShara(
-            //             roomId: widget.room.roomId,
-            //             feedId: feedIdLocalStream,
-            //             isShare: !isShare, //true
-            //             mediaStream: localMediaStream.mediaStreams,
-            //           ));
-            //         } else {
-            //           _videoConferenceBloc.action
-            //               .add(VideoConferenceScreenShara(
-            //             roomId: widget.room.roomId,
-            //             feedId: feedIdLocalStream,
-            //             isShare: !isShare, //true
-            //             mediaStream: localMediaStream.mediaStreams,
-            //           ));
-            //         }
-            //       }),
+            // IconButton(
+            //     icon: isShare
+            //         ? const Icon(
+            //             Icons.screen_share_outlined, // mobile_screen_share
+            //             color: Colors.blue,
+            //             size: 30,
+            //           )
+            //         : const Icon(
+            //             Icons.screen_share_outlined, // mobile_screen_share
+            //             color: Colors.white,
+            //             size: 30,
+            //           ),
+            //     onPressed: () {
+            //       if (statusVideo == false) {
+            //         _videoConferenceBloc.action
+            //             .add(VideoConferenceChangeMediaStatus(
+            //           roomId: widget.room.roomId,
+            //           audioStatus: statusAudio,
+            //           videoStatus: true, //!isShare,
+            //         ));
+            //         //шара экрана
+            //         _videoConferenceBloc.action
+            //             .add(VideoConferenceScreenShara(
+            //           roomId: widget.room.roomId,
+            //           feedId: feedIdLocalStream,
+            //           isShare: !isShare, //true
+            //           mediaStream: localMediaStream.mediaStreams,
+            //         ));
+            //       } else {
+            //         _videoConferenceBloc.action
+            //             .add(VideoConferenceScreenShara(
+            //           roomId: widget.room.roomId,
+            //           feedId: feedIdLocalStream,
+            //           isShare: !isShare, //true
+            //           mediaStream: localMediaStream.mediaStreams,
+            //         ));
+            //       }
+            //     }),
           ],
         ),
         body: Container(
@@ -146,28 +144,31 @@ class VideoRoom extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: CustomScrollView(
-                  slivers: <Widget>[
-                    Center(
-                      child: Text(roomId ?? ''),
-                    )
-                    // Grid участников с видео контентом
-                    // GridWithVideo(
-                    //   // localMediaStream: localMediaStream,
-                    //   // participantsEntity: participantsEntity,
-                    //   // participantsMediaStream: participantsMediaStream,
-                    //   // isMyVideoStatus: statusVideo,
-                    //   // myFeedId: myFeedId,
-                    //   hash: hash ?? '',
-                    // ),
+                  child: Center(
+                child: Text("GridVideo"),
+              )
+                  // CustomScrollView(
+                  //   slivers: <Widget>[
+                  //     Center(
+                  //       child: Text(roomId ?? ''),
+                  //     ),
+                  //     // Grid участников с видео контентом
+                  //     GridWithVideo(
+                  //       // localMediaStream: localMediaStream,
+                  //       // participantsEntity: participantsEntity,
+                  //       // participantsMediaStream: participantsMediaStream,
+                  //       // isMyVideoStatus: statusVideo,
+                  //       // myFeedId: myFeedId,
+                  //       roomId: roomId ?? '',
+                  //     ),
 
-                    //Список участников отключивших видео + кнопка пригласить
-                    // SliverToBoxAdapter(
-                    //   child: ListWithoutVideo(hash: hash ?? ''),
-                    // ),
-                  ],
-                ),
-              ),
+                  //     //Список участников отключивших видео + кнопка пригласить
+                  //     SliverToBoxAdapter(
+                  //       child: ListWithoutVideo(roomId: roomId ?? ''),
+                  //     ),
+                  //   ],
+                  // ),
+                  ),
               //Кнопки видео комнаты
               Container(
                 color: Colors.transparent,

@@ -1,6 +1,8 @@
 import 'package:communication_client/app/di/init_di.dart';
 import 'package:communication_client/app/domain/app_builder.dart';
 import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
+import 'package:communication_client/feature/main/domain/repository/video_room_repository.dart';
+import 'package:communication_client/feature/main/domain/state/video_room_bloc/video_room_bloc.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +34,10 @@ class _GlobalProviders extends StatelessWidget {
             create: ((context) => PostBloc(
                 locator.get<PostRepository>(), locator.get<AuthCubit>())
               ..add(PostEvent.fetch()))),
+        BlocProvider(
+          create: (context) =>
+              VideoRoomBloc(locator.get<VideoRoomRepository>()),
+        ),
       ],
       child: child,
     );

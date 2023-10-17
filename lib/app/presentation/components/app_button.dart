@@ -16,10 +16,6 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 20),
-        ),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(backgoundColor),
           fixedSize: MaterialStateProperty.all<Size>(
@@ -42,5 +38,9 @@ class AppButton extends StatelessWidget {
         // ),
 
         onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 20),
+        ),
       );
 }
