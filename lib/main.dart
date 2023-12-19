@@ -13,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  const env = String.fromEnvironment("env", defaultValue: "prod");
+  const env = String.fromEnvironment("env", defaultValue: "dev");
   const runner = MainAppRunner(env);
   final builder = MainAppBuilder();
   runner.run(builder);

@@ -15,16 +15,23 @@ class HomeButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('BLOC!!!!!');
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         //Создать встречу
         BlocListener<VideoRoomBloc, VideoRoomState>(
           listener: (context, state) {
+            print('BLOC State!!!!!: ${state.toString()}');
             state.whenOrNull(
               created: (String roomId, RTCVideoRenderer localRenderer) {
                 Navigator.push(
-                    context, FadeRoute(page: VideoRoom(roomId: roomId)));
+                    context,
+                    FadeRoute(
+                        page: VideoRoom(
+                      roomId: roomId,
+                      localRenderer: localRenderer,
+                    )));
               },
             );
           },

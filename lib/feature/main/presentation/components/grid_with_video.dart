@@ -6,13 +6,16 @@ import 'package:communication_client/feature/main/presentation/components/render
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 class GridWithVideo extends StatelessWidget {
   final String roomId;
+  final RTCVideoRenderer localRenderer;
 
   const GridWithVideo({
     Key? key,
     required this.roomId,
+    required this.localRenderer,
   }) : super(key: key);
 
   @override
@@ -37,37 +40,31 @@ class GridWithVideo extends StatelessWidget {
         isActive: true,
       ),
     ];
+    List<QuiltedGridTile> _pattern = [const QuiltedGridTile(2, 2)];
 
-    return BlocBuilder<VideoRoomBloc, VideoRoomState>(
-      builder: (context, state) {
-        List<QuiltedGridTile> _pattern = [const QuiltedGridTile(2, 2)];
-        state.whenOrNull(
-          created: (roomId, localRenderer) => SliverGrid(
-            gridDelegate: SliverQuiltedGridDelegate(
-              crossAxisCount: 2,
-              //childAspectRatio: columnCount == 1 ? 2 : 1,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              pattern: _pattern,
-              repeatPattern: QuiltedGridRepeatPattern.same,
+    return SliverGrid(
+      gridDelegate: SliverQuiltedGridDelegate(
+        crossAxisCount: 2,
+        //childAspectRatio: columnCount == 1 ? 2 : 1,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        pattern: _pattern,
+        repeatPattern: QuiltedGridRepeatPattern.same,
+      ),
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          print('LocalRenderer!!!!!!!!!!!!!!: ${localRenderer.renderVideo}');
+          return CardMedia(
+            adminFeedId: "myFeedId",
+            roomId: roomId,
+            child: RenderMedia(
+              quality: FilterQuality.medium,
+              videoRenderer: localRenderer,
             ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return CardMedia(
-                  adminFeedId: "myFeedId",
-                  roomId: roomId,
-                  child: RenderMedia(
-                    quality: FilterQuality.medium,
-                    videoRenderer: localRenderer,
-                  ),
-                );
-              },
-              childCount: 1,
-            ),
-          ),
-        );
-        return const SizedBox.shrink();
-      },
+          );
+        },
+        childCount: 1,
+      ),
     );
   }
 

@@ -311,6 +311,7 @@ class MainScreen extends StatelessWidget {
                         ),
                       ),
                 onPressed: () {
+                  print('Создать встречу!!!!!!!!!!!!!!');
                   // context.read<ImagePickerCubit>().getAllImages();
                   // Navigator.push(
                   //     context, FadeRoute(page: const ProfileScreen()));
@@ -326,17 +327,15 @@ class MainScreen extends StatelessWidget {
             wide: Column(
               children: [
                 Expanded(
-                  child: Expanded(
-                    child: Row(
-                      children: [
-                        //const Expanded(child: MenuWidget()),
-                        Expanded(
-                            child: Image.asset(
-                          ImageRasterPath.home,
-                          fit: BoxFit.fitWidth,
-                        )),
-                      ],
-                    ),
+                  child: Row(
+                    children: [
+                      //const Expanded(child: MenuWidget()),
+                      Expanded(
+                          child: Image.asset(
+                        ImageRasterPath.home,
+                        fit: BoxFit.fitWidth,
+                      )),
+                    ],
                   ),
                 ),
                 const Row(

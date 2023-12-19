@@ -11,14 +11,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 class VideoRoom extends StatelessWidget {
   //final RoomEntity room;
   final String? roomId;
+  final RTCVideoRenderer localRenderer;
 
   const VideoRoom({
     Key? key,
-    //required this.room,
+    required this.localRenderer,
     required this.roomId,
   }) : super(key: key);
 
@@ -144,31 +146,22 @@ class VideoRoom extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                  child: Center(
-                child: Text("GridVideo"),
-              )
-                  // CustomScrollView(
-                  //   slivers: <Widget>[
-                  //     Center(
-                  //       child: Text(roomId ?? ''),
-                  //     ),
-                  //     // Grid участников с видео контентом
-                  //     GridWithVideo(
-                  //       // localMediaStream: localMediaStream,
-                  //       // participantsEntity: participantsEntity,
-                  //       // participantsMediaStream: participantsMediaStream,
-                  //       // isMyVideoStatus: statusVideo,
-                  //       // myFeedId: myFeedId,
-                  //       roomId: roomId ?? '',
-                  //     ),
+                child: CustomScrollView(
+                  slivers: <Widget>[
+                    // Grid участников с видео контентом
+                    GridWithVideo(
+                      localRenderer: localRenderer,
+                      roomId: roomId ?? '',
+                    ),
 
-                  //     //Список участников отключивших видео + кнопка пригласить
-                  //     SliverToBoxAdapter(
-                  //       child: ListWithoutVideo(roomId: roomId ?? ''),
-                  //     ),
-                  //   ],
-                  // ),
-                  ),
+                    //Список участников отключивших видео + кнопка пригласить
+                    SliverToBoxAdapter(
+                      child: ListWithoutVideo(roomId: roomId ?? ''),
+                    ),
+                  ],
+                ),
+              ),
+
               //Кнопки видео комнаты
               Container(
                 color: Colors.transparent,

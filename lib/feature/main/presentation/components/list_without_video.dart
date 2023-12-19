@@ -23,7 +23,7 @@ class ListWithoutVideo extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const ParticipantWithoutVideo(),
+          // const ParticipantWithoutVideo(),
           InviteParticipant(roomId: roomId),
         ],
       ),

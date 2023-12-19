@@ -10,7 +10,13 @@ part 'video_room_bloc.freezed.dart';
 
 class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
   final VideoRoomRepository signalingService;
+  late final RTCVideoRenderer localRenderer;
+  late final RTCVideoRenderer remoteRenderer;
   VideoRoomBloc(this.signalingService) : super(const VideoRoomState.initial()) {
+    localRenderer = RTCVideoRenderer();
+    remoteRenderer = RTCVideoRenderer();
+    localRenderer.initialize();
+    remoteRenderer.initialize();
     on<VideoRoomEvent>(
       (event, emitter) => event.map<Future<void>>(
         creatRoom: (event) => _creatRoom(event, emitter),
@@ -28,11 +34,10 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
 
   Future<void> _creatRoom(
       _CreateVideoRoomEvent event, Emitter<VideoRoomState> emitter) async {
+    print('Создать встречу!!!!!!!!!!!!!!');
     try {
-      final RTCVideoRenderer localRenderer = RTCVideoRenderer();
-      final RTCVideoRenderer remoteRenderer = RTCVideoRenderer();
-      localRenderer.initialize();
-      remoteRenderer.initialize();
+      // localRenderer.initialize();
+      // remoteRenderer.initialize();
 
       //      signalingService.onAddRemoteStream = ((stream) {
       //   remoteRenderer.srcObject = stream;
@@ -42,14 +47,15 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
       await signalingService.openUserMedia(localRenderer, remoteRenderer);
       String roomId = await signalingService.createRoom(remoteRenderer);
       emitter(VideoRoomState.created(roomId, localRenderer));
-    } on Exception {
-      emitter(const VideoRoomState.error('Некритичная ошибка'));
-    } on Object {
-      emitter(const VideoRoomState.error(
-          'Непредвиденная ошибка при добавлении текста'));
-      emitter(const VideoRoomState.initial());
-      rethrow;
+    } catch (e) {
+      emitter(VideoRoomState.error('Некритичная ошибка: ${e}'));
     }
+    // on Object {
+    //   emitter(const VideoRoomState.error(
+    //       'Непредвиденная ошибка при создании комнаты'));
+    //   emitter(const VideoRoomState.initial());
+    //   rethrow;
+    // }
   }
 
   Future<void> _joinRoomLink(

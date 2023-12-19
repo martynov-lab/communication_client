@@ -22,7 +22,7 @@ class RenderMedia extends StatelessWidget {
     return BlocBuilder<VideoRoomBloc, VideoRoomState>(
       builder: (context, state) {
         return Transform.scale(
-          scaleX: true ? 1 : -1, //-1 перевернуть
+          scaleX: -1, //-1 перевернуть
 
           child: ClipRRect(
             borderRadius: BorderRadius.circular(borderRadius),
