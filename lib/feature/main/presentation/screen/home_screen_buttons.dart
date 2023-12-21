@@ -21,23 +21,34 @@ class HomeButtons extends StatelessWidget {
         //Создать встречу
         BlocListener<VideoRoomBloc, VideoRoomState>(
           listener: (context, state) {
-            state.whenOrNull(
-              created: (
-                String roomId,
-                RTCVideoRenderer localRenderer,
-                RTCVideoRenderer remoteRenderer,
-              ) {
-                print('RoomId!!!!!: $roomId');
-                Navigator.push(
-                    context,
-                    FadeRoute(
-                        page: VideoRoom(
-                      roomId: roomId,
-                      localRenderer: localRenderer,
-                      remoteRenderer: remoteRenderer,
-                    )));
-              },
-            );
+            state.whenOrNull(created: (
+              String roomId,
+              RTCVideoRenderer localRenderer,
+              RTCVideoRenderer remoteRenderer,
+            ) {
+              print('RoomId!!!!!: $roomId');
+              Navigator.push(
+                  context,
+                  FadeRoute(
+                      page: VideoRoom(
+                    roomId: roomId,
+                    localRenderer: localRenderer,
+                    remoteRenderer: remoteRenderer,
+                  )));
+            }, joined: (
+              String roomId,
+              RTCVideoRenderer localRenderer,
+              RTCVideoRenderer remoteRenderer,
+            ) {
+              Navigator.push(
+                  context,
+                  FadeRoute(
+                      page: VideoRoom(
+                    roomId: roomId,
+                    localRenderer: localRenderer,
+                    remoteRenderer: remoteRenderer,
+                  )));
+            });
           },
           child: GestureDetector(
             child: Container(

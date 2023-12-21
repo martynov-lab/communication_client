@@ -10,6 +10,7 @@ class VideoRoomState with _$VideoRoomState {
     RTCVideoRenderer remoteRenderer,
   ) = _CreatedVideoRoomState;
   const factory VideoRoomState.joined(
+    String roomId,
     RTCVideoRenderer localRenderer,
     RTCVideoRenderer remoteRenderer,
   ) = _JoinedVideoRoomState;

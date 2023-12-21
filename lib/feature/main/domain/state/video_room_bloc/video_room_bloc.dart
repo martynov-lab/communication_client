@@ -63,7 +63,8 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
         localRenderer: localRenderer,
         remoteRenderer: remoteRenderer,
       );
-      emitter(VideoRoomState.joined(localRenderer, remoteRenderer));
+      emitter(
+          VideoRoomState.joined(event.roomId, localRenderer, remoteRenderer));
     } catch (e) {
       emitter(VideoRoomState.error('Некритичная ошибка: ${e}'));
     }

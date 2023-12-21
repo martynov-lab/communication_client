@@ -1,9 +1,13 @@
+import 'package:communication_client/app/di/init_di.dart';
+import 'package:communication_client/app/domain/app_config.dart';
 import 'package:communication_client/app/utils/constants/app_constants.dart';
+import 'package:communication_client/app/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InviteParticipant extends StatelessWidget {
   final String roomId;
-  const InviteParticipant({Key? key, required this.roomId}) : super(key: key);
+  const InviteParticipant({super.key, required this.roomId});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +15,9 @@ class InviteParticipant extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          // Share.share('${locator.get<AppConfig>().mainUrl}/guest/$hash');
-          // Helper.printYellow(
-          //     'Ссылка SignalR MediaStatus!!!!!!!!!: ${locator.get<AppConfig>().mainUrl}/guest/$hash');
+          Share.share('https://communucation.ru/guest/$roomId');
+          Utils.printYellow(
+              'Ссылка: ${locator.get<AppConfig>().baseUrl}/guest/$roomId');
         },
         child: const Row(
           children: [

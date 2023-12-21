@@ -483,8 +483,8 @@ mixin _$VideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -497,8 +497,8 @@ mixin _$VideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -511,8 +511,8 @@ mixin _$VideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
@@ -615,8 +615,8 @@ class _$InitialVideoRoomStateImpl implements _InitialVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -632,8 +632,8 @@ class _$InitialVideoRoomStateImpl implements _InitialVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -649,8 +649,8 @@ class _$InitialVideoRoomStateImpl implements _InitialVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
@@ -755,8 +755,8 @@ class _$LoadingVideoRoomStateImpl implements _LoadingVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -772,8 +772,8 @@ class _$LoadingVideoRoomStateImpl implements _LoadingVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -789,8 +789,8 @@ class _$LoadingVideoRoomStateImpl implements _LoadingVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
@@ -944,8 +944,8 @@ class _$CreatedVideoRoomStateImpl implements _CreatedVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -961,8 +961,8 @@ class _$CreatedVideoRoomStateImpl implements _CreatedVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -978,8 +978,8 @@ class _$CreatedVideoRoomStateImpl implements _CreatedVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
@@ -1055,7 +1055,10 @@ abstract class _$$JoinedVideoRoomStateImplCopyWith<$Res> {
           $Res Function(_$JoinedVideoRoomStateImpl) then) =
       __$$JoinedVideoRoomStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer});
+  $Res call(
+      {String roomId,
+      RTCVideoRenderer localRenderer,
+      RTCVideoRenderer remoteRenderer});
 }
 
 /// @nodoc
@@ -1069,10 +1072,15 @@ class __$$JoinedVideoRoomStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? roomId = null,
     Object? localRenderer = null,
     Object? remoteRenderer = null,
   }) {
     return _then(_$JoinedVideoRoomStateImpl(
+      null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
       null == localRenderer
           ? _value.localRenderer
           : localRenderer // ignore: cast_nullable_to_non_nullable
@@ -1088,8 +1096,11 @@ class __$$JoinedVideoRoomStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
-  const _$JoinedVideoRoomStateImpl(this.localRenderer, this.remoteRenderer);
+  const _$JoinedVideoRoomStateImpl(
+      this.roomId, this.localRenderer, this.remoteRenderer);
 
+  @override
+  final String roomId;
   @override
   final RTCVideoRenderer localRenderer;
   @override
@@ -1097,7 +1108,7 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
 
   @override
   String toString() {
-    return 'VideoRoomState.joined(localRenderer: $localRenderer, remoteRenderer: $remoteRenderer)';
+    return 'VideoRoomState.joined(roomId: $roomId, localRenderer: $localRenderer, remoteRenderer: $remoteRenderer)';
   }
 
   @override
@@ -1105,6 +1116,7 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JoinedVideoRoomStateImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.localRenderer, localRenderer) ||
                 other.localRenderer == localRenderer) &&
             (identical(other.remoteRenderer, remoteRenderer) ||
@@ -1112,7 +1124,8 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, localRenderer, remoteRenderer);
+  int get hashCode =>
+      Object.hash(runtimeType, roomId, localRenderer, remoteRenderer);
 
   @JsonKey(ignore: true)
   @override
@@ -1130,13 +1143,13 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
-    return joined(localRenderer, remoteRenderer);
+    return joined(roomId, localRenderer, remoteRenderer);
   }
 
   @override
@@ -1147,13 +1160,13 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
-    return joined?.call(localRenderer, remoteRenderer);
+    return joined?.call(roomId, localRenderer, remoteRenderer);
   }
 
   @override
@@ -1164,15 +1177,15 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
   }) {
     if (joined != null) {
-      return joined(localRenderer, remoteRenderer);
+      return joined(roomId, localRenderer, remoteRenderer);
     }
     return orElse();
   }
@@ -1222,9 +1235,12 @@ class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
 }
 
 abstract class _JoinedVideoRoomState implements VideoRoomState {
-  const factory _JoinedVideoRoomState(final RTCVideoRenderer localRenderer,
+  const factory _JoinedVideoRoomState(
+      final String roomId,
+      final RTCVideoRenderer localRenderer,
       final RTCVideoRenderer remoteRenderer) = _$JoinedVideoRoomStateImpl;
 
+  String get roomId;
   RTCVideoRenderer get localRenderer;
   RTCVideoRenderer get remoteRenderer;
   @JsonKey(ignore: true)
@@ -1276,8 +1292,8 @@ class _$DeleteVideoRoomStateImpl implements _DeleteVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -1293,8 +1309,8 @@ class _$DeleteVideoRoomStateImpl implements _DeleteVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -1310,8 +1326,8 @@ class _$DeleteVideoRoomStateImpl implements _DeleteVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
@@ -1442,8 +1458,8 @@ class _$ErrorVideoRoomStateImpl implements _ErrorVideoRoomState {
     required TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)
         created,
-    required TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
@@ -1459,8 +1475,8 @@ class _$ErrorVideoRoomStateImpl implements _ErrorVideoRoomState {
     TResult? Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult? Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
@@ -1476,8 +1492,8 @@ class _$ErrorVideoRoomStateImpl implements _ErrorVideoRoomState {
     TResult Function(String roomId, RTCVideoRenderer localRenderer,
             RTCVideoRenderer remoteRenderer)?
         created,
-    TResult Function(
-            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
         joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,

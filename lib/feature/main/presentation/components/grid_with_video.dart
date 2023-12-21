@@ -57,6 +57,7 @@ class GridWithVideo extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           print('LocalRenderer!!!!!!!!!!!!!!: ${localRenderer.renderVideo}');
+          print('RemoteRenderer!!!!!!!!!!!!!!: ${remoteRenderer.renderVideo}');
 
           return CardMedia(
             adminFeedId: "myFeedId",
@@ -67,7 +68,7 @@ class GridWithVideo extends StatelessWidget {
             ),
           );
         },
-        childCount: 1,
+        childCount: videoRenderer.length,
       ),
     );
   }
