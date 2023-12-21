@@ -5,7 +5,9 @@ import 'init_di.config.dart';
 
 final locator = GetIt.instance;
 
-@InjectableInit()
-void initDi(String env) {
-  $initGetIt(locator, environment: env);
-}
+@InjectableInit(
+  initializerName: r'$initDi',
+  preferRelativeImports: true,
+  asExtension: false,
+)
+void initDi(String env) => $initDi(locator, environment: env);

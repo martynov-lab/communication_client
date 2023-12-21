@@ -62,22 +62,22 @@ class _$AutorEntityCopyWithImpl<$Res, $Val extends AutorEntity>
 }
 
 /// @nodoc
-abstract class _$$_AutorEntityCopyWith<$Res>
+abstract class _$$AutorEntityImplCopyWith<$Res>
     implements $AutorEntityCopyWith<$Res> {
-  factory _$$_AutorEntityCopyWith(
-          _$_AutorEntity value, $Res Function(_$_AutorEntity) then) =
-      __$$_AutorEntityCopyWithImpl<$Res>;
+  factory _$$AutorEntityImplCopyWith(
+          _$AutorEntityImpl value, $Res Function(_$AutorEntityImpl) then) =
+      __$$AutorEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$_AutorEntityCopyWithImpl<$Res>
-    extends _$AutorEntityCopyWithImpl<$Res, _$_AutorEntity>
-    implements _$$_AutorEntityCopyWith<$Res> {
-  __$$_AutorEntityCopyWithImpl(
-      _$_AutorEntity _value, $Res Function(_$_AutorEntity) _then)
+class __$$AutorEntityImplCopyWithImpl<$Res>
+    extends _$AutorEntityCopyWithImpl<$Res, _$AutorEntityImpl>
+    implements _$$AutorEntityImplCopyWith<$Res> {
+  __$$AutorEntityImplCopyWithImpl(
+      _$AutorEntityImpl _value, $Res Function(_$AutorEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_AutorEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_AutorEntity(
+    return _then(_$AutorEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_AutorEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AutorEntity implements _AutorEntity {
-  const _$_AutorEntity({required this.id});
+class _$AutorEntityImpl implements _AutorEntity {
+  const _$AutorEntityImpl({required this.id});
 
-  factory _$_AutorEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_AutorEntityFromJson(json);
+  factory _$AutorEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AutorEntityImplFromJson(json);
 
   @override
   final int id;
@@ -111,10 +111,10 @@ class _$_AutorEntity implements _AutorEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AutorEntity &&
+            other is _$AutorEntityImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -125,27 +125,27 @@ class _$_AutorEntity implements _AutorEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AutorEntityCopyWith<_$_AutorEntity> get copyWith =>
-      __$$_AutorEntityCopyWithImpl<_$_AutorEntity>(this, _$identity);
+  _$$AutorEntityImplCopyWith<_$AutorEntityImpl> get copyWith =>
+      __$$AutorEntityImplCopyWithImpl<_$AutorEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AutorEntityToJson(
+    return _$$AutorEntityImplToJson(
       this,
     );
   }
 }
 
 abstract class _AutorEntity implements AutorEntity {
-  const factory _AutorEntity({required final int id}) = _$_AutorEntity;
+  const factory _AutorEntity({required final int id}) = _$AutorEntityImpl;
 
   factory _AutorEntity.fromJson(Map<String, dynamic> json) =
-      _$_AutorEntity.fromJson;
+      _$AutorEntityImpl.fromJson;
 
   @override
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_AutorEntityCopyWith<_$_AutorEntity> get copyWith =>
+  _$$AutorEntityImplCopyWith<_$AutorEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

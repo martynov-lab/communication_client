@@ -4,6 +4,9 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
@@ -26,16 +29,15 @@ import '../domain/app_config.dart' as _i3;
 const String _prod = 'prod';
 const String _dev = 'dev';
 const String _test = 'test';
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
-/// initializes the registration of provided dependencies inside of [GetIt]
-_i1.GetIt $initGetIt(
-  _i1.GetIt get, {
+
+// initializes the registration of main-scope dependencies inside of GetIt
+_i1.GetIt $initDi(
+  _i1.GetIt getIt, {
   String? environment,
   _i2.EnvironmentFilter? environmentFilter,
 }) {
   final gh = _i2.GetItHelper(
-    get,
+    getIt,
     environment,
     environmentFilter,
   );
@@ -67,22 +69,22 @@ _i1.GetIt $initGetIt(
     () => _i10.SignalingServise(),
     registerFor: {_prod},
   );
-  gh.singleton<_i11.AppApi>(_i12.DioAppApi(get<_i3.AppConfig>()));
+  gh.singleton<_i11.AppApi>(_i12.DioAppApi(gh<_i3.AppConfig>()));
   gh.lazySingleton<_i13.AuthCubit>(
-      () => _i13.AuthCubit(get<_i5.AuthRepository>()));
+      () => _i13.AuthCubit(gh<_i5.AuthRepository>()));
   gh.factory<_i5.AuthRepository>(
-    () => _i14.NetWorkAuthRepository(get<_i11.AppApi>()),
+    () => _i14.NetWorkAuthRepository(gh<_i11.AppApi>()),
     registerFor: {
       _prod,
       _dev,
     },
   );
   gh.factory<_i15.PostRepository>(
-    () => _i16.NetworkPostService(get<_i11.AppApi>()),
+    () => _i16.NetworkPostService(gh<_i11.AppApi>()),
     registerFor: {
       _prod,
       _dev,
     },
   );
-  return get;
+  return getIt;
 }

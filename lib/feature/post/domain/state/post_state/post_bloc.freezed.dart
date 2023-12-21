@@ -80,10 +80,11 @@ class _$PostStateCopyWithImpl<$Res, $Val extends PostState>
 }
 
 /// @nodoc
-abstract class _$$_PostStateCopyWith<$Res> implements $PostStateCopyWith<$Res> {
-  factory _$$_PostStateCopyWith(
-          _$_PostState value, $Res Function(_$_PostState) then) =
-      __$$_PostStateCopyWithImpl<$Res>;
+abstract class _$$PostStateImplCopyWith<$Res>
+    implements $PostStateCopyWith<$Res> {
+  factory _$$PostStateImplCopyWith(
+          _$PostStateImpl value, $Res Function(_$PostStateImpl) then) =
+      __$$PostStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +95,11 @@ abstract class _$$_PostStateCopyWith<$Res> implements $PostStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PostStateCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$_PostState>
-    implements _$$_PostStateCopyWith<$Res> {
-  __$$_PostStateCopyWithImpl(
-      _$_PostState _value, $Res Function(_$_PostState) _then)
+class __$$PostStateImplCopyWithImpl<$Res>
+    extends _$PostStateCopyWithImpl<$Res, _$PostStateImpl>
+    implements _$$PostStateImplCopyWith<$Res> {
+  __$$PostStateImplCopyWithImpl(
+      _$PostStateImpl _value, $Res Function(_$PostStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +110,7 @@ class __$$_PostStateCopyWithImpl<$Res>
     Object? fetchLimit = null,
     Object? offset = null,
   }) {
-    return _then(_$_PostState(
+    return _then(_$PostStateImpl(
       asyncSnapshot: freezed == asyncSnapshot
           ? _value.asyncSnapshot
           : asyncSnapshot // ignore: cast_nullable_to_non_nullable
@@ -132,8 +133,8 @@ class __$$_PostStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PostState implements _PostState {
-  const _$_PostState(
+class _$PostStateImpl implements _PostState {
+  const _$PostStateImpl(
       {@JsonKey(ignore: true) this.asyncSnapshot,
       final List<PostEntity> postList = const [],
       this.fetchLimit = 15,
@@ -165,10 +166,10 @@ class _$_PostState implements _PostState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PostState &&
+            other is _$PostStateImpl &&
             (identical(other.asyncSnapshot, asyncSnapshot) ||
                 other.asyncSnapshot == asyncSnapshot) &&
             const DeepCollectionEquality().equals(other._postList, _postList) &&
@@ -184,8 +185,8 @@ class _$_PostState implements _PostState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PostStateCopyWith<_$_PostState> get copyWith =>
-      __$$_PostStateCopyWithImpl<_$_PostState>(this, _$identity);
+  _$$PostStateImplCopyWith<_$PostStateImpl> get copyWith =>
+      __$$PostStateImplCopyWithImpl<_$PostStateImpl>(this, _$identity);
 }
 
 abstract class _PostState implements PostState {
@@ -193,7 +194,7 @@ abstract class _PostState implements PostState {
       {@JsonKey(ignore: true) final AsyncSnapshot<dynamic>? asyncSnapshot,
       final List<PostEntity> postList,
       final int fetchLimit,
-      final int offset}) = _$_PostState;
+      final int offset}) = _$PostStateImpl;
 
   @override
   @JsonKey(ignore: true)
@@ -206,7 +207,7 @@ abstract class _PostState implements PostState {
   int get offset;
   @override
   @JsonKey(ignore: true)
-  _$$_PostStateCopyWith<_$_PostState> get copyWith =>
+  _$$PostStateImplCopyWith<_$PostStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -276,25 +277,25 @@ class _$PostEventCopyWithImpl<$Res, $Val extends PostEvent>
 }
 
 /// @nodoc
-abstract class _$$_PostEventFetchCopyWith<$Res> {
-  factory _$$_PostEventFetchCopyWith(
-          _$_PostEventFetch value, $Res Function(_$_PostEventFetch) then) =
-      __$$_PostEventFetchCopyWithImpl<$Res>;
+abstract class _$$PostEventFetchImplCopyWith<$Res> {
+  factory _$$PostEventFetchImplCopyWith(_$PostEventFetchImpl value,
+          $Res Function(_$PostEventFetchImpl) then) =
+      __$$PostEventFetchImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PostEventFetchCopyWithImpl<$Res>
-    extends _$PostEventCopyWithImpl<$Res, _$_PostEventFetch>
-    implements _$$_PostEventFetchCopyWith<$Res> {
-  __$$_PostEventFetchCopyWithImpl(
-      _$_PostEventFetch _value, $Res Function(_$_PostEventFetch) _then)
+class __$$PostEventFetchImplCopyWithImpl<$Res>
+    extends _$PostEventCopyWithImpl<$Res, _$PostEventFetchImpl>
+    implements _$$PostEventFetchImplCopyWith<$Res> {
+  __$$PostEventFetchImplCopyWithImpl(
+      _$PostEventFetchImpl _value, $Res Function(_$PostEventFetchImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PostEventFetch extends _PostEventFetch {
-  _$_PostEventFetch() : super._();
+class _$PostEventFetchImpl extends _PostEventFetch {
+  _$PostEventFetchImpl() : super._();
 
   @override
   String toString() {
@@ -302,9 +303,9 @@ class _$_PostEventFetch extends _PostEventFetch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PostEventFetch);
+        (other.runtimeType == runtimeType && other is _$PostEventFetchImpl);
   }
 
   @override
@@ -380,25 +381,25 @@ class _$_PostEventFetch extends _PostEventFetch {
 }
 
 abstract class _PostEventFetch extends PostEvent {
-  factory _PostEventFetch() = _$_PostEventFetch;
+  factory _PostEventFetch() = _$PostEventFetchImpl;
   _PostEventFetch._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_PostEventCreatePostCopyWith<$Res> {
-  factory _$$_PostEventCreatePostCopyWith(_$_PostEventCreatePost value,
-          $Res Function(_$_PostEventCreatePost) then) =
-      __$$_PostEventCreatePostCopyWithImpl<$Res>;
+abstract class _$$PostEventCreatePostImplCopyWith<$Res> {
+  factory _$$PostEventCreatePostImplCopyWith(_$PostEventCreatePostImpl value,
+          $Res Function(_$PostEventCreatePostImpl) then) =
+      __$$PostEventCreatePostImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, dynamic> args});
 }
 
 /// @nodoc
-class __$$_PostEventCreatePostCopyWithImpl<$Res>
-    extends _$PostEventCopyWithImpl<$Res, _$_PostEventCreatePost>
-    implements _$$_PostEventCreatePostCopyWith<$Res> {
-  __$$_PostEventCreatePostCopyWithImpl(_$_PostEventCreatePost _value,
-      $Res Function(_$_PostEventCreatePost) _then)
+class __$$PostEventCreatePostImplCopyWithImpl<$Res>
+    extends _$PostEventCopyWithImpl<$Res, _$PostEventCreatePostImpl>
+    implements _$$PostEventCreatePostImplCopyWith<$Res> {
+  __$$PostEventCreatePostImplCopyWithImpl(_$PostEventCreatePostImpl _value,
+      $Res Function(_$PostEventCreatePostImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -406,7 +407,7 @@ class __$$_PostEventCreatePostCopyWithImpl<$Res>
   $Res call({
     Object? args = null,
   }) {
-    return _then(_$_PostEventCreatePost(
+    return _then(_$PostEventCreatePostImpl(
       null == args
           ? _value._args
           : args // ignore: cast_nullable_to_non_nullable
@@ -417,8 +418,8 @@ class __$$_PostEventCreatePostCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PostEventCreatePost extends _PostEventCreatePost {
-  _$_PostEventCreatePost(final Map<String, dynamic> args)
+class _$PostEventCreatePostImpl extends _PostEventCreatePost {
+  _$PostEventCreatePostImpl(final Map<String, dynamic> args)
       : _args = args,
         super._();
 
@@ -436,10 +437,10 @@ class _$_PostEventCreatePost extends _PostEventCreatePost {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PostEventCreatePost &&
+            other is _$PostEventCreatePostImpl &&
             const DeepCollectionEquality().equals(other._args, _args));
   }
 
@@ -450,8 +451,8 @@ class _$_PostEventCreatePost extends _PostEventCreatePost {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PostEventCreatePostCopyWith<_$_PostEventCreatePost> get copyWith =>
-      __$$_PostEventCreatePostCopyWithImpl<_$_PostEventCreatePost>(
+  _$$PostEventCreatePostImplCopyWith<_$PostEventCreatePostImpl> get copyWith =>
+      __$$PostEventCreatePostImplCopyWithImpl<_$PostEventCreatePostImpl>(
           this, _$identity);
 
   @override
@@ -525,35 +526,35 @@ class _$_PostEventCreatePost extends _PostEventCreatePost {
 
 abstract class _PostEventCreatePost extends PostEvent {
   factory _PostEventCreatePost(final Map<String, dynamic> args) =
-      _$_PostEventCreatePost;
+      _$PostEventCreatePostImpl;
   _PostEventCreatePost._() : super._();
 
   Map<String, dynamic> get args;
   @JsonKey(ignore: true)
-  _$$_PostEventCreatePostCopyWith<_$_PostEventCreatePost> get copyWith =>
+  _$$PostEventCreatePostImplCopyWith<_$PostEventCreatePostImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PostEventLogoutCopyWith<$Res> {
-  factory _$$_PostEventLogoutCopyWith(
-          _$_PostEventLogout value, $Res Function(_$_PostEventLogout) then) =
-      __$$_PostEventLogoutCopyWithImpl<$Res>;
+abstract class _$$PostEventLogoutImplCopyWith<$Res> {
+  factory _$$PostEventLogoutImplCopyWith(_$PostEventLogoutImpl value,
+          $Res Function(_$PostEventLogoutImpl) then) =
+      __$$PostEventLogoutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PostEventLogoutCopyWithImpl<$Res>
-    extends _$PostEventCopyWithImpl<$Res, _$_PostEventLogout>
-    implements _$$_PostEventLogoutCopyWith<$Res> {
-  __$$_PostEventLogoutCopyWithImpl(
-      _$_PostEventLogout _value, $Res Function(_$_PostEventLogout) _then)
+class __$$PostEventLogoutImplCopyWithImpl<$Res>
+    extends _$PostEventCopyWithImpl<$Res, _$PostEventLogoutImpl>
+    implements _$$PostEventLogoutImplCopyWith<$Res> {
+  __$$PostEventLogoutImplCopyWithImpl(
+      _$PostEventLogoutImpl _value, $Res Function(_$PostEventLogoutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PostEventLogout extends _PostEventLogout {
-  _$_PostEventLogout() : super._();
+class _$PostEventLogoutImpl extends _PostEventLogout {
+  _$PostEventLogoutImpl() : super._();
 
   @override
   String toString() {
@@ -561,9 +562,9 @@ class _$_PostEventLogout extends _PostEventLogout {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PostEventLogout);
+        (other.runtimeType == runtimeType && other is _$PostEventLogoutImpl);
   }
 
   @override
@@ -639,6 +640,6 @@ class _$_PostEventLogout extends _PostEventLogout {
 }
 
 abstract class _PostEventLogout extends PostEvent {
-  factory _PostEventLogout() = _$_PostEventLogout;
+  factory _PostEventLogout() = _$PostEventLogoutImpl;
   _PostEventLogout._() : super._();
 }

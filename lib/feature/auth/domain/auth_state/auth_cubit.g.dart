@@ -6,49 +6,52 @@ part of 'auth_cubit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthStateUnauthorized _$$_AuthStateUnauthorizedFromJson(
+_$AuthStateUnauthorizedImpl _$$AuthStateUnauthorizedImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AuthStateUnauthorized(
+    _$AuthStateUnauthorizedImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthStateUnauthorizedToJson(
-        _$_AuthStateUnauthorized instance) =>
+Map<String, dynamic> _$$AuthStateUnauthorizedImplToJson(
+        _$AuthStateUnauthorizedImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_AuthStateAuthorized _$$_AuthStateAuthorizedFromJson(
+_$AuthStateAuthorizedImpl _$$AuthStateAuthorizedImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AuthStateAuthorized(
+    _$AuthStateAuthorizedImpl(
       UserEntity.fromJson(json['userEntity'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthStateAuthorizedToJson(
-        _$_AuthStateAuthorized instance) =>
+Map<String, dynamic> _$$AuthStateAuthorizedImplToJson(
+        _$AuthStateAuthorizedImpl instance) =>
     <String, dynamic>{
       'userEntity': instance.userEntity,
       'runtimeType': instance.$type,
     };
 
-_$_AuthStateLoading _$$_AuthStateLoadingFromJson(Map<String, dynamic> json) =>
-    _$_AuthStateLoading(
+_$AuthStateLoadingImpl _$$AuthStateLoadingImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AuthStateLoadingImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthStateLoadingToJson(_$_AuthStateLoading instance) =>
+Map<String, dynamic> _$$AuthStateLoadingImplToJson(
+        _$AuthStateLoadingImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_AuthStateError _$$_AuthStateErrorFromJson(Map<String, dynamic> json) =>
-    _$_AuthStateError(
+_$AuthStateErrorImpl _$$AuthStateErrorImplFromJson(Map<String, dynamic> json) =>
+    _$AuthStateErrorImpl(
       json['error'],
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthStateErrorToJson(_$_AuthStateError instance) =>
+Map<String, dynamic> _$$AuthStateErrorImplToJson(
+        _$AuthStateErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error,
       'runtimeType': instance.$type,

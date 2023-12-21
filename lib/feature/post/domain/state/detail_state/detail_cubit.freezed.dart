@@ -78,11 +78,11 @@ class _$DetailStateCopyWithImpl<$Res, $Val extends DetailState>
 }
 
 /// @nodoc
-abstract class _$$_DetailStateCopyWith<$Res>
+abstract class _$$DetailStateImplCopyWith<$Res>
     implements $DetailStateCopyWith<$Res> {
-  factory _$$_DetailStateCopyWith(
-          _$_DetailState value, $Res Function(_$_DetailState) then) =
-      __$$_DetailStateCopyWithImpl<$Res>;
+  factory _$$DetailStateImplCopyWith(
+          _$DetailStateImpl value, $Res Function(_$DetailStateImpl) then) =
+      __$$DetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AsyncSnapshot<dynamic> asyncSnapshot, PostEntity? postEntity});
@@ -92,11 +92,11 @@ abstract class _$$_DetailStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DetailStateCopyWithImpl<$Res>
-    extends _$DetailStateCopyWithImpl<$Res, _$_DetailState>
-    implements _$$_DetailStateCopyWith<$Res> {
-  __$$_DetailStateCopyWithImpl(
-      _$_DetailState _value, $Res Function(_$_DetailState) _then)
+class __$$DetailStateImplCopyWithImpl<$Res>
+    extends _$DetailStateCopyWithImpl<$Res, _$DetailStateImpl>
+    implements _$$DetailStateImplCopyWith<$Res> {
+  __$$DetailStateImplCopyWithImpl(
+      _$DetailStateImpl _value, $Res Function(_$DetailStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +105,7 @@ class __$$_DetailStateCopyWithImpl<$Res>
     Object? asyncSnapshot = null,
     Object? postEntity = freezed,
   }) {
-    return _then(_$_DetailState(
+    return _then(_$DetailStateImpl(
       asyncSnapshot: null == asyncSnapshot
           ? _value.asyncSnapshot
           : asyncSnapshot // ignore: cast_nullable_to_non_nullable
@@ -120,8 +120,8 @@ class __$$_DetailStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DetailState implements _DetailState {
-  const _$_DetailState(
+class _$DetailStateImpl implements _DetailState {
+  const _$DetailStateImpl(
       {this.asyncSnapshot = const AsyncSnapshot.nothing(), this.postEntity});
 
   @override
@@ -136,10 +136,10 @@ class _$_DetailState implements _DetailState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DetailState &&
+            other is _$DetailStateImpl &&
             (identical(other.asyncSnapshot, asyncSnapshot) ||
                 other.asyncSnapshot == asyncSnapshot) &&
             (identical(other.postEntity, postEntity) ||
@@ -152,14 +152,14 @@ class _$_DetailState implements _DetailState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DetailStateCopyWith<_$_DetailState> get copyWith =>
-      __$$_DetailStateCopyWithImpl<_$_DetailState>(this, _$identity);
+  _$$DetailStateImplCopyWith<_$DetailStateImpl> get copyWith =>
+      __$$DetailStateImplCopyWithImpl<_$DetailStateImpl>(this, _$identity);
 }
 
 abstract class _DetailState implements DetailState {
   const factory _DetailState(
       {final AsyncSnapshot<dynamic> asyncSnapshot,
-      final PostEntity? postEntity}) = _$_DetailState;
+      final PostEntity? postEntity}) = _$DetailStateImpl;
 
   @override
   AsyncSnapshot<dynamic> get asyncSnapshot;
@@ -167,6 +167,6 @@ abstract class _DetailState implements DetailState {
   PostEntity? get postEntity;
   @override
   @JsonKey(ignore: true)
-  _$$_DetailStateCopyWith<_$_DetailState> get copyWith =>
+  _$$DetailStateImplCopyWith<_$DetailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

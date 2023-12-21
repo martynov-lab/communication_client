@@ -14,7 +14,7 @@ class DioAppApi implements AppApi {
   DioAppApi(AppConfig appConfig) {
     final options = BaseOptions(
       baseUrl: appConfig.baseUrl,
-      connectTimeout: 15000,
+      connectTimeout: const Duration(milliseconds: 15000),
     );
     dio = Dio(options);
     dioTokens = Dio(options);

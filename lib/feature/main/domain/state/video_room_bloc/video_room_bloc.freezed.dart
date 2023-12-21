@@ -19,22 +19,22 @@ mixin _$VideoRoomEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() creatRoom,
-    required TResult Function() joinRoomLink,
-    required TResult Function() deleteRoom,
+    required TResult Function(String roomId) joinRoomLink,
+    required TResult Function(String roomId) deleteRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? creatRoom,
-    TResult? Function()? joinRoomLink,
-    TResult? Function()? deleteRoom,
+    TResult? Function(String roomId)? joinRoomLink,
+    TResult? Function(String roomId)? deleteRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? creatRoom,
-    TResult Function()? joinRoomLink,
-    TResult Function()? deleteRoom,
+    TResult Function(String roomId)? joinRoomLink,
+    TResult Function(String roomId)? deleteRoom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,25 +81,25 @@ class _$VideoRoomEventCopyWithImpl<$Res, $Val extends VideoRoomEvent>
 }
 
 /// @nodoc
-abstract class _$$_CreateVideoRoomEventCopyWith<$Res> {
-  factory _$$_CreateVideoRoomEventCopyWith(_$_CreateVideoRoomEvent value,
-          $Res Function(_$_CreateVideoRoomEvent) then) =
-      __$$_CreateVideoRoomEventCopyWithImpl<$Res>;
+abstract class _$$CreateVideoRoomEventImplCopyWith<$Res> {
+  factory _$$CreateVideoRoomEventImplCopyWith(_$CreateVideoRoomEventImpl value,
+          $Res Function(_$CreateVideoRoomEventImpl) then) =
+      __$$CreateVideoRoomEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CreateVideoRoomEventCopyWithImpl<$Res>
-    extends _$VideoRoomEventCopyWithImpl<$Res, _$_CreateVideoRoomEvent>
-    implements _$$_CreateVideoRoomEventCopyWith<$Res> {
-  __$$_CreateVideoRoomEventCopyWithImpl(_$_CreateVideoRoomEvent _value,
-      $Res Function(_$_CreateVideoRoomEvent) _then)
+class __$$CreateVideoRoomEventImplCopyWithImpl<$Res>
+    extends _$VideoRoomEventCopyWithImpl<$Res, _$CreateVideoRoomEventImpl>
+    implements _$$CreateVideoRoomEventImplCopyWith<$Res> {
+  __$$CreateVideoRoomEventImplCopyWithImpl(_$CreateVideoRoomEventImpl _value,
+      $Res Function(_$CreateVideoRoomEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
-  const _$_CreateVideoRoomEvent();
+class _$CreateVideoRoomEventImpl implements _CreateVideoRoomEvent {
+  const _$CreateVideoRoomEventImpl();
 
   @override
   String toString() {
@@ -107,9 +107,10 @@ class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateVideoRoomEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$CreateVideoRoomEventImpl);
   }
 
   @override
@@ -119,8 +120,8 @@ class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() creatRoom,
-    required TResult Function() joinRoomLink,
-    required TResult Function() deleteRoom,
+    required TResult Function(String roomId) joinRoomLink,
+    required TResult Function(String roomId) deleteRoom,
   }) {
     return creatRoom();
   }
@@ -129,8 +130,8 @@ class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? creatRoom,
-    TResult? Function()? joinRoomLink,
-    TResult? Function()? deleteRoom,
+    TResult? Function(String roomId)? joinRoomLink,
+    TResult? Function(String roomId)? deleteRoom,
   }) {
     return creatRoom?.call();
   }
@@ -139,8 +140,8 @@ class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? creatRoom,
-    TResult Function()? joinRoomLink,
-    TResult Function()? deleteRoom,
+    TResult Function(String roomId)? joinRoomLink,
+    TResult Function(String roomId)? deleteRoom,
     required TResult orElse(),
   }) {
     if (creatRoom != null) {
@@ -185,75 +186,103 @@ class _$_CreateVideoRoomEvent implements _CreateVideoRoomEvent {
 }
 
 abstract class _CreateVideoRoomEvent implements VideoRoomEvent {
-  const factory _CreateVideoRoomEvent() = _$_CreateVideoRoomEvent;
+  const factory _CreateVideoRoomEvent() = _$CreateVideoRoomEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_JoinLinkVideoRoomEventCopyWith<$Res> {
-  factory _$$_JoinLinkVideoRoomEventCopyWith(_$_JoinLinkVideoRoomEvent value,
-          $Res Function(_$_JoinLinkVideoRoomEvent) then) =
-      __$$_JoinLinkVideoRoomEventCopyWithImpl<$Res>;
+abstract class _$$JoinLinkVideoRoomEventImplCopyWith<$Res> {
+  factory _$$JoinLinkVideoRoomEventImplCopyWith(
+          _$JoinLinkVideoRoomEventImpl value,
+          $Res Function(_$JoinLinkVideoRoomEventImpl) then) =
+      __$$JoinLinkVideoRoomEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId});
 }
 
 /// @nodoc
-class __$$_JoinLinkVideoRoomEventCopyWithImpl<$Res>
-    extends _$VideoRoomEventCopyWithImpl<$Res, _$_JoinLinkVideoRoomEvent>
-    implements _$$_JoinLinkVideoRoomEventCopyWith<$Res> {
-  __$$_JoinLinkVideoRoomEventCopyWithImpl(_$_JoinLinkVideoRoomEvent _value,
-      $Res Function(_$_JoinLinkVideoRoomEvent) _then)
+class __$$JoinLinkVideoRoomEventImplCopyWithImpl<$Res>
+    extends _$VideoRoomEventCopyWithImpl<$Res, _$JoinLinkVideoRoomEventImpl>
+    implements _$$JoinLinkVideoRoomEventImplCopyWith<$Res> {
+  __$$JoinLinkVideoRoomEventImplCopyWithImpl(
+      _$JoinLinkVideoRoomEventImpl _value,
+      $Res Function(_$JoinLinkVideoRoomEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? roomId = null,
+  }) {
+    return _then(_$JoinLinkVideoRoomEventImpl(
+      null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_JoinLinkVideoRoomEvent implements _JoinLinkVideoRoomEvent {
-  const _$_JoinLinkVideoRoomEvent();
+class _$JoinLinkVideoRoomEventImpl implements _JoinLinkVideoRoomEvent {
+  const _$JoinLinkVideoRoomEventImpl(this.roomId);
+
+  @override
+  final String roomId;
 
   @override
   String toString() {
-    return 'VideoRoomEvent.joinRoomLink()';
+    return 'VideoRoomEvent.joinRoomLink(roomId: $roomId)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JoinLinkVideoRoomEvent);
+            other is _$JoinLinkVideoRoomEventImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, roomId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JoinLinkVideoRoomEventImplCopyWith<_$JoinLinkVideoRoomEventImpl>
+      get copyWith => __$$JoinLinkVideoRoomEventImplCopyWithImpl<
+          _$JoinLinkVideoRoomEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() creatRoom,
-    required TResult Function() joinRoomLink,
-    required TResult Function() deleteRoom,
+    required TResult Function(String roomId) joinRoomLink,
+    required TResult Function(String roomId) deleteRoom,
   }) {
-    return joinRoomLink();
+    return joinRoomLink(roomId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? creatRoom,
-    TResult? Function()? joinRoomLink,
-    TResult? Function()? deleteRoom,
+    TResult? Function(String roomId)? joinRoomLink,
+    TResult? Function(String roomId)? deleteRoom,
   }) {
-    return joinRoomLink?.call();
+    return joinRoomLink?.call(roomId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? creatRoom,
-    TResult Function()? joinRoomLink,
-    TResult Function()? deleteRoom,
+    TResult Function(String roomId)? joinRoomLink,
+    TResult Function(String roomId)? deleteRoom,
     required TResult orElse(),
   }) {
     if (joinRoomLink != null) {
-      return joinRoomLink();
+      return joinRoomLink(roomId);
     }
     return orElse();
   }
@@ -294,74 +323,108 @@ class _$_JoinLinkVideoRoomEvent implements _JoinLinkVideoRoomEvent {
 }
 
 abstract class _JoinLinkVideoRoomEvent implements VideoRoomEvent {
-  const factory _JoinLinkVideoRoomEvent() = _$_JoinLinkVideoRoomEvent;
+  const factory _JoinLinkVideoRoomEvent(final String roomId) =
+      _$JoinLinkVideoRoomEventImpl;
+
+  String get roomId;
+  @JsonKey(ignore: true)
+  _$$JoinLinkVideoRoomEventImplCopyWith<_$JoinLinkVideoRoomEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DeleteVideoRoomEventCopyWith<$Res> {
-  factory _$$_DeleteVideoRoomEventCopyWith(_$_DeleteVideoRoomEvent value,
-          $Res Function(_$_DeleteVideoRoomEvent) then) =
-      __$$_DeleteVideoRoomEventCopyWithImpl<$Res>;
+abstract class _$$DeleteVideoRoomEventImplCopyWith<$Res> {
+  factory _$$DeleteVideoRoomEventImplCopyWith(_$DeleteVideoRoomEventImpl value,
+          $Res Function(_$DeleteVideoRoomEventImpl) then) =
+      __$$DeleteVideoRoomEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId});
 }
 
 /// @nodoc
-class __$$_DeleteVideoRoomEventCopyWithImpl<$Res>
-    extends _$VideoRoomEventCopyWithImpl<$Res, _$_DeleteVideoRoomEvent>
-    implements _$$_DeleteVideoRoomEventCopyWith<$Res> {
-  __$$_DeleteVideoRoomEventCopyWithImpl(_$_DeleteVideoRoomEvent _value,
-      $Res Function(_$_DeleteVideoRoomEvent) _then)
+class __$$DeleteVideoRoomEventImplCopyWithImpl<$Res>
+    extends _$VideoRoomEventCopyWithImpl<$Res, _$DeleteVideoRoomEventImpl>
+    implements _$$DeleteVideoRoomEventImplCopyWith<$Res> {
+  __$$DeleteVideoRoomEventImplCopyWithImpl(_$DeleteVideoRoomEventImpl _value,
+      $Res Function(_$DeleteVideoRoomEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? roomId = null,
+  }) {
+    return _then(_$DeleteVideoRoomEventImpl(
+      null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_DeleteVideoRoomEvent implements _DeleteVideoRoomEvent {
-  const _$_DeleteVideoRoomEvent();
+class _$DeleteVideoRoomEventImpl implements _DeleteVideoRoomEvent {
+  const _$DeleteVideoRoomEventImpl(this.roomId);
+
+  @override
+  final String roomId;
 
   @override
   String toString() {
-    return 'VideoRoomEvent.deleteRoom()';
+    return 'VideoRoomEvent.deleteRoom(roomId: $roomId)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DeleteVideoRoomEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteVideoRoomEventImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, roomId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteVideoRoomEventImplCopyWith<_$DeleteVideoRoomEventImpl>
+      get copyWith =>
+          __$$DeleteVideoRoomEventImplCopyWithImpl<_$DeleteVideoRoomEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() creatRoom,
-    required TResult Function() joinRoomLink,
-    required TResult Function() deleteRoom,
+    required TResult Function(String roomId) joinRoomLink,
+    required TResult Function(String roomId) deleteRoom,
   }) {
-    return deleteRoom();
+    return deleteRoom(roomId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? creatRoom,
-    TResult? Function()? joinRoomLink,
-    TResult? Function()? deleteRoom,
+    TResult? Function(String roomId)? joinRoomLink,
+    TResult? Function(String roomId)? deleteRoom,
   }) {
-    return deleteRoom?.call();
+    return deleteRoom?.call(roomId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? creatRoom,
-    TResult Function()? joinRoomLink,
-    TResult Function()? deleteRoom,
+    TResult Function(String roomId)? joinRoomLink,
+    TResult Function(String roomId)? deleteRoom,
     required TResult orElse(),
   }) {
     if (deleteRoom != null) {
-      return deleteRoom();
+      return deleteRoom(roomId);
     }
     return orElse();
   }
@@ -402,7 +465,13 @@ class _$_DeleteVideoRoomEvent implements _DeleteVideoRoomEvent {
 }
 
 abstract class _DeleteVideoRoomEvent implements VideoRoomEvent {
-  const factory _DeleteVideoRoomEvent() = _$_DeleteVideoRoomEvent;
+  const factory _DeleteVideoRoomEvent(final String roomId) =
+      _$DeleteVideoRoomEventImpl;
+
+  String get roomId;
+  @JsonKey(ignore: true)
+  _$$DeleteVideoRoomEventImplCopyWith<_$DeleteVideoRoomEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -411,8 +480,12 @@ mixin _$VideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) =>
@@ -421,7 +494,12 @@ mixin _$VideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) =>
@@ -430,7 +508,12 @@ mixin _$VideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -441,6 +524,7 @@ mixin _$VideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) =>
@@ -450,6 +534,7 @@ mixin _$VideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) =>
@@ -459,6 +544,7 @@ mixin _$VideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -485,25 +571,26 @@ class _$VideoRoomStateCopyWithImpl<$Res, $Val extends VideoRoomState>
 }
 
 /// @nodoc
-abstract class _$$_InitialVideoRoomStateCopyWith<$Res> {
-  factory _$$_InitialVideoRoomStateCopyWith(_$_InitialVideoRoomState value,
-          $Res Function(_$_InitialVideoRoomState) then) =
-      __$$_InitialVideoRoomStateCopyWithImpl<$Res>;
+abstract class _$$InitialVideoRoomStateImplCopyWith<$Res> {
+  factory _$$InitialVideoRoomStateImplCopyWith(
+          _$InitialVideoRoomStateImpl value,
+          $Res Function(_$InitialVideoRoomStateImpl) then) =
+      __$$InitialVideoRoomStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialVideoRoomStateCopyWithImpl<$Res>
-    extends _$VideoRoomStateCopyWithImpl<$Res, _$_InitialVideoRoomState>
-    implements _$$_InitialVideoRoomStateCopyWith<$Res> {
-  __$$_InitialVideoRoomStateCopyWithImpl(_$_InitialVideoRoomState _value,
-      $Res Function(_$_InitialVideoRoomState) _then)
+class __$$InitialVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$InitialVideoRoomStateImpl>
+    implements _$$InitialVideoRoomStateImplCopyWith<$Res> {
+  __$$InitialVideoRoomStateImplCopyWithImpl(_$InitialVideoRoomStateImpl _value,
+      $Res Function(_$InitialVideoRoomStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialVideoRoomState implements _InitialVideoRoomState {
-  const _$_InitialVideoRoomState();
+class _$InitialVideoRoomStateImpl implements _InitialVideoRoomState {
+  const _$InitialVideoRoomStateImpl();
 
   @override
   String toString() {
@@ -511,9 +598,10 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialVideoRoomState);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialVideoRoomStateImpl);
   }
 
   @override
@@ -524,8 +612,12 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -537,7 +629,12 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -549,7 +646,12 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -566,6 +668,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) {
@@ -578,6 +681,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) {
@@ -590,6 +694,7 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -602,29 +707,30 @@ class _$_InitialVideoRoomState implements _InitialVideoRoomState {
 }
 
 abstract class _InitialVideoRoomState implements VideoRoomState {
-  const factory _InitialVideoRoomState() = _$_InitialVideoRoomState;
+  const factory _InitialVideoRoomState() = _$InitialVideoRoomStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingVideoRoomStateCopyWith<$Res> {
-  factory _$$_LoadingVideoRoomStateCopyWith(_$_LoadingVideoRoomState value,
-          $Res Function(_$_LoadingVideoRoomState) then) =
-      __$$_LoadingVideoRoomStateCopyWithImpl<$Res>;
+abstract class _$$LoadingVideoRoomStateImplCopyWith<$Res> {
+  factory _$$LoadingVideoRoomStateImplCopyWith(
+          _$LoadingVideoRoomStateImpl value,
+          $Res Function(_$LoadingVideoRoomStateImpl) then) =
+      __$$LoadingVideoRoomStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingVideoRoomStateCopyWithImpl<$Res>
-    extends _$VideoRoomStateCopyWithImpl<$Res, _$_LoadingVideoRoomState>
-    implements _$$_LoadingVideoRoomStateCopyWith<$Res> {
-  __$$_LoadingVideoRoomStateCopyWithImpl(_$_LoadingVideoRoomState _value,
-      $Res Function(_$_LoadingVideoRoomState) _then)
+class __$$LoadingVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$LoadingVideoRoomStateImpl>
+    implements _$$LoadingVideoRoomStateImplCopyWith<$Res> {
+  __$$LoadingVideoRoomStateImplCopyWithImpl(_$LoadingVideoRoomStateImpl _value,
+      $Res Function(_$LoadingVideoRoomStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
-  const _$_LoadingVideoRoomState();
+class _$LoadingVideoRoomStateImpl implements _LoadingVideoRoomState {
+  const _$LoadingVideoRoomStateImpl();
 
   @override
   String toString() {
@@ -632,9 +738,10 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingVideoRoomState);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingVideoRoomStateImpl);
   }
 
   @override
@@ -645,8 +752,12 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -658,7 +769,12 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -670,7 +786,12 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -687,6 +808,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) {
@@ -699,6 +821,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) {
@@ -711,6 +834,7 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -723,24 +847,28 @@ class _$_LoadingVideoRoomState implements _LoadingVideoRoomState {
 }
 
 abstract class _LoadingVideoRoomState implements VideoRoomState {
-  const factory _LoadingVideoRoomState() = _$_LoadingVideoRoomState;
+  const factory _LoadingVideoRoomState() = _$LoadingVideoRoomStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreatedVideoRoomStateCopyWith<$Res> {
-  factory _$$_CreatedVideoRoomStateCopyWith(_$_CreatedVideoRoomState value,
-          $Res Function(_$_CreatedVideoRoomState) then) =
-      __$$_CreatedVideoRoomStateCopyWithImpl<$Res>;
+abstract class _$$CreatedVideoRoomStateImplCopyWith<$Res> {
+  factory _$$CreatedVideoRoomStateImplCopyWith(
+          _$CreatedVideoRoomStateImpl value,
+          $Res Function(_$CreatedVideoRoomStateImpl) then) =
+      __$$CreatedVideoRoomStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String roomId, RTCVideoRenderer localRenderer});
+  $Res call(
+      {String roomId,
+      RTCVideoRenderer localRenderer,
+      RTCVideoRenderer remoteRenderer});
 }
 
 /// @nodoc
-class __$$_CreatedVideoRoomStateCopyWithImpl<$Res>
-    extends _$VideoRoomStateCopyWithImpl<$Res, _$_CreatedVideoRoomState>
-    implements _$$_CreatedVideoRoomStateCopyWith<$Res> {
-  __$$_CreatedVideoRoomStateCopyWithImpl(_$_CreatedVideoRoomState _value,
-      $Res Function(_$_CreatedVideoRoomState) _then)
+class __$$CreatedVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$CreatedVideoRoomStateImpl>
+    implements _$$CreatedVideoRoomStateImplCopyWith<$Res> {
+  __$$CreatedVideoRoomStateImplCopyWithImpl(_$CreatedVideoRoomStateImpl _value,
+      $Res Function(_$CreatedVideoRoomStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -748,8 +876,9 @@ class __$$_CreatedVideoRoomStateCopyWithImpl<$Res>
   $Res call({
     Object? roomId = null,
     Object? localRenderer = null,
+    Object? remoteRenderer = null,
   }) {
-    return _then(_$_CreatedVideoRoomState(
+    return _then(_$CreatedVideoRoomStateImpl(
       null == roomId
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
@@ -758,56 +887,70 @@ class __$$_CreatedVideoRoomStateCopyWithImpl<$Res>
           ? _value.localRenderer
           : localRenderer // ignore: cast_nullable_to_non_nullable
               as RTCVideoRenderer,
+      null == remoteRenderer
+          ? _value.remoteRenderer
+          : remoteRenderer // ignore: cast_nullable_to_non_nullable
+              as RTCVideoRenderer,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
-  const _$_CreatedVideoRoomState(this.roomId, this.localRenderer);
+class _$CreatedVideoRoomStateImpl implements _CreatedVideoRoomState {
+  const _$CreatedVideoRoomStateImpl(
+      this.roomId, this.localRenderer, this.remoteRenderer);
 
   @override
   final String roomId;
   @override
   final RTCVideoRenderer localRenderer;
+  @override
+  final RTCVideoRenderer remoteRenderer;
 
   @override
   String toString() {
-    return 'VideoRoomState.created(roomId: $roomId, localRenderer: $localRenderer)';
+    return 'VideoRoomState.created(roomId: $roomId, localRenderer: $localRenderer, remoteRenderer: $remoteRenderer)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreatedVideoRoomState &&
+            other is _$CreatedVideoRoomStateImpl &&
             (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.localRenderer, localRenderer) ||
-                other.localRenderer == localRenderer));
+                other.localRenderer == localRenderer) &&
+            (identical(other.remoteRenderer, remoteRenderer) ||
+                other.remoteRenderer == remoteRenderer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, roomId, localRenderer);
+  int get hashCode =>
+      Object.hash(runtimeType, roomId, localRenderer, remoteRenderer);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreatedVideoRoomStateCopyWith<_$_CreatedVideoRoomState> get copyWith =>
-      __$$_CreatedVideoRoomStateCopyWithImpl<_$_CreatedVideoRoomState>(
-          this, _$identity);
+  _$$CreatedVideoRoomStateImplCopyWith<_$CreatedVideoRoomStateImpl>
+      get copyWith => __$$CreatedVideoRoomStateImplCopyWithImpl<
+          _$CreatedVideoRoomStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
-    return created(roomId, localRenderer);
+    return created(roomId, localRenderer, remoteRenderer);
   }
 
   @override
@@ -815,11 +958,16 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
-    return created?.call(roomId, localRenderer);
+    return created?.call(roomId, localRenderer, remoteRenderer);
   }
 
   @override
@@ -827,13 +975,18 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created(roomId, localRenderer);
+      return created(roomId, localRenderer, remoteRenderer);
     }
     return orElse();
   }
@@ -844,6 +997,7 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) {
@@ -856,6 +1010,7 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) {
@@ -868,6 +1023,7 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -881,36 +1037,221 @@ class _$_CreatedVideoRoomState implements _CreatedVideoRoomState {
 
 abstract class _CreatedVideoRoomState implements VideoRoomState {
   const factory _CreatedVideoRoomState(
-          final String roomId, final RTCVideoRenderer localRenderer) =
-      _$_CreatedVideoRoomState;
+      final String roomId,
+      final RTCVideoRenderer localRenderer,
+      final RTCVideoRenderer remoteRenderer) = _$CreatedVideoRoomStateImpl;
 
   String get roomId;
   RTCVideoRenderer get localRenderer;
+  RTCVideoRenderer get remoteRenderer;
   @JsonKey(ignore: true)
-  _$$_CreatedVideoRoomStateCopyWith<_$_CreatedVideoRoomState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CreatedVideoRoomStateImplCopyWith<_$CreatedVideoRoomStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DeleteVideoRoomStateCopyWith<$Res> {
-  factory _$$_DeleteVideoRoomStateCopyWith(_$_DeleteVideoRoomState value,
-          $Res Function(_$_DeleteVideoRoomState) then) =
-      __$$_DeleteVideoRoomStateCopyWithImpl<$Res>;
+abstract class _$$JoinedVideoRoomStateImplCopyWith<$Res> {
+  factory _$$JoinedVideoRoomStateImplCopyWith(_$JoinedVideoRoomStateImpl value,
+          $Res Function(_$JoinedVideoRoomStateImpl) then) =
+      __$$JoinedVideoRoomStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer});
 }
 
 /// @nodoc
-class __$$_DeleteVideoRoomStateCopyWithImpl<$Res>
-    extends _$VideoRoomStateCopyWithImpl<$Res, _$_DeleteVideoRoomState>
-    implements _$$_DeleteVideoRoomStateCopyWith<$Res> {
-  __$$_DeleteVideoRoomStateCopyWithImpl(_$_DeleteVideoRoomState _value,
-      $Res Function(_$_DeleteVideoRoomState) _then)
+class __$$JoinedVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$JoinedVideoRoomStateImpl>
+    implements _$$JoinedVideoRoomStateImplCopyWith<$Res> {
+  __$$JoinedVideoRoomStateImplCopyWithImpl(_$JoinedVideoRoomStateImpl _value,
+      $Res Function(_$JoinedVideoRoomStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? localRenderer = null,
+    Object? remoteRenderer = null,
+  }) {
+    return _then(_$JoinedVideoRoomStateImpl(
+      null == localRenderer
+          ? _value.localRenderer
+          : localRenderer // ignore: cast_nullable_to_non_nullable
+              as RTCVideoRenderer,
+      null == remoteRenderer
+          ? _value.remoteRenderer
+          : remoteRenderer // ignore: cast_nullable_to_non_nullable
+              as RTCVideoRenderer,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$JoinedVideoRoomStateImpl implements _JoinedVideoRoomState {
+  const _$JoinedVideoRoomStateImpl(this.localRenderer, this.remoteRenderer);
+
+  @override
+  final RTCVideoRenderer localRenderer;
+  @override
+  final RTCVideoRenderer remoteRenderer;
+
+  @override
+  String toString() {
+    return 'VideoRoomState.joined(localRenderer: $localRenderer, remoteRenderer: $remoteRenderer)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JoinedVideoRoomStateImpl &&
+            (identical(other.localRenderer, localRenderer) ||
+                other.localRenderer == localRenderer) &&
+            (identical(other.remoteRenderer, remoteRenderer) ||
+                other.remoteRenderer == remoteRenderer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, localRenderer, remoteRenderer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JoinedVideoRoomStateImplCopyWith<_$JoinedVideoRoomStateImpl>
+      get copyWith =>
+          __$$JoinedVideoRoomStateImplCopyWithImpl<_$JoinedVideoRoomStateImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
+        created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
+    required TResult Function() deleteRoom,
+    required TResult Function(dynamic error) error,
+  }) {
+    return joined(localRenderer, remoteRenderer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
+    TResult? Function()? deleteRoom,
+    TResult? Function(dynamic error)? error,
+  }) {
+    return joined?.call(localRenderer, remoteRenderer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
+    TResult Function()? deleteRoom,
+    TResult Function(dynamic error)? error,
+    required TResult orElse(),
+  }) {
+    if (joined != null) {
+      return joined(localRenderer, remoteRenderer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialVideoRoomState value) initial,
+    required TResult Function(_LoadingVideoRoomState value) loading,
+    required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
+    required TResult Function(_DeleteVideoRoomState value) deleteRoom,
+    required TResult Function(_ErrorVideoRoomState value) error,
+  }) {
+    return joined(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialVideoRoomState value)? initial,
+    TResult? Function(_LoadingVideoRoomState value)? loading,
+    TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
+    TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
+    TResult? Function(_ErrorVideoRoomState value)? error,
+  }) {
+    return joined?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialVideoRoomState value)? initial,
+    TResult Function(_LoadingVideoRoomState value)? loading,
+    TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
+    TResult Function(_DeleteVideoRoomState value)? deleteRoom,
+    TResult Function(_ErrorVideoRoomState value)? error,
+    required TResult orElse(),
+  }) {
+    if (joined != null) {
+      return joined(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinedVideoRoomState implements VideoRoomState {
+  const factory _JoinedVideoRoomState(final RTCVideoRenderer localRenderer,
+      final RTCVideoRenderer remoteRenderer) = _$JoinedVideoRoomStateImpl;
+
+  RTCVideoRenderer get localRenderer;
+  RTCVideoRenderer get remoteRenderer;
+  @JsonKey(ignore: true)
+  _$$JoinedVideoRoomStateImplCopyWith<_$JoinedVideoRoomStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteVideoRoomStateImplCopyWith<$Res> {
+  factory _$$DeleteVideoRoomStateImplCopyWith(_$DeleteVideoRoomStateImpl value,
+          $Res Function(_$DeleteVideoRoomStateImpl) then) =
+      __$$DeleteVideoRoomStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$DeleteVideoRoomStateImpl>
+    implements _$$DeleteVideoRoomStateImplCopyWith<$Res> {
+  __$$DeleteVideoRoomStateImplCopyWithImpl(_$DeleteVideoRoomStateImpl _value,
+      $Res Function(_$DeleteVideoRoomStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
-  const _$_DeleteVideoRoomState();
+class _$DeleteVideoRoomStateImpl implements _DeleteVideoRoomState {
+  const _$DeleteVideoRoomStateImpl();
 
   @override
   String toString() {
@@ -918,9 +1259,10 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DeleteVideoRoomState);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteVideoRoomStateImpl);
   }
 
   @override
@@ -931,8 +1273,12 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -944,7 +1290,12 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -956,7 +1307,12 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -973,6 +1329,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) {
@@ -985,6 +1342,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) {
@@ -997,6 +1355,7 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -1009,24 +1368,24 @@ class _$_DeleteVideoRoomState implements _DeleteVideoRoomState {
 }
 
 abstract class _DeleteVideoRoomState implements VideoRoomState {
-  const factory _DeleteVideoRoomState() = _$_DeleteVideoRoomState;
+  const factory _DeleteVideoRoomState() = _$DeleteVideoRoomStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorVideoRoomStateCopyWith<$Res> {
-  factory _$$_ErrorVideoRoomStateCopyWith(_$_ErrorVideoRoomState value,
-          $Res Function(_$_ErrorVideoRoomState) then) =
-      __$$_ErrorVideoRoomStateCopyWithImpl<$Res>;
+abstract class _$$ErrorVideoRoomStateImplCopyWith<$Res> {
+  factory _$$ErrorVideoRoomStateImplCopyWith(_$ErrorVideoRoomStateImpl value,
+          $Res Function(_$ErrorVideoRoomStateImpl) then) =
+      __$$ErrorVideoRoomStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({dynamic error});
 }
 
 /// @nodoc
-class __$$_ErrorVideoRoomStateCopyWithImpl<$Res>
-    extends _$VideoRoomStateCopyWithImpl<$Res, _$_ErrorVideoRoomState>
-    implements _$$_ErrorVideoRoomStateCopyWith<$Res> {
-  __$$_ErrorVideoRoomStateCopyWithImpl(_$_ErrorVideoRoomState _value,
-      $Res Function(_$_ErrorVideoRoomState) _then)
+class __$$ErrorVideoRoomStateImplCopyWithImpl<$Res>
+    extends _$VideoRoomStateCopyWithImpl<$Res, _$ErrorVideoRoomStateImpl>
+    implements _$$ErrorVideoRoomStateImplCopyWith<$Res> {
+  __$$ErrorVideoRoomStateImplCopyWithImpl(_$ErrorVideoRoomStateImpl _value,
+      $Res Function(_$ErrorVideoRoomStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1034,7 +1393,7 @@ class __$$_ErrorVideoRoomStateCopyWithImpl<$Res>
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$_ErrorVideoRoomState(
+    return _then(_$ErrorVideoRoomStateImpl(
       freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1045,8 +1404,8 @@ class __$$_ErrorVideoRoomStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
-  const _$_ErrorVideoRoomState(this.error);
+class _$ErrorVideoRoomStateImpl implements _ErrorVideoRoomState {
+  const _$ErrorVideoRoomStateImpl(this.error);
 
   @override
   final dynamic error;
@@ -1057,10 +1416,10 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorVideoRoomState &&
+            other is _$ErrorVideoRoomStateImpl &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -1071,8 +1430,8 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorVideoRoomStateCopyWith<_$_ErrorVideoRoomState> get copyWith =>
-      __$$_ErrorVideoRoomStateCopyWithImpl<_$_ErrorVideoRoomState>(
+  _$$ErrorVideoRoomStateImplCopyWith<_$ErrorVideoRoomStateImpl> get copyWith =>
+      __$$ErrorVideoRoomStateImplCopyWithImpl<_$ErrorVideoRoomStateImpl>(
           this, _$identity);
 
   @override
@@ -1080,8 +1439,12 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String roomId, RTCVideoRenderer localRenderer)
+    required TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)
         created,
+    required TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)
+        joined,
     required TResult Function() deleteRoom,
     required TResult Function(dynamic error) error,
   }) {
@@ -1093,7 +1456,12 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult? Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult? Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult? Function()? deleteRoom,
     TResult? Function(dynamic error)? error,
   }) {
@@ -1105,7 +1473,12 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String roomId, RTCVideoRenderer localRenderer)? created,
+    TResult Function(String roomId, RTCVideoRenderer localRenderer,
+            RTCVideoRenderer remoteRenderer)?
+        created,
+    TResult Function(
+            RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer)?
+        joined,
     TResult Function()? deleteRoom,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -1122,6 +1495,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
     required TResult Function(_InitialVideoRoomState value) initial,
     required TResult Function(_LoadingVideoRoomState value) loading,
     required TResult Function(_CreatedVideoRoomState value) created,
+    required TResult Function(_JoinedVideoRoomState value) joined,
     required TResult Function(_DeleteVideoRoomState value) deleteRoom,
     required TResult Function(_ErrorVideoRoomState value) error,
   }) {
@@ -1134,6 +1508,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
     TResult? Function(_InitialVideoRoomState value)? initial,
     TResult? Function(_LoadingVideoRoomState value)? loading,
     TResult? Function(_CreatedVideoRoomState value)? created,
+    TResult? Function(_JoinedVideoRoomState value)? joined,
     TResult? Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult? Function(_ErrorVideoRoomState value)? error,
   }) {
@@ -1146,6 +1521,7 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
     TResult Function(_InitialVideoRoomState value)? initial,
     TResult Function(_LoadingVideoRoomState value)? loading,
     TResult Function(_CreatedVideoRoomState value)? created,
+    TResult Function(_JoinedVideoRoomState value)? joined,
     TResult Function(_DeleteVideoRoomState value)? deleteRoom,
     TResult Function(_ErrorVideoRoomState value)? error,
     required TResult orElse(),
@@ -1159,10 +1535,10 @@ class _$_ErrorVideoRoomState implements _ErrorVideoRoomState {
 
 abstract class _ErrorVideoRoomState implements VideoRoomState {
   const factory _ErrorVideoRoomState(final dynamic error) =
-      _$_ErrorVideoRoomState;
+      _$ErrorVideoRoomStateImpl;
 
   dynamic get error;
   @JsonKey(ignore: true)
-  _$$_ErrorVideoRoomStateCopyWith<_$_ErrorVideoRoomState> get copyWith =>
+  _$$ErrorVideoRoomStateImplCopyWith<_$ErrorVideoRoomStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

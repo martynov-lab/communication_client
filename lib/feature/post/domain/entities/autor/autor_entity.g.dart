@@ -6,12 +6,12 @@ part of 'autor_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AutorEntity _$$_AutorEntityFromJson(Map<String, dynamic> json) =>
-    _$_AutorEntity(
+_$AutorEntityImpl _$$AutorEntityImplFromJson(Map<String, dynamic> json) =>
+    _$AutorEntityImpl(
       id: json['id'] as int,
     );
 
-Map<String, dynamic> _$$_AutorEntityToJson(_$_AutorEntity instance) =>
+Map<String, dynamic> _$$AutorEntityImplToJson(_$AutorEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
     };

@@ -7,8 +7,12 @@ class VideoRoomState with _$VideoRoomState {
   const factory VideoRoomState.created(
     String roomId,
     RTCVideoRenderer localRenderer,
+    RTCVideoRenderer remoteRenderer,
   ) = _CreatedVideoRoomState;
-  const factory VideoRoomState.joined() = _DeleteVideoRoomState;
+  const factory VideoRoomState.joined(
+    RTCVideoRenderer localRenderer,
+    RTCVideoRenderer remoteRenderer,
+  ) = _JoinedVideoRoomState;
   const factory VideoRoomState.deleteRoom() = _DeleteVideoRoomState;
   const factory VideoRoomState.error(dynamic error) = _ErrorVideoRoomState;
 }

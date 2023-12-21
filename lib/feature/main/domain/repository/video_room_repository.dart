@@ -1,11 +1,22 @@
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 abstract interface class VideoRoomRepository {
-  Future<void> openUserMedia(
-    RTCVideoRenderer localVideo,
-    RTCVideoRenderer remoteVideo,
-  );
-  Future<String> createRoom(RTCVideoRenderer remoteRenderer);
-  Future<void> joinRoom(String roomId, RTCVideoRenderer remoteVideo);
-  Future<void> hangUp(RTCVideoRenderer localVideo);
+  Future<void> openUserMedia({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  });
+  Future<String> createRoom({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  });
+  Future<void> joinRoom({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  });
+  Future<void> hangUp({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  });
 }

@@ -89,11 +89,11 @@ class _$MessageEntityCopyWithImpl<$Res, $Val extends MessageEntity>
 }
 
 /// @nodoc
-abstract class _$$_MessageEntityCopyWith<$Res>
+abstract class _$$MessageEntityImplCopyWith<$Res>
     implements $MessageEntityCopyWith<$Res> {
-  factory _$$_MessageEntityCopyWith(
-          _$_MessageEntity value, $Res Function(_$_MessageEntity) then) =
-      __$$_MessageEntityCopyWithImpl<$Res>;
+  factory _$$MessageEntityImplCopyWith(
+          _$MessageEntityImpl value, $Res Function(_$MessageEntityImpl) then) =
+      __$$MessageEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String text, String date, bool isSentByMe, UserEntity? autor});
@@ -103,11 +103,11 @@ abstract class _$$_MessageEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MessageEntityCopyWithImpl<$Res>
-    extends _$MessageEntityCopyWithImpl<$Res, _$_MessageEntity>
-    implements _$$_MessageEntityCopyWith<$Res> {
-  __$$_MessageEntityCopyWithImpl(
-      _$_MessageEntity _value, $Res Function(_$_MessageEntity) _then)
+class __$$MessageEntityImplCopyWithImpl<$Res>
+    extends _$MessageEntityCopyWithImpl<$Res, _$MessageEntityImpl>
+    implements _$$MessageEntityImplCopyWith<$Res> {
+  __$$MessageEntityImplCopyWithImpl(
+      _$MessageEntityImpl _value, $Res Function(_$MessageEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_MessageEntityCopyWithImpl<$Res>
     Object? isSentByMe = null,
     Object? autor = freezed,
   }) {
-    return _then(_$_MessageEntity(
+    return _then(_$MessageEntityImpl(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$_MessageEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MessageEntity implements _MessageEntity {
-  _$_MessageEntity(
+class _$MessageEntityImpl implements _MessageEntity {
+  _$MessageEntityImpl(
       {this.text = '', this.date = '', this.isSentByMe = false, this.autor});
 
   @override
@@ -163,10 +163,10 @@ class _$_MessageEntity implements _MessageEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessageEntity &&
+            other is _$MessageEntityImpl &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.isSentByMe, isSentByMe) ||
@@ -180,8 +180,8 @@ class _$_MessageEntity implements _MessageEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageEntityCopyWith<_$_MessageEntity> get copyWith =>
-      __$$_MessageEntityCopyWithImpl<_$_MessageEntity>(this, _$identity);
+  _$$MessageEntityImplCopyWith<_$MessageEntityImpl> get copyWith =>
+      __$$MessageEntityImplCopyWithImpl<_$MessageEntityImpl>(this, _$identity);
 }
 
 abstract class _MessageEntity implements MessageEntity {
@@ -189,7 +189,7 @@ abstract class _MessageEntity implements MessageEntity {
       {final String text,
       final String date,
       final bool isSentByMe,
-      final UserEntity? autor}) = _$_MessageEntity;
+      final UserEntity? autor}) = _$MessageEntityImpl;
 
   @override
   String get text;
@@ -201,6 +201,6 @@ abstract class _MessageEntity implements MessageEntity {
   UserEntity? get autor;
   @override
   @JsonKey(ignore: true)
-  _$$_MessageEntityCopyWith<_$_MessageEntity> get copyWith =>
+  _$$MessageEntityImplCopyWith<_$MessageEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -17,11 +17,13 @@ class VideoRoom extends StatelessWidget {
   //final RoomEntity room;
   final String? roomId;
   final RTCVideoRenderer localRenderer;
+  final RTCVideoRenderer remoteRenderer;
 
   const VideoRoom({
     Key? key,
-    required this.localRenderer,
     required this.roomId,
+    required this.localRenderer,
+    required this.remoteRenderer,
   }) : super(key: key);
 
   @override
@@ -150,8 +152,9 @@ class VideoRoom extends StatelessWidget {
                   slivers: <Widget>[
                     // Grid участников с видео контентом
                     GridWithVideo(
-                      localRenderer: localRenderer,
                       roomId: roomId ?? '',
+                      localRenderer: localRenderer,
+                      remoteRenderer: remoteRenderer,
                     ),
 
                     //Список участников отключивших видео + кнопка пригласить

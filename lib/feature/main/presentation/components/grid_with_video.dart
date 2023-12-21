@@ -11,11 +11,13 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 class GridWithVideo extends StatelessWidget {
   final String roomId;
   final RTCVideoRenderer localRenderer;
+  final RTCVideoRenderer remoteRenderer;
 
   const GridWithVideo({
     Key? key,
     required this.roomId,
     required this.localRenderer,
+    required this.remoteRenderer,
   }) : super(key: key);
 
   @override
@@ -41,6 +43,7 @@ class GridWithVideo extends StatelessWidget {
       ),
     ];
     List<QuiltedGridTile> _pattern = [const QuiltedGridTile(2, 2)];
+    List<RTCVideoRenderer> videoRenderer = [localRenderer, remoteRenderer];
 
     return SliverGrid(
       gridDelegate: SliverQuiltedGridDelegate(
@@ -54,12 +57,13 @@ class GridWithVideo extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           print('LocalRenderer!!!!!!!!!!!!!!: ${localRenderer.renderVideo}');
+
           return CardMedia(
             adminFeedId: "myFeedId",
             roomId: roomId,
             child: RenderMedia(
               quality: FilterQuality.medium,
-              videoRenderer: localRenderer,
+              videoRenderer: videoRenderer[index],
             ),
           );
         },

@@ -36,41 +36,36 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
       _CreateVideoRoomEvent event, Emitter<VideoRoomState> emitter) async {
     print('Создать встречу!!!!!!!!!!!!!!');
     try {
-      // localRenderer.initialize();
-      // remoteRenderer.initialize();
-
-      //      signalingService.onAddRemoteStream = ((stream) {
-      //   remoteRenderer.srcObject = stream;
-      // });
-
       emitter(const VideoRoomState.loading());
-      await signalingService.openUserMedia(localRenderer, remoteRenderer);
-      String roomId = await signalingService.createRoom(remoteRenderer);
-      emitter(VideoRoomState.created(roomId, localRenderer));
+      await signalingService.openUserMedia(
+        localRenderer: localRenderer,
+        remoteRenderer: remoteRenderer,
+      );
+      String roomId = await signalingService.createRoom(
+        localRenderer: localRenderer,
+        remoteRenderer: remoteRenderer,
+      );
+      emitter(VideoRoomState.created(roomId, localRenderer, remoteRenderer));
     } catch (e) {
       emitter(VideoRoomState.error('Некритичная ошибка: ${e}'));
     }
-    // on Object {
-    //   emitter(const VideoRoomState.error(
-    //       'Непредвиденная ошибка при создании комнаты'));
-    //   emitter(const VideoRoomState.initial());
-    //   rethrow;
-    // }
   }
 
   Future<void> _joinRoomLink(
       _JoinLinkVideoRoomEvent event, Emitter<VideoRoomState> emitter) async {
     try {
       emitter(const VideoRoomState.loading());
-      // ... логика присоединения к комнате await _repository.joinRoom(idRoom: event.id);
-      //emitter(const VideoRoomState.('1'));
-    } on Exception {
-      emitter(const VideoRoomState.error('Некритичная ошибка'));
-    } on Object {
-      emitter(const VideoRoomState.error(
-          'Непредвиденная ошибка при добавлении текста'));
-      emitter(const VideoRoomState.initial());
-      rethrow;
+      await signalingService.openUserMedia(
+          localRenderer: localRenderer, remoteRenderer: remoteRenderer);
+
+      await signalingService.joinRoom(
+        roomId: event.roomId,
+        localRenderer: localRenderer,
+        remoteRenderer: remoteRenderer,
+      );
+      emitter(VideoRoomState.joined(localRenderer, remoteRenderer));
+    } catch (e) {
+      emitter(VideoRoomState.error('Некритичная ошибка: ${e}'));
     }
   }
 
@@ -78,10 +73,11 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
       _DeleteVideoRoomEvent event, Emitter<VideoRoomState> emitter) async {
     try {
       emitter(const VideoRoomState.loading());
-      // ... логика удаления комнаты await _repository.deleteRoom(idRoom: event.id);
-      //emitter(const VideoRoomState.created('1'));
-    } on Exception {
-      emitter(const VideoRoomState.error('Некритичная ошибка'));
+      await signalingService.hangUp(
+          roomId: event.roomId,
+          localRenderer: localRenderer,
+          remoteRenderer: remoteRenderer);
+      emitter(const VideoRoomState.deleteRoom());
     } on Object {
       emitter(const VideoRoomState.error(
           'Непредвиденная ошибка при добавлении текста'));

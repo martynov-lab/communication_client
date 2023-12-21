@@ -21,28 +21,31 @@ final class FirebaseSignalingService implements VideoRoomRepository {
   };
 
   RTCPeerConnection? peerConnection;
-  MediaStream? localStream;
-  MediaStream? remoteStream;
-  String? roomId;
+  // MediaStream? localStream;
+  // MediaStream? remoteStream;
+  // String? roomId;
   String? currentRoomText;
   StreamStateCallback? onAddRemoteStream;
 
   @override
-  Future<void> openUserMedia(
-    RTCVideoRenderer localVideo,
-    RTCVideoRenderer remoteVideo,
-  ) async {
+  Future<void> openUserMedia({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) async {
     var stream = await navigator.mediaDevices
         .getUserMedia({'video': true, 'audio': false});
 
-    localVideo.srcObject = stream;
-    localStream = stream;
+    localRenderer.srcObject = stream;
+    // localStream = stream;
 
-    remoteVideo.srcObject = await createLocalMediaStream('key');
+    remoteRenderer.srcObject = await createLocalMediaStream('key');
   }
 
   @override
-  Future<String> createRoom(RTCVideoRenderer remoteRenderer) async {
+  Future<String> createRoom({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) async {
     try {
       FirebaseFirestore db = FirebaseFirestore.instance;
       DocumentReference roomRef = db.collection('rooms').doc();
@@ -51,10 +54,10 @@ final class FirebaseSignalingService implements VideoRoomRepository {
 
       peerConnection = await createPeerConnection(configuration);
 
-      registerPeerConnectionListeners();
+      registerPeerConnectionListeners(remoteRenderer);
 
-      localStream?.getTracks().forEach((track) {
-        peerConnection?.addTrack(track, localStream!);
+      localRenderer.srcObject?.getTracks().forEach((track) {
+        peerConnection?.addTrack(track, localRenderer.srcObject!);
       });
 
       // Code for collecting ICE candidates
@@ -83,7 +86,7 @@ final class FirebaseSignalingService implements VideoRoomRepository {
 
         event.streams[0].getTracks().forEach((track) {
           print('Add a track to the remoteStream $track');
-          remoteStream?.addTrack(track);
+          remoteRenderer.srcObject?.addTrack(track);
         });
       };
 
@@ -133,7 +136,11 @@ final class FirebaseSignalingService implements VideoRoomRepository {
   }
 
   @override
-  Future<void> joinRoom(String roomId, RTCVideoRenderer remoteVideo) async {
+  Future<void> joinRoom({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     DocumentReference roomRef = db.collection('rooms').doc('$roomId');
     var roomSnapshot = await roomRef.get();
@@ -143,10 +150,10 @@ final class FirebaseSignalingService implements VideoRoomRepository {
       print('Create PeerConnection with configuration: $configuration');
       peerConnection = await createPeerConnection(configuration);
 
-      registerPeerConnectionListeners();
+      registerPeerConnectionListeners(remoteRenderer);
 
-      localStream?.getTracks().forEach((track) {
-        peerConnection?.addTrack(track, localStream!);
+      localRenderer.srcObject?.getTracks().forEach((track) {
+        peerConnection?.addTrack(track, localRenderer.srcObject!);
       });
 
       // Code for collecting ICE candidates below
@@ -165,7 +172,7 @@ final class FirebaseSignalingService implements VideoRoomRepository {
         print('Got remote track: ${event.streams[0]}');
         event.streams[0].getTracks().forEach((track) {
           print('Add a track to the remoteStream: $track');
-          remoteStream?.addTrack(track);
+          remoteRenderer.srcObject?.addTrack(track);
         });
       };
 
@@ -207,14 +214,18 @@ final class FirebaseSignalingService implements VideoRoomRepository {
   }
 
   @override
-  Future<void> hangUp(RTCVideoRenderer localVideo) async {
-    List<MediaStreamTrack> tracks = localVideo.srcObject!.getTracks();
+  Future<void> hangUp({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) async {
+    List<MediaStreamTrack> tracks = localRenderer.srcObject!.getTracks();
     for (var track in tracks) {
       track.stop();
     }
 
-    if (remoteStream != null) {
-      remoteStream!.getTracks().forEach((track) => track.stop());
+    if (remoteRenderer.srcObject != null) {
+      remoteRenderer.srcObject!.getTracks().forEach((track) => track.stop());
     }
     if (peerConnection != null) peerConnection!.close();
 
@@ -234,11 +245,13 @@ final class FirebaseSignalingService implements VideoRoomRepository {
       await roomRef.delete();
     }
 
-    localStream!.dispose();
-    remoteStream?.dispose();
+    localRenderer.srcObject!.dispose();
+    remoteRenderer.srcObject?.dispose();
   }
 
-  void registerPeerConnectionListeners() {
+  void registerPeerConnectionListeners(
+    RTCVideoRenderer remoteRenderer,
+  ) {
     peerConnection?.onIceGatheringState = (RTCIceGatheringState state) {
       print('ICE gathering state changed: $state');
     };
@@ -258,7 +271,7 @@ final class FirebaseSignalingService implements VideoRoomRepository {
     peerConnection?.onAddStream = (MediaStream stream) {
       print("Add remote stream");
       onAddRemoteStream?.call(stream);
-      remoteStream = stream;
+      remoteRenderer.srcObject = stream;
     };
   }
 }

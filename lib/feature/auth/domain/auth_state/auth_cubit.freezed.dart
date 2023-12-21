@@ -104,29 +104,30 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$_AuthStateUnauthorizedCopyWith<$Res> {
-  factory _$$_AuthStateUnauthorizedCopyWith(_$_AuthStateUnauthorized value,
-          $Res Function(_$_AuthStateUnauthorized) then) =
-      __$$_AuthStateUnauthorizedCopyWithImpl<$Res>;
+abstract class _$$AuthStateUnauthorizedImplCopyWith<$Res> {
+  factory _$$AuthStateUnauthorizedImplCopyWith(
+          _$AuthStateUnauthorizedImpl value,
+          $Res Function(_$AuthStateUnauthorizedImpl) then) =
+      __$$AuthStateUnauthorizedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthStateUnauthorizedCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateUnauthorized>
-    implements _$$_AuthStateUnauthorizedCopyWith<$Res> {
-  __$$_AuthStateUnauthorizedCopyWithImpl(_$_AuthStateUnauthorized _value,
-      $Res Function(_$_AuthStateUnauthorized) _then)
+class __$$AuthStateUnauthorizedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateUnauthorizedImpl>
+    implements _$$AuthStateUnauthorizedImplCopyWith<$Res> {
+  __$$AuthStateUnauthorizedImplCopyWithImpl(_$AuthStateUnauthorizedImpl _value,
+      $Res Function(_$AuthStateUnauthorizedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
-  _$_AuthStateUnauthorized({final String? $type})
+class _$AuthStateUnauthorizedImpl implements _AuthStateUnauthorized {
+  _$AuthStateUnauthorizedImpl({final String? $type})
       : $type = $type ?? 'unauthorized';
 
-  factory _$_AuthStateUnauthorized.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthStateUnauthorizedFromJson(json);
+  factory _$AuthStateUnauthorizedImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthStateUnauthorizedImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -137,9 +138,10 @@ class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthStateUnauthorized);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthStateUnauthorizedImpl);
   }
 
   @JsonKey(ignore: true)
@@ -222,24 +224,24 @@ class _$_AuthStateUnauthorized implements _AuthStateUnauthorized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthStateUnauthorizedToJson(
+    return _$$AuthStateUnauthorizedImplToJson(
       this,
     );
   }
 }
 
 abstract class _AuthStateUnauthorized implements AuthState {
-  factory _AuthStateUnauthorized() = _$_AuthStateUnauthorized;
+  factory _AuthStateUnauthorized() = _$AuthStateUnauthorizedImpl;
 
   factory _AuthStateUnauthorized.fromJson(Map<String, dynamic> json) =
-      _$_AuthStateUnauthorized.fromJson;
+      _$AuthStateUnauthorizedImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_AuthStateAuthorizedCopyWith<$Res> {
-  factory _$$_AuthStateAuthorizedCopyWith(_$_AuthStateAuthorized value,
-          $Res Function(_$_AuthStateAuthorized) then) =
-      __$$_AuthStateAuthorizedCopyWithImpl<$Res>;
+abstract class _$$AuthStateAuthorizedImplCopyWith<$Res> {
+  factory _$$AuthStateAuthorizedImplCopyWith(_$AuthStateAuthorizedImpl value,
+          $Res Function(_$AuthStateAuthorizedImpl) then) =
+      __$$AuthStateAuthorizedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserEntity userEntity});
 
@@ -247,11 +249,11 @@ abstract class _$$_AuthStateAuthorizedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthStateAuthorizedCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateAuthorized>
-    implements _$$_AuthStateAuthorizedCopyWith<$Res> {
-  __$$_AuthStateAuthorizedCopyWithImpl(_$_AuthStateAuthorized _value,
-      $Res Function(_$_AuthStateAuthorized) _then)
+class __$$AuthStateAuthorizedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateAuthorizedImpl>
+    implements _$$AuthStateAuthorizedImplCopyWith<$Res> {
+  __$$AuthStateAuthorizedImplCopyWithImpl(_$AuthStateAuthorizedImpl _value,
+      $Res Function(_$AuthStateAuthorizedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -259,7 +261,7 @@ class __$$_AuthStateAuthorizedCopyWithImpl<$Res>
   $Res call({
     Object? userEntity = null,
   }) {
-    return _then(_$_AuthStateAuthorized(
+    return _then(_$AuthStateAuthorizedImpl(
       null == userEntity
           ? _value.userEntity
           : userEntity // ignore: cast_nullable_to_non_nullable
@@ -278,12 +280,12 @@ class __$$_AuthStateAuthorizedCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthStateAuthorized implements _AuthStateAuthorized {
-  _$_AuthStateAuthorized(this.userEntity, {final String? $type})
+class _$AuthStateAuthorizedImpl implements _AuthStateAuthorized {
+  _$AuthStateAuthorizedImpl(this.userEntity, {final String? $type})
       : $type = $type ?? 'authorized';
 
-  factory _$_AuthStateAuthorized.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthStateAuthorizedFromJson(json);
+  factory _$AuthStateAuthorizedImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthStateAuthorizedImplFromJson(json);
 
   @override
   final UserEntity userEntity;
@@ -297,10 +299,10 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthStateAuthorized &&
+            other is _$AuthStateAuthorizedImpl &&
             (identical(other.userEntity, userEntity) ||
                 other.userEntity == userEntity));
   }
@@ -312,8 +314,8 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthStateAuthorizedCopyWith<_$_AuthStateAuthorized> get copyWith =>
-      __$$_AuthStateAuthorizedCopyWithImpl<_$_AuthStateAuthorized>(
+  _$$AuthStateAuthorizedImplCopyWith<_$AuthStateAuthorizedImpl> get copyWith =>
+      __$$AuthStateAuthorizedImplCopyWithImpl<_$AuthStateAuthorizedImpl>(
           this, _$identity);
 
   @override
@@ -392,7 +394,7 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthStateAuthorizedToJson(
+    return _$$AuthStateAuthorizedImplToJson(
       this,
     );
   }
@@ -400,40 +402,40 @@ class _$_AuthStateAuthorized implements _AuthStateAuthorized {
 
 abstract class _AuthStateAuthorized implements AuthState {
   factory _AuthStateAuthorized(final UserEntity userEntity) =
-      _$_AuthStateAuthorized;
+      _$AuthStateAuthorizedImpl;
 
   factory _AuthStateAuthorized.fromJson(Map<String, dynamic> json) =
-      _$_AuthStateAuthorized.fromJson;
+      _$AuthStateAuthorizedImpl.fromJson;
 
   UserEntity get userEntity;
   @JsonKey(ignore: true)
-  _$$_AuthStateAuthorizedCopyWith<_$_AuthStateAuthorized> get copyWith =>
+  _$$AuthStateAuthorizedImplCopyWith<_$AuthStateAuthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AuthStateLoadingCopyWith<$Res> {
-  factory _$$_AuthStateLoadingCopyWith(
-          _$_AuthStateLoading value, $Res Function(_$_AuthStateLoading) then) =
-      __$$_AuthStateLoadingCopyWithImpl<$Res>;
+abstract class _$$AuthStateLoadingImplCopyWith<$Res> {
+  factory _$$AuthStateLoadingImplCopyWith(_$AuthStateLoadingImpl value,
+          $Res Function(_$AuthStateLoadingImpl) then) =
+      __$$AuthStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthStateLoadingCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateLoading>
-    implements _$$_AuthStateLoadingCopyWith<$Res> {
-  __$$_AuthStateLoadingCopyWithImpl(
-      _$_AuthStateLoading _value, $Res Function(_$_AuthStateLoading) _then)
+class __$$AuthStateLoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateLoadingImpl>
+    implements _$$AuthStateLoadingImplCopyWith<$Res> {
+  __$$AuthStateLoadingImplCopyWithImpl(_$AuthStateLoadingImpl _value,
+      $Res Function(_$AuthStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthStateLoading implements _AuthStateLoading {
-  _$_AuthStateLoading({final String? $type}) : $type = $type ?? 'loading';
+class _$AuthStateLoadingImpl implements _AuthStateLoading {
+  _$AuthStateLoadingImpl({final String? $type}) : $type = $type ?? 'loading';
 
-  factory _$_AuthStateLoading.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthStateLoadingFromJson(json);
+  factory _$AuthStateLoadingImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthStateLoadingImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -444,9 +446,9 @@ class _$_AuthStateLoading implements _AuthStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthStateLoading);
+        (other.runtimeType == runtimeType && other is _$AuthStateLoadingImpl);
   }
 
   @JsonKey(ignore: true)
@@ -529,34 +531,34 @@ class _$_AuthStateLoading implements _AuthStateLoading {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthStateLoadingToJson(
+    return _$$AuthStateLoadingImplToJson(
       this,
     );
   }
 }
 
 abstract class _AuthStateLoading implements AuthState {
-  factory _AuthStateLoading() = _$_AuthStateLoading;
+  factory _AuthStateLoading() = _$AuthStateLoadingImpl;
 
   factory _AuthStateLoading.fromJson(Map<String, dynamic> json) =
-      _$_AuthStateLoading.fromJson;
+      _$AuthStateLoadingImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_AuthStateErrorCopyWith<$Res> {
-  factory _$$_AuthStateErrorCopyWith(
-          _$_AuthStateError value, $Res Function(_$_AuthStateError) then) =
-      __$$_AuthStateErrorCopyWithImpl<$Res>;
+abstract class _$$AuthStateErrorImplCopyWith<$Res> {
+  factory _$$AuthStateErrorImplCopyWith(_$AuthStateErrorImpl value,
+          $Res Function(_$AuthStateErrorImpl) then) =
+      __$$AuthStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({dynamic error});
 }
 
 /// @nodoc
-class __$$_AuthStateErrorCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateError>
-    implements _$$_AuthStateErrorCopyWith<$Res> {
-  __$$_AuthStateErrorCopyWithImpl(
-      _$_AuthStateError _value, $Res Function(_$_AuthStateError) _then)
+class __$$AuthStateErrorImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateErrorImpl>
+    implements _$$AuthStateErrorImplCopyWith<$Res> {
+  __$$AuthStateErrorImplCopyWithImpl(
+      _$AuthStateErrorImpl _value, $Res Function(_$AuthStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -564,7 +566,7 @@ class __$$_AuthStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$_AuthStateError(
+    return _then(_$AuthStateErrorImpl(
       freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -575,12 +577,12 @@ class __$$_AuthStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthStateError implements _AuthStateError {
-  _$_AuthStateError(this.error, {final String? $type})
+class _$AuthStateErrorImpl implements _AuthStateError {
+  _$AuthStateErrorImpl(this.error, {final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$_AuthStateError.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthStateErrorFromJson(json);
+  factory _$AuthStateErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthStateErrorImplFromJson(json);
 
   @override
   final dynamic error;
@@ -594,10 +596,10 @@ class _$_AuthStateError implements _AuthStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthStateError &&
+            other is _$AuthStateErrorImpl &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -609,8 +611,9 @@ class _$_AuthStateError implements _AuthStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith =>
-      __$$_AuthStateErrorCopyWithImpl<_$_AuthStateError>(this, _$identity);
+  _$$AuthStateErrorImplCopyWith<_$AuthStateErrorImpl> get copyWith =>
+      __$$AuthStateErrorImplCopyWithImpl<_$AuthStateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -688,20 +691,20 @@ class _$_AuthStateError implements _AuthStateError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthStateErrorToJson(
+    return _$$AuthStateErrorImplToJson(
       this,
     );
   }
 }
 
 abstract class _AuthStateError implements AuthState {
-  factory _AuthStateError(final dynamic error) = _$_AuthStateError;
+  factory _AuthStateError(final dynamic error) = _$AuthStateErrorImpl;
 
   factory _AuthStateError.fromJson(Map<String, dynamic> json) =
-      _$_AuthStateError.fromJson;
+      _$AuthStateErrorImpl.fromJson;
 
   dynamic get error;
   @JsonKey(ignore: true)
-  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith =>
+  _$$AuthStateErrorImplCopyWith<_$AuthStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

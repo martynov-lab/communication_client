@@ -6,26 +6,39 @@ import 'package:injectable/injectable.dart';
 @test
 class MockSignalingServise implements VideoRoomRepository {
   @override
-  Future<String> createRoom(RTCVideoRenderer remoteRenderer) {
+  Future<String> createRoom({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) {
     // TODO: implement createRoom
     throw UnimplementedError();
   }
 
   @override
-  Future<void> hangUp(RTCVideoRenderer localVideo) {
+  Future<void> hangUp({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) {
     // TODO: implement hangUp
     throw UnimplementedError();
   }
 
   @override
-  Future<void> joinRoom(String roomId, RTCVideoRenderer remoteVideo) {
+  Future<void> joinRoom({
+    required String roomId,
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) {
     // TODO: implement joinRoom
     throw UnimplementedError();
   }
 
   @override
-  Future<void> openUserMedia(
-      RTCVideoRenderer localVideo, RTCVideoRenderer remoteVideo) {
+  Future<void> openUserMedia({
+    required RTCVideoRenderer localRenderer,
+    required RTCVideoRenderer remoteRenderer,
+  }) {
     // TODO: implement openUserMedia
     throw UnimplementedError();
   }
