@@ -69,7 +69,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '310857209897',
     projectId: 'communication-1cbb7',
     storageBucket: 'communication-1cbb7.appspot.com',
-    iosClientId: '310857209897-fq842eth2qome2prd237kqmtthaah25h.apps.googleusercontent.com',
+    iosClientId:
+        '310857209897-fq842eth2qome2prd237kqmtthaah25h.apps.googleusercontent.com',
+    iosBundleId: 'com.example.communicationClient',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBHqQzqTlHF8J4L4pPMfoWyP6noPUPqMqU',
+    appId: '1:310857209897:ios:b4e633cd3e66e8638a2438',
+    messagingSenderId: '310857209897',
+    projectId: 'communication-1cbb7',
+    storageBucket: 'communication-1cbb7.appspot.com',
+    iosClientId:
+        '310857209897-fq842eth2qome2prd237kqmtthaah25h.apps.googleusercontent.com',
     iosBundleId: 'com.example.communicationClient',
   );
 }

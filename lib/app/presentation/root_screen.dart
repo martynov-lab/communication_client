@@ -22,7 +22,7 @@ class RootScreen extends StatelessWidget {
     //   isAuthorized: ((context, value, child) => MainScreen(
     //         userEntity: value,
     //       )),
-    //   isLading: ((context) => const AppLoader()),
+    //   isLading: ((context) => const SpinKitLoader.),
     // );
   }
 }

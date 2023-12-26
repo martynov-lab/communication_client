@@ -14,8 +14,16 @@ class InviteParticipant extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          Share.share('https://communucation.ru/guest/$roomId');
+        onTap: () async {
+          final box = context.findRenderObject() as RenderBox?;
+          // Share the link to enter the room
+          await Share.share(
+            'poc://communucation.ru/guest/$roomId',
+            // parameter [sharePositionOrigin] use to specify a global origin rect
+            // for the share sheet to popover from on iPads and Macs.
+            sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+          );
+
           Utils.printYellow(
               'Ссылка: ${locator.get<AppConfig>().baseUrl}/guest/$roomId');
         },

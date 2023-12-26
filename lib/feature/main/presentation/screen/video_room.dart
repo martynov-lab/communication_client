@@ -31,18 +31,26 @@ class VideoRoom extends StatelessWidget {
     List<Widget> actions = [
       AppButton(
         text: 'Завершить для всех',
+        backgoundColor: ColorApp.redButton,
         onPressed: () {
-          // context.read<VideoRoomCubit>().deleteRoom(hash: hash ?? '');
+          context
+              .read<VideoRoomBloc>()
+              .add(VideoRoomEvent.deleteRoom(roomId ?? ''));
           Navigator.of(context).pop();
         },
         isActive: true,
       ),
-      const SizedBox(height: 20),
+      const SizedBox(height: 10),
       AppButton(
         text: 'Выйти',
+        backgoundColor: ColorApp.grey,
         onPressed: () {
           // context.read<VideoConferenceCubit>().leaveRoom();
-          Navigator.of(context).popUntil(ModalRoute.withName('/'));
+          //Navigator.of(context).popUntil(ModalRoute.withName('/'));
+          context
+              .read<VideoRoomBloc>()
+              .add(VideoRoomEvent.deleteRoom(roomId ?? ''));
+          Navigator.of(context).pop();
         },
         isActive: true,
       ),
@@ -285,50 +293,48 @@ class VideoRoom extends StatelessWidget {
                           color: ColorApp.redButton,
                           diameter: 50,
                           action: () {
-                            if ( //state.localParticipantEntity?.userRole == "Organizator"
-                                true) {
-                              showDialog(
-                                context: context,
-                                builder: (context) => Platform.isAndroid
-                                    ? AlertDialog(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 35, 44, 59),
-                                        actionsPadding:
-                                            const EdgeInsets.all(20),
-                                        scrollable: false,
-                                        actions: actions,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        elevation: 4,
-                                      )
-                                    : CupertinoAlertDialog(
-                                        actions: actions,
+                            // if ( //state.localParticipantEntity?.userRole == "Organizator"
+                            //     true) {
+                            showDialog<void>(
+                              context: context,
+                              builder: (context) => Platform.isAndroid
+                                  ? AlertDialog(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 39, 53, 77),
+                                      actionsPadding: const EdgeInsets.all(20),
+                                      scrollable: false,
+                                      actions: actions,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                              );
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (context) => Platform.isAndroid
-                                    ? AlertDialog(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 35, 44, 59),
-                                        actionsPadding:
-                                            const EdgeInsets.all(20),
-                                        scrollable: false,
-                                        actions: [actions[2]],
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        elevation: 4,
-                                      )
-                                    : CupertinoAlertDialog(
-                                        actions: actions,
-                                      ),
-                              );
-                            }
+                                      elevation: 4,
+                                    )
+                                  : CupertinoAlertDialog(
+                                      actions: actions,
+                                    ),
+                            );
+                            // } else {
+                            //   showDialog(
+                            //     context: context,
+                            //     builder: (context) => Platform.isAndroid
+                            //         ? AlertDialog(
+                            //             backgroundColor: const Color.fromARGB(
+                            //                 255, 35, 44, 59),
+                            //             actionsPadding:
+                            //                 const EdgeInsets.all(20),
+                            //             scrollable: false,
+                            //             actions: [actions[2]],
+                            //             shape: RoundedRectangleBorder(
+                            //               borderRadius:
+                            //                   BorderRadius.circular(10),
+                            //             ),
+                            //             elevation: 4,
+                            //           )
+                            //         : CupertinoAlertDialog(
+                            //             actions: actions,
+                            //           ),
+                            //   );
+                            // }
                           },
                         ),
                         // микрафон

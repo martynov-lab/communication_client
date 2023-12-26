@@ -28,7 +28,7 @@ class GridWithVideo extends StatelessWidget {
         onPressed: () {
           // context.read<VideoConferenceCubit>().callEnd();
           // context.read<VideoRoomCubit>().deleteRoom(hash: hash);
-          Navigator.of(context).pop();
+          //Navigator.of(context).pop();
         },
         isActive: true,
       ),
@@ -37,7 +37,7 @@ class GridWithVideo extends StatelessWidget {
         text: 'Выйти',
         onPressed: () {
           // context.read<VideoConferenceCubit>().leaveRoom();
-          Navigator.of(context).popUntil(ModalRoute.withName('/'));
+          //Navigator.of(context).popUntil(ModalRoute.withName('/'));
         },
         isActive: true,
       ),

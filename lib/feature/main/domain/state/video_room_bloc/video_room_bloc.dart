@@ -27,14 +27,8 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
     );
   }
 
-  //     signaling.onAddRemoteStream = ((stream) {
-//       _remoteRenderer.srcObject = stream;
-//       setState(() {});
-//     });
-
   Future<void> _creatRoom(
       _CreateVideoRoomEvent event, Emitter<VideoRoomState> emitter) async {
-    print('Создать встречу!!!!!!!!!!!!!!');
     try {
       emitter(const VideoRoomState.loading());
       await signalingService.openUserMedia(
@@ -45,6 +39,8 @@ class VideoRoomBloc extends Bloc<VideoRoomEvent, VideoRoomState> {
         localRenderer: localRenderer,
         remoteRenderer: remoteRenderer,
       );
+      await Future.delayed(const Duration(milliseconds: 3000));
+
       emitter(VideoRoomState.created(roomId, localRenderer, remoteRenderer));
     } catch (e) {
       emitter(VideoRoomState.error('Некритичная ошибка: ${e}'));

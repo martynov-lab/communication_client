@@ -325,18 +325,28 @@ class MainScreen extends StatelessWidget {
               const EdgeInsets.only(top: 80, bottom: 5, left: 20, right: 20),
           child: AdaptiveWidget(
             wide: Column(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      //const Expanded(child: MenuWidget()),
-                      Expanded(
-                          child: Image.asset(
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 80),
+                        child: HomeButtons(),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Image.asset(
                         ImageRasterPath.home,
                         fit: BoxFit.fitWidth,
-                      )),
-                    ],
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
                 const Row(
                   mainAxisSize: MainAxisSize.max,

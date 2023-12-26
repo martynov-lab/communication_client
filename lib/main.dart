@@ -7,15 +7,11 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseApp app = await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  print('Initialized default app: $app');
   const env = String.fromEnvironment("env", defaultValue: "dev");
-  print('ENV: $env');
   const runner = MainAppRunner(env);
-  print('Runner: $runner');
   final builder = MainAppBuilder();
-  print('Builder: $builder');
   runner.run(builder);
 }

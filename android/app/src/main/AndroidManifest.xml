@@ -44,7 +44,7 @@
                     android:host="10.0.2.2"
                     android:pathPrefix="/guest/" /> -->
                 <!-- PROD "https://10.0.2.2/guest/ -->
-                <data android:scheme="https"
+                <data android:scheme="poc"
                     android:host="communucation.ru"
                     android:pathPrefix="/guest/" />
             </intent-filter>
