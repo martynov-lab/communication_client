@@ -206,6 +206,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "firebase_auth",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/firebase_auth-4.15.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "firebase_core",
       "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/firebase_core-2.24.2",
       "packageUri": "lib/",
@@ -722,7 +740,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-12-26T19:23:07.705826Z",
+  "generated": "2023-12-27T08:07:35.108564Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

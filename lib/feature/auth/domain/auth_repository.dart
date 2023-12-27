@@ -18,4 +18,5 @@ abstract class AuthRepository {
     required String newPassword,
   });
   Future<dynamic> refrechToken({String? refreshToken});
+  Future<void> logout();
 }

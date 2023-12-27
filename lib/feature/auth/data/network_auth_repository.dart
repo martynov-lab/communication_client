@@ -8,7 +8,6 @@ import '../../../app/domain/app_api.dart';
 
 @Injectable(as: AuthRepository)
 @prod
-@dev
 class NetWorkAuthRepository implements AuthRepository {
   final AppApi api;
 
@@ -95,5 +94,11 @@ class NetWorkAuthRepository implements AuthRepository {
     } catch (_) {
       rethrow;
     }
+  }
+
+  @override
+  Future<void> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
 }

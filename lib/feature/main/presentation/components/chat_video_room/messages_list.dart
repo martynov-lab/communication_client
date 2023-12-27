@@ -28,7 +28,7 @@ class _MessagesListState extends State<MessagesList> {
         date: DateTime.now().toString(),
         isSentByMe: false,
         autor: const UserEntity(
-            userId: 01,
+            userId: '01',
             userName: 'sergey@main.ru',
             email: 'sergey@main.ru',
             firstname: 'Сергей'),
@@ -38,7 +38,7 @@ class _MessagesListState extends State<MessagesList> {
         date: DateTime.now().toString(),
         isSentByMe: true,
         autor: const UserEntity(
-            userId: 02,
+            userId: '02',
             userName: 'andrey@flutter.ru',
             email: 'andrey@flutter.ru',
             firstname: 'Андрей'),

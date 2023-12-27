@@ -4,7 +4,7 @@ import 'package:communication_client/app/presentation/components/app_snackbar/to
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app/presentation/components/app_dialog.dart';
-import '../../domain/auth_state/auth_cubit.dart';
+import '../../domain/auth_state/auth_bloc.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
@@ -22,12 +22,12 @@ class UserScreen extends StatelessWidget {
             ),
             onPressed: (() {
               Navigator.pop(context);
-              context.read<AuthCubit>().logout();
+              context.read<AuthBloc>().add(const AuthEvent.logout());
             }),
           ),
         ],
       ),
-      body: BlocConsumer<AuthCubit, AuthState>(
+      body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           state.whenOrNull(
             authorized: (userEntity) {

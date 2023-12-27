@@ -1,4 +1,4 @@
-import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
+import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -110,7 +110,7 @@ class RegisterForm extends StatelessWidget {
                 );
               } else {
                 isLoginButtonEnabled
-                    ? _onFormSubmitted(context.read<AuthCubit>())
+                    ? _onFormSubmitted(context.read<AuthBloc>())
                     : null;
                 Navigator.of(context).pop();
               }
@@ -131,13 +131,13 @@ class RegisterForm extends StatelessWidget {
   //   });
   // }
 
-  void _onFormSubmitted(AuthCubit authCubit) {
-    authCubit.signUp(
-      username: _userNameController.text,
-      email: _emailController.text,
-      password: _passwordController.text,
+  void _onFormSubmitted(AuthBloc authBloc) {
+    authBloc.add(
+      AuthEvent.signUp(
+          username: _userNameController.text,
+          email: _emailController.text,
+          password: _passwordController.text),
     );
-
     // _loginBloc.add(
     //   LoginButtonPressed(
     //     username: _userNameController.text,

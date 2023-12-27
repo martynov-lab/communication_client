@@ -59,4 +59,10 @@ class MockAuthRepository implements AuthRepository {
     // TODO: implement updateUser
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
+  }
 }

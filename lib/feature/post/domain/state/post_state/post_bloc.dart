@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
+import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,7 +15,7 @@ part 'post_bloc.freezed.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   final PostRepository postRepository;
-  final AuthCubit authCubit;
+  final AuthBloc authCubit;
   late final StreamSubscription authSub;
   PostBloc(this.postRepository, this.authCubit)
       : super(const PostState(asyncSnapshot: AsyncSnapshot.nothing())) {

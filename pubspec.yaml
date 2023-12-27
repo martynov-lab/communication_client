@@ -36,6 +36,7 @@ dependencies:
   flutter_webrtc: ^0.9.47
   # firebase
   firebase_core: ^2.10.0
+  firebase_auth: ^4.15.3
   cloud_firestore: ^4.5.3
   cloud_firestore_web: ^3.4.2
   # checks for an active internet connection

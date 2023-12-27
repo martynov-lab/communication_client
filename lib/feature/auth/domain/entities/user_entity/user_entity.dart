@@ -6,7 +6,7 @@ part 'user_entity.g.dart';
 @freezed
 class UserEntity with _$UserEntity {
   const factory UserEntity({
-    @Default(0) int userId,
+    @Default('') String userId,
     required String userName,
     required String? email,
     required String? firstname,
@@ -14,6 +14,8 @@ class UserEntity with _$UserEntity {
     String? avatarUrl,
     String? externalAvatarUrl,
     @Default('') String phoneNumber,
+    String? accessToken,
+    String? refreshToken,
   }) = _UserEntity;
 
   factory UserEntity.fromJson(Map<String, dynamic> json) =>

@@ -1,4 +1,4 @@
-import 'package:communication_client/feature/auth/domain/auth_state/auth_cubit.dart';
+import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
 import 'package:communication_client/feature/auth/presentation/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +7,7 @@ import '../../../../app/presentation/components/app_button.dart';
 import '../../../../app/presentation/components/app_text_field.dart';
 
 class LoginForm extends StatelessWidget {
-  LoginForm({Key? key}) : super(key: key);
+  LoginForm({super.key});
 
   final _userEmailController = TextEditingController(text: 'test@test.com');
   final _passwordController = TextEditingController(text: '123456Aa');
@@ -74,7 +74,7 @@ class LoginForm extends StatelessWidget {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 isLoginButtonEnabled
-                    ? _onFormSubmitted(context.read<AuthCubit>())
+                    ? _onFormSubmitted(context.read<AuthBloc>())
                     : null;
               }
             },
@@ -94,11 +94,9 @@ class LoginForm extends StatelessWidget {
   //   });
   // }
 
-  void _onFormSubmitted(AuthCubit authCubit) {
-    authCubit.signIn(
-      email: _userEmailController.text,
-      password: _passwordController.text,
-    );
+  void _onFormSubmitted(AuthBloc authBloc) {
+    authBloc.add(AuthEvent.signIn(
+        email: _userEmailController.text, password: _passwordController.text));
     // _loginBloc.add(
     //   LoginButtonPressed(
     //     username: _userNameController.text,

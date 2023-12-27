@@ -20,7 +20,7 @@ UserEntity _$UserEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserEntity {
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get firstname => throw _privateConstructorUsedError;
@@ -28,6 +28,8 @@ mixin _$UserEntity {
   String? get avatarUrl => throw _privateConstructorUsedError;
   String? get externalAvatarUrl => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,14 +44,16 @@ abstract class $UserEntityCopyWith<$Res> {
       _$UserEntityCopyWithImpl<$Res, UserEntity>;
   @useResult
   $Res call(
-      {int userId,
+      {String userId,
       String userName,
       String? email,
       String? firstname,
       String surname,
       String? avatarUrl,
       String? externalAvatarUrl,
-      String phoneNumber});
+      String phoneNumber,
+      String? accessToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -73,12 +77,14 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? avatarUrl = freezed,
     Object? externalAvatarUrl = freezed,
     Object? phoneNumber = null,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -107,6 +113,14 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -120,14 +134,16 @@ abstract class _$$UserEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int userId,
+      {String userId,
       String userName,
       String? email,
       String? firstname,
       String surname,
       String? avatarUrl,
       String? externalAvatarUrl,
-      String phoneNumber});
+      String phoneNumber,
+      String? accessToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -149,12 +165,14 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? avatarUrl = freezed,
     Object? externalAvatarUrl = freezed,
     Object? phoneNumber = null,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_$UserEntityImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -183,6 +201,14 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -191,21 +217,23 @@ class __$$UserEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserEntityImpl implements _UserEntity {
   const _$UserEntityImpl(
-      {this.userId = 0,
+      {this.userId = '',
       required this.userName,
       required this.email,
       required this.firstname,
       this.surname = '',
       this.avatarUrl,
       this.externalAvatarUrl,
-      this.phoneNumber = ''});
+      this.phoneNumber = '',
+      this.accessToken,
+      this.refreshToken});
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserEntityImplFromJson(json);
 
   @override
   @JsonKey()
-  final int userId;
+  final String userId;
   @override
   final String userName;
   @override
@@ -222,10 +250,14 @@ class _$UserEntityImpl implements _UserEntity {
   @override
   @JsonKey()
   final String phoneNumber;
+  @override
+  final String? accessToken;
+  @override
+  final String? refreshToken;
 
   @override
   String toString() {
-    return 'UserEntity(userId: $userId, userName: $userName, email: $email, firstname: $firstname, surname: $surname, avatarUrl: $avatarUrl, externalAvatarUrl: $externalAvatarUrl, phoneNumber: $phoneNumber)';
+    return 'UserEntity(userId: $userId, userName: $userName, email: $email, firstname: $firstname, surname: $surname, avatarUrl: $avatarUrl, externalAvatarUrl: $externalAvatarUrl, phoneNumber: $phoneNumber, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -245,13 +277,27 @@ class _$UserEntityImpl implements _UserEntity {
             (identical(other.externalAvatarUrl, externalAvatarUrl) ||
                 other.externalAvatarUrl == externalAvatarUrl) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, userName, email,
-      firstname, surname, avatarUrl, externalAvatarUrl, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userId,
+      userName,
+      email,
+      firstname,
+      surname,
+      avatarUrl,
+      externalAvatarUrl,
+      phoneNumber,
+      accessToken,
+      refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -269,20 +315,22 @@ class _$UserEntityImpl implements _UserEntity {
 
 abstract class _UserEntity implements UserEntity {
   const factory _UserEntity(
-      {final int userId,
+      {final String userId,
       required final String userName,
       required final String? email,
       required final String? firstname,
       final String surname,
       final String? avatarUrl,
       final String? externalAvatarUrl,
-      final String phoneNumber}) = _$UserEntityImpl;
+      final String phoneNumber,
+      final String? accessToken,
+      final String? refreshToken}) = _$UserEntityImpl;
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
       _$UserEntityImpl.fromJson;
 
   @override
-  int get userId;
+  String get userId;
   @override
   String get userName;
   @override
@@ -297,6 +345,10 @@ abstract class _UserEntity implements UserEntity {
   String? get externalAvatarUrl;
   @override
   String get phoneNumber;
+  @override
+  String? get accessToken;
+  @override
+  String? get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
