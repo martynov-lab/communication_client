@@ -1,3 +1,4 @@
+import 'package:communication_client/feature/auth/data/storage_auth.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
@@ -16,20 +17,38 @@ class FirebaseAuthRepository implements AuthRepository {
   Future<UserEntity> getProfile() async {
     try {
       User? userFromFirebase = _firebaseAuth.currentUser;
-
-      userFromFirebase = _firebaseAuth.currentUser;
-      final user = UserEntity(
-        userId: userFromFirebase?.uid ?? '',
-        userName: userFromFirebase?.displayName ?? '',
-        firstname: userFromFirebase?.displayName,
-        email: userFromFirebase?.email,
-        avatarUrl: userFromFirebase?.photoURL,
-        phoneNumber: userFromFirebase?.phoneNumber ?? '',
-        surname: '',
-      );
-      return user;
+      if (userFromFirebase != null) {
+        return UserEntity(
+          userId: userFromFirebase.uid,
+          userName: userFromFirebase.displayName ?? '',
+          firstname: userFromFirebase.displayName,
+          email: userFromFirebase.email,
+          avatarUrl: userFromFirebase.photoURL,
+          phoneNumber: userFromFirebase.phoneNumber ?? '',
+          surname: '',
+        );
+      } else {
+        return UserEntity.empty;
+      }
     } catch (_) {
       rethrow;
+    }
+  }
+
+  UserEntity get currentUser {
+    User? userFromFirebase = _firebaseAuth.currentUser;
+    if (userFromFirebase != null) {
+      return UserEntity(
+        userId: userFromFirebase.uid,
+        userName: userFromFirebase.displayName ?? '',
+        firstname: userFromFirebase.displayName,
+        email: userFromFirebase.email,
+        avatarUrl: userFromFirebase.photoURL,
+        phoneNumber: userFromFirebase.phoneNumber ?? '',
+        surname: '',
+      );
+    } else {
+      return UserEntity.empty;
     }
   }
 

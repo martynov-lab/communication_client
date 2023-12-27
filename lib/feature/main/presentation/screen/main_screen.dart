@@ -298,8 +298,8 @@ class MainScreen extends StatelessWidget {
                         radius: 15,
                         backgroundColor: ColorApp.blueButton,
                         child: Text(
-                          user.userName != ''
-                              ? user.userName.substring(0, 1).toUpperCase()
+                          (user.userName != '' && user.userName != null)
+                              ? user.userName!.substring(0, 1).toUpperCase()
                               : 'G',
                           textAlign: TextAlign.center,
                           style: const TextStyle(

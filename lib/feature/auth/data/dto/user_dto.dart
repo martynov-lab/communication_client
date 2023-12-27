@@ -26,6 +26,7 @@ class UserDto {
 
   UserEntity toEntity() {
     return UserEntity(
+      userId: '0',
       email: email,
       userName: 'username',
       firstname: '',

@@ -1,10 +1,10 @@
 import 'package:communication_client/app/di/init_di.dart';
 import 'package:communication_client/app/domain/app_builder.dart';
 import 'package:communication_client/app/domain/app_runner.dart';
-import 'package:flutter/foundation.dart';
+import 'package:communication_client/feature/auth/data/storage_auth.dart';
+import 'package:communication_client/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
 
 class MainAppRunner implements AppRunner {
   final String env;
@@ -14,17 +14,20 @@ class MainAppRunner implements AppRunner {
   @override
   Future<void> preloadData() async {
     WidgetsFlutterBinding.ensureInitialized();
-
+    StorageAuth.init();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     initDi(env);
   }
 
   @override
   Future<void> run(AppBuilder appBuilder) async {
-    HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: kIsWeb
-          ? HydratedStorage.webStorageDirectory
-          : await getApplicationDocumentsDirectory(),
-    );
+    // HydratedBloc.storage = await HydratedStorage.build(
+    //   storageDirectory: kIsWeb
+    //       ? HydratedStorage.webStorageDirectory
+    //       : await getApplicationDocumentsDirectory(),
+    // );
     await preloadData();
     runApp(appBuilder.buildApp());
 

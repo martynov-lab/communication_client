@@ -5,18 +5,25 @@ part 'user_entity.g.dart';
 
 @freezed
 class UserEntity with _$UserEntity {
+  const UserEntity._();
   const factory UserEntity({
-    @Default('') String userId,
-    required String userName,
-    required String? email,
-    required String? firstname,
-    @Default('') String surname,
+    required String userId,
+    String? userName,
+    String? email,
+    String? firstname,
+    String? surname,
     String? avatarUrl,
     String? externalAvatarUrl,
-    @Default('') String phoneNumber,
+    String? phoneNumber,
     String? accessToken,
     String? refreshToken,
   }) = _UserEntity;
+
+  static const empty = UserEntity(userId: '');
+
+  bool get isEmpty => this == UserEntity.empty;
+
+  bool get isNotEmpty => this != UserEntity.empty;
 
   factory UserEntity.fromJson(Map<String, dynamic> json) =>
       _$UserEntityFromJson(json);

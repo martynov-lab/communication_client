@@ -8,14 +8,14 @@ part of 'user_entity.dart';
 
 _$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
     _$UserEntityImpl(
-      userId: json['userId'] as String? ?? '',
-      userName: json['userName'] as String,
+      userId: json['userId'] as String,
+      userName: json['userName'] as String?,
       email: json['email'] as String?,
       firstname: json['firstname'] as String?,
-      surname: json['surname'] as String? ?? '',
+      surname: json['surname'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
       externalAvatarUrl: json['externalAvatarUrl'] as String?,
-      phoneNumber: json['phoneNumber'] as String? ?? '',
+      phoneNumber: json['phoneNumber'] as String?,
       accessToken: json['accessToken'] as String?,
       refreshToken: json['refreshToken'] as String?,
     );

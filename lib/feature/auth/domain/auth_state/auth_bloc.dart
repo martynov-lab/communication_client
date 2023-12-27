@@ -1,20 +1,24 @@
 import 'package:communication_client/app/domain/error_entity/error_entity.dart';
+import 'package:communication_client/feature/auth/data/storage_auth.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 
 part 'auth_state.dart';
 part 'auth_event.dart';
 part 'auth_bloc.freezed.dart';
-part 'auth_bloc.g.dart';
 
-@lazySingleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
-  AuthBloc(this.authRepository) : super(AuthState.unauthorized()) {
+  AuthBloc(
+    this.authRepository,
+  ) : super(
+          authRepository.currentUser.isNotEmpty
+              ? AuthState.authorized(authRepository.currentUser)
+              : AuthState.unauthorized(),
+        ) {
     on<AuthEvent>(
       (event, emitter) => event.map<Future<void>>(
         signIn: (event) => _signIn(event, emitter),

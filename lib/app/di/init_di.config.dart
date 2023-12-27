@@ -14,17 +14,16 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../../feature/auth/data/firebase_auth_repository.dart' as _i6;
 import '../../feature/auth/data/mock_auth_repository.dart' as _i8;
-import '../../feature/auth/data/network_auth_repository.dart' as _i17;
+import '../../feature/auth/data/network_auth_repository.dart' as _i16;
 import '../../feature/auth/domain/auth_repository.dart' as _i5;
-import '../../feature/auth/domain/auth_state/auth_bloc.dart' as _i16;
 import '../../feature/main/data/firebase_signaling_service.dart' as _i12;
 import '../../feature/main/data/mock_signaling_service.dart' as _i11;
 import '../../feature/main/data/signaling_service.dart' as _i13;
 import '../../feature/main/domain/repository/video_room_repository.dart'
     as _i10;
 import '../../feature/main/domain/state/bloc_deep_link.dart' as _i9;
-import '../../feature/post/data/network_post_service.dart' as _i19;
-import '../../feature/post/domain/repository/post_repository.dart' as _i18;
+import '../../feature/post/data/network_post_service.dart' as _i18;
+import '../../feature/post/domain/repository/post_repository.dart' as _i17;
 import '../data/dio_app_api.dart' as _i15;
 import '../data/main_app_config.dart' as _i4;
 import '../domain/app_api.dart' as _i14;
@@ -79,14 +78,12 @@ _i1.GetIt $initDi(
     registerFor: {_prod},
   );
   gh.singleton<_i14.AppApi>(_i15.DioAppApi(gh<_i3.AppConfig>()));
-  gh.lazySingleton<_i16.AuthBloc>(
-      () => _i16.AuthBloc(gh<_i5.AuthRepository>()));
   gh.factory<_i5.AuthRepository>(
-    () => _i17.NetWorkAuthRepository(gh<_i14.AppApi>()),
+    () => _i16.NetWorkAuthRepository(gh<_i14.AppApi>()),
     registerFor: {_prod},
   );
-  gh.factory<_i18.PostRepository>(
-    () => _i19.NetworkPostService(gh<_i14.AppApi>()),
+  gh.factory<_i17.PostRepository>(
+    () => _i18.NetworkPostService(gh<_i14.AppApi>()),
     registerFor: {
       _prod,
       _dev,

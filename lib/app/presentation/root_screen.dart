@@ -47,6 +47,7 @@ class _RootScreen extends StatelessWidget {
                 FadeRoute(
                   page: const MainScreen(
                     user: UserEntity(
+                      userId: '0',
                       email: 'test@test.ru',
                       userName: 'Username',
                       firstname: 'Firstname',
@@ -57,6 +58,7 @@ class _RootScreen extends StatelessWidget {
         }
         return const MainScreen(
           user: UserEntity(
+            userId: '0',
             email: 'test@test.ru',
             userName: 'Username',
             firstname: 'Firstname',
