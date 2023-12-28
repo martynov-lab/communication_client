@@ -1,4 +1,3 @@
-import 'package:communication_client/feature/auth/data/storage_auth.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';

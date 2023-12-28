@@ -67,4 +67,8 @@ class MockAuthRepository implements AuthRepository {
     // TODO: implement logout
     throw UnimplementedError();
   }
+
+  @override
+  // TODO: implement currentUser
+  UserEntity get currentUser => throw UnimplementedError();
 }
