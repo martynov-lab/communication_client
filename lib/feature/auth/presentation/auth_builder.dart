@@ -1,9 +1,9 @@
 import 'package:communication_client/app/domain/error_entity/error_entity.dart';
-import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
+import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
+import 'package:communication_client/app/utils/utils.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../app/presentation/components/app_snackbar/top_snack_bar.dart';
 
 class AuthBuilder extends StatelessWidget {
   final WidgetBuilder isUnauthorized;
@@ -21,6 +21,7 @@ class AuthBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
         builder: ((context, state) {
+          Utils.printGreen('AuthBloc state: ${state}');
           return state.when(
             unauthorized: (() => isUnauthorized(context)),
             authorized: ((userEntity) =>
@@ -39,10 +40,7 @@ class AuthBuilder extends StatelessWidget {
         listener: ((context, state) {
           state.whenOrNull(
               error: (error) =>
-                  showErrorSnackBar(context, ErrorEntity.fromException(error))
-
-              // _showSnackBar(context, error),
-              );
+                  showErrorSnackBar(context, ErrorEntity.fromException(error)));
         }));
   }
 

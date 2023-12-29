@@ -1,12 +1,11 @@
+import 'package:communication_client/feature/auth/presentation/components/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../components/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/login';
 
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 20),
                       child: const Text(
-                        'Communication',
+                        'Connect',
                         style: TextStyle(
                           fontFamily: 'RedHatDisplay',
                           fontSize: 40,
@@ -58,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    LoginForm(),
+                    const LoginForm(),
                   ],
                 ),
               ],

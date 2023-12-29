@@ -11,6 +11,6 @@ class LoginState with _$LoginState {
     // String? errorPasswordMessage,
     InputState? email,
     InputState? password,
-    bool? isFormValid,
+    @Default(false) bool isFormValid,
   }) = _LoginState;
 }

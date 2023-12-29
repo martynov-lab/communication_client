@@ -1,16 +1,15 @@
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
-//import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth/firebase_auth.dart';
 
 @Injectable(as: AuthRepository)
 @dev
 class FirebaseAuthRepository implements AuthRepository {
-  late final FirebaseAuth _firebaseAuth;
+  @injectable
+  FirebaseAuth get _firebaseAuth => FirebaseAuth.instance;
 
-  FirebaseAuthRepository(FirebaseAuth? firebaseAuth)
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+  FirebaseAuthRepository();
 
   @override
   Future<UserEntity> getProfile() async {

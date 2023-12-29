@@ -1,86 +1,97 @@
+import 'package:communication_client/feature/auth/domain/state/obscure_password_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
+  final String? errorText;
   final bool isObscure;
   final IconData? icon;
-  bool showObscureText = false;
 
-  AppTextField({
-    Key? key,
+  const AppTextField({
+    super.key,
     required this.controller,
     required this.labelText,
+    this.errorText,
     this.isObscure = false,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: emptyValidator,
-      controller: controller,
-      maxLines: 1,
-      obscureText: isObscure,
-      style: const TextStyle(fontSize: 16, color: Colors.grey),
-      onEditingComplete: () => FocusScope.of(context).unfocus(),
-      decoration: InputDecoration(
-        hintStyle: const TextStyle(
-          fontSize: 16,
-          color: Colors.grey,
-        ),
-        hintText: labelText,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.grey, width: 1),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.grey, width: 2),
-        ),
-        errorBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.red, width: 2),
-        ),
-        prefixIcon: icon != null
-            ? Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: IconTheme(
-                  data: const IconThemeData(color: Colors.grey),
-                  child: Icon(icon),
-                ),
-              )
-            : null,
-        suffixIcon: isObscure
-            ? IconButton(
-                icon: showObscureText
-                    ? const Icon(
-                        Icons.visibility,
-                        color: Colors.grey,
-                      )
-                    : const Icon(
-                        Icons.visibility_off,
-                        color: Colors.grey,
+    return BlocProvider(
+      create: (context) => ObscurePasswordBloc(),
+      child: BlocBuilder<ObscurePasswordBloc, ObscurePasswordState>(
+        builder: (context, state) {
+          return TextFormField(
+            controller: controller,
+            maxLines: 1,
+            obscureText: isObscure ? state.isObscureInput1 : false,
+            obscuringCharacter: '●',
+            style: TextStyle(
+              fontSize: 16,
+              color: errorText == null ? Colors.grey : Colors.red,
+              letterSpacing: 2,
+            ),
+            onEditingComplete: () => FocusScope.of(context).unfocus(),
+            decoration: InputDecoration(
+              errorText: errorText,
+              hintStyle: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+              errorStyle: const TextStyle(
+                fontSize: 16,
+                color: Colors.red,
+              ),
+              hintText: labelText,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderSide: BorderSide(color: Colors.grey, width: 1),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderSide: BorderSide(color: Colors.grey, width: 1),
+              ),
+              errorBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderSide: BorderSide(color: Colors.red, width: 1),
+              ),
+              prefixIcon: icon != null
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: IconTheme(
+                        data: IconThemeData(
+                            color:
+                                errorText == null ? Colors.grey : Colors.red),
+                        child: Icon(icon),
                       ),
-                onPressed: () {} //_toggle,
-                )
-            : null,
+                    )
+                  : null,
+              suffixIcon: isObscure
+                  ? IconButton(
+                      icon: state.isObscureInput1
+                          ? Icon(
+                              Icons.visibility,
+                              color:
+                                  errorText == null ? Colors.grey : Colors.red,
+                            )
+                          : Icon(
+                              Icons.visibility_off,
+                              color:
+                                  errorText == null ? Colors.grey : Colors.red,
+                            ),
+                      onPressed: () {
+                        context
+                            .read<ObscurePasswordBloc>()
+                            .add(ObscureInput1());
+                      })
+                  : null,
+            ),
+          );
+        },
       ),
     );
-  }
-
-  String? emptyValidator(String? value) {
-    if (value?.isEmpty == true) {
-      return "Поле не должно быть пустым";
-    }
-
-    // switch (hint) {
-    //   case "Логин":
-    //     return (value == null || value.isEmpty) ? 'Введите имя' : null;
-    //   case "Пароль":
-    //     return (value == null || value.isEmpty) ? 'Введите пароль' : null;
-    //   default:
-    // }
-    // return null;
   }
 }

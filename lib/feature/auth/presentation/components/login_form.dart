@@ -1,48 +1,104 @@
-import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
-import 'package:communication_client/feature/auth/presentation/screen/register_screen.dart';
+import 'package:communication_client/app/utils/utils.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
+import 'package:communication_client/feature/auth/domain/state/login_state/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app/presentation/components/app_button.dart';
-import '../../../../app/presentation/components/app_text_field.dart';
+import 'package:communication_client/app/presentation/components/app_button.dart';
+import 'package:communication_client/app/presentation/components/app_text_field.dart';
+import 'package:communication_client/feature/auth/presentation/screen/register_screen.dart';
 
-class LoginForm extends StatelessWidget {
-  LoginForm({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
-  final _userEmailController = TextEditingController(text: 'test@test.com');
-  final _passwordController = TextEditingController(text: '123456Aa');
-  final _formKey = GlobalKey<FormState>();
-  // late LoginBloc _loginBloc;
-  // late AuthenticationBloc _authenticationBloc;
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
 
-  // bool _obscurePassword = true;
+class _LoginFormState extends State<LoginForm> {
+  final _userEmailController = TextEditingController();
+  //text: 'test@test.com'
+  final _passwordController = TextEditingController();
+  //text: '123456Aa'
 
-  bool get isLoginButtonEnabled =>
-      _userEmailController.text.isNotEmpty &&
-      _passwordController.text.isNotEmpty;
+  @override
+  void initState() {
+    _userEmailController.addListener(() {
+      context
+          .read<LoginBloc>()
+          .add(LoginEvent.changeEmail(_userEmailController.text));
+    });
+    _passwordController.addListener(() {
+      context
+          .read<LoginBloc>()
+          .add(LoginEvent.changePassword(_passwordController.text));
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _userEmailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
       child: Column(
         children: <Widget>[
           const SizedBox(
             height: 40,
           ),
-          AppTextField(
-            controller: _userEmailController,
-            labelText: 'Email',
-            icon: Icons.email,
+          BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (previous, current) =>
+                previous.email?.value != current.email?.value ||
+                previous.email?.errorMessage != current.email?.errorMessage,
+            builder: (context, state) {
+              return Focus(
+                onFocusChange: ((hasFocus) {
+                  if (!hasFocus) {
+                    context
+                        .read<LoginBloc>()
+                        .add(const LoginEvent.unfocusEmail());
+                  }
+                }),
+                child: AppTextField(
+                  controller: _userEmailController,
+                  labelText: 'Email',
+                  icon: Icons.email,
+                  errorText: state.email?.errorMessage,
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: 20,
           ),
-          AppTextField(
-            isObscure: true,
-            controller: _passwordController,
-            labelText: 'Пароль',
-            icon: Icons.lock,
+          BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (previous, current) =>
+                previous.password?.value != current.password?.value ||
+                previous.password?.errorMessage !=
+                    current.password?.errorMessage,
+            builder: (context, state) {
+              return Focus(
+                onFocusChange: ((hasFocus) {
+                  if (!hasFocus) {
+                    context
+                        .read<LoginBloc>()
+                        .add(const LoginEvent.unfocusPassword());
+                  }
+                }),
+                child: AppTextField(
+                  isObscure: true,
+                  controller: _passwordController,
+                  labelText: 'Пароль',
+                  icon: Icons.lock,
+                  errorText: state.password?.errorMessage,
+                ),
+              );
+            },
           ),
           // const SizedBox(
           //   height: 2,
@@ -69,16 +125,37 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          AppButton(
-            text: 'Вход',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                isLoginButtonEnabled
-                    ? _onFormSubmitted(context.read<AuthBloc>())
-                    : null;
+          BlocConsumer<LoginBloc, LoginState>(
+            listener: (context, state) {
+              if (state.isFormValid) {
+                context.read<AuthBloc>().add(AuthEvent.signIn(
+                    email: state.email?.value ?? '',
+                    password: state.password?.value ?? ''));
               }
             },
-            isActive: true,
+            buildWhen: (previous, current) =>
+                previous.isFormValid != current.isFormValid,
+            builder: (context, state) {
+              Utils.printGreen(
+                'State bloc: ',
+              );
+              Utils.printWhite(
+                'formValid: ${state.isFormValid}',
+              );
+              Utils.printWhite(
+                'email: ${state.email?.errorMessage}',
+              );
+              Utils.printWhite(
+                'password: ${state.password?.errorMessage}',
+              );
+              return AppButton(
+                text: 'Вход',
+                onPressed: () {
+                  context.read<LoginBloc>().add(const LoginEvent.formSubmit());
+                },
+                isActive: true, //state.isFormValid,
+              );
+            },
           ),
           const SizedBox(
             height: 20,
@@ -87,29 +164,4 @@ class LoginForm extends StatelessWidget {
       ),
     );
   }
-
-  // void _toggle() {
-  //   setState(() {
-  //     _obscurePassword = !_obscurePassword;
-  //   });
-  // }
-
-  void _onFormSubmitted(AuthBloc authBloc) {
-    authBloc.add(AuthEvent.signIn(
-        email: _userEmailController.text, password: _passwordController.text));
-    // _loginBloc.add(
-    //   LoginButtonPressed(
-    //     username: _userNameController.text,
-    //     password: _passwordController.text,
-    //   ),
-    // );
-    //FocusScope.of(context).requestFocus(FocusNode());
-  }
-
-  // @override
-  // void dispose() {
-  //   _userNameController.dispose();
-  //   _passwordController.dispose();
-  //   super.dispose();
-  // }
 }

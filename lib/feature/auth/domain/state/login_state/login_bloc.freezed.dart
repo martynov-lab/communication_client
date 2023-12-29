@@ -765,7 +765,7 @@ mixin _$LoginState {
 // String? errorPasswordMessage,
   InputState? get email => throw _privateConstructorUsedError;
   InputState? get password => throw _privateConstructorUsedError;
-  bool? get isFormValid => throw _privateConstructorUsedError;
+  bool get isFormValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -778,7 +778,7 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({InputState? email, InputState? password, bool? isFormValid});
+  $Res call({InputState? email, InputState? password, bool isFormValid});
 
   $InputStateCopyWith<$Res>? get email;
   $InputStateCopyWith<$Res>? get password;
@@ -799,7 +799,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? isFormValid = freezed,
+    Object? isFormValid = null,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -810,10 +810,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as InputState?,
-      isFormValid: freezed == isFormValid
+      isFormValid: null == isFormValid
           ? _value.isFormValid
           : isFormValid // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 
@@ -850,7 +850,7 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({InputState? email, InputState? password, bool? isFormValid});
+  $Res call({InputState? email, InputState? password, bool isFormValid});
 
   @override
   $InputStateCopyWith<$Res>? get email;
@@ -871,7 +871,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? isFormValid = freezed,
+    Object? isFormValid = null,
   }) {
     return _then(_$LoginStateImpl(
       email: freezed == email
@@ -882,10 +882,10 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as InputState?,
-      isFormValid: freezed == isFormValid
+      isFormValid: null == isFormValid
           ? _value.isFormValid
           : isFormValid // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -893,7 +893,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginStateImpl implements _LoginState {
-  const _$LoginStateImpl({this.email, this.password, this.isFormValid});
+  const _$LoginStateImpl({this.email, this.password, this.isFormValid = false});
 
 // String? email,
 // bool? isInputEmail,
@@ -906,7 +906,8 @@ class _$LoginStateImpl implements _LoginState {
   @override
   final InputState? password;
   @override
-  final bool? isFormValid;
+  @JsonKey()
+  final bool isFormValid;
 
   @override
   String toString() {
@@ -939,7 +940,7 @@ abstract class _LoginState implements LoginState {
   const factory _LoginState(
       {final InputState? email,
       final InputState? password,
-      final bool? isFormValid}) = _$LoginStateImpl;
+      final bool isFormValid}) = _$LoginStateImpl;
 
   @override // String? email,
 // bool? isInputEmail,
@@ -951,7 +952,7 @@ abstract class _LoginState implements LoginState {
   @override
   InputState? get password;
   @override
-  bool? get isFormValid;
+  bool get isFormValid;
   @override
   @JsonKey(ignore: true)
   _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>

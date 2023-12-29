@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         refreshToken: (event) => _refreshToken(event, emitter),
         passwordUpdate: (event) => _passwordUpdate(event, emitter),
       ),
-      transformer: bloc_concurrency.sequential(),
+      transformer: bloc_concurrency.droppable(),
     );
   }
 

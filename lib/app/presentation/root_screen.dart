@@ -1,5 +1,7 @@
 import 'package:communication_client/app/utils/transition/fade_transition.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
+import 'package:communication_client/feature/auth/presentation/auth_builder.dart';
+import 'package:communication_client/feature/auth/presentation/screen/login_screen.dart';
 import 'package:communication_client/feature/main/domain/state/bloc_deep_link.dart';
 import 'package:communication_client/feature/main/domain/state/video_room_bloc/video_room_bloc.dart';
 import 'package:communication_client/feature/main/presentation/screen/main_screen.dart';
@@ -16,14 +18,6 @@ class RootScreen extends StatelessWidget {
       dispose: (context, bloc) => bloc.dispose(),
       builder: (context, child) => const _RootScreen(),
     );
-
-    // AuthBuilder(
-    //   isUnauthorized: ((context) => const LoginScreen()),
-    //   isAuthorized: ((context, value, child) => MainScreen(
-    //         userEntity: value,
-    //       )),
-    //   isLading: ((context) => const SpinKitLoader.),
-    // );
   }
 }
 
@@ -56,13 +50,15 @@ class _RootScreen extends StatelessWidget {
                 )),
           );
         }
-        return const MainScreen(
-          user: UserEntity(
-            userId: '0',
-            email: 'test@test.ru',
-            userName: 'Username',
-            firstname: 'Firstname',
-          ),
+
+        return AuthBuilder(
+          isUnauthorized: ((context) => const LoginScreen()),
+          isAuthorized: ((context, value, child) => MainScreen(
+                user: value,
+              )),
+          isLading: ((context) => const Center(
+                child: CircularProgressIndicator(),
+              )),
         );
       },
     );

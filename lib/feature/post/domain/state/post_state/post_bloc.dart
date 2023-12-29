@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
 import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

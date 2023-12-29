@@ -1,10 +1,6 @@
-import 'package:communication_client/app/domain/error_entity/error_entity.dart';
-import 'package:communication_client/app/presentation/components/app_loader.dart';
-import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../app/presentation/components/app_dialog.dart';
-import '../../domain/auth_state/auth_bloc.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});

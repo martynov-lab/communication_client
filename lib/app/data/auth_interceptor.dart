@@ -1,5 +1,5 @@
 import 'package:communication_client/app/di/init_di.dart';
-import 'package:communication_client/feature/auth/domain/auth_state/auth_bloc.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../domain/app_api.dart';
