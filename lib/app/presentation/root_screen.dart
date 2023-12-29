@@ -33,7 +33,6 @@ class _RootScreen extends StatelessWidget {
           context
               .read<VideoRoomBloc>()
               .add(VideoRoomEvent.joinRoomLink(snapshot.data.toString()));
-          // Future.delayed(const Duration(seconds: 2));
 
           WidgetsBinding.instance.addPostFrameCallback(
             (_) => Navigator.push(

@@ -1,17 +1,17 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:communication_client/app/utils/mixins/validation/validator_login_mixin.dart';
-import 'package:communication_client/app/utils/utils.dart';
 import 'package:communication_client/feature/auth/domain/entities/iput_state/input_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 
-part 'login_event.dart';
-part 'login_state.dart';
-part 'login_bloc.freezed.dart';
+part 'register_event.dart';
+part 'register_state.dart';
+part 'register_bloc.freezed.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
-  LoginBloc() : super(const LoginState()) {
-    on<LoginEvent>(
+class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
+    with ValidatorLoginMixin {
+  RegisterBloc() : super(const RegisterState()) {
+    on<RegisterEvent>(
       (event, emitter) async => await event.map<Future<void>>(
         changeEmail: (event) => _changeEmail(event, emitter),
         changePassword: (event) => _changePassword(event, emitter),
@@ -31,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
   }
 
   Future<void> _changeEmail(
-      _ChangeEmailLoginEvent event, Emitter<LoginState> emitter) async {
+      _ChangeEmailRegisterEvent event, Emitter<RegisterState> emitter) async {
     emitter(
       state.copyWith(
         email: InputState(
@@ -43,8 +43,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
     );
   }
 
-  Future<void> _changePassword(
-      _ChangePasswordLoginEvent event, Emitter<LoginState> emitter) async {
+  Future<void> _changePassword(_ChangePasswordRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
     emitter(
       state.copyWith(
         password: InputState(
@@ -57,7 +57,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
   }
 
   Future<void> _unfocusEmail(
-      _UnfocusEmailLoginEvent event, Emitter<LoginState> emitter) async {
+      _UnfocusEmailRegisterEvent event, Emitter<RegisterState> emitter) async {
     emitter(state.copyWith(
       email: InputState(
         value: state.email?.value,
@@ -70,8 +70,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
     // ));
   }
 
-  Future<void> _unfocusPassword(
-      _UnfocusPasswordLoginEvent event, Emitter<LoginState> emitter) async {
+  Future<void> _unfocusPassword(_UnfocusPasswordRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
     emitter(state.copyWith(
       password: InputState(
         value: state.password?.value,
@@ -86,7 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
   }
 
   Future<void> _formSubmit(
-      _FormSubmitLoginEvent event, Emitter<LoginState> emitter) async {
+      _FormSubmitRegisterEvent event, Emitter<RegisterState> emitter) async {
     emitter(state.copyWith(
       email: InputState(
         value: state.email?.value,
@@ -99,11 +99,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> with ValidatorLoginMixin {
             validatePasswordFinal(state.password?.value ?? '') == null,
         errorMessage: validatePasswordFinal(state.password?.value ?? ''),
       ),
-      // isFormValid: _checkFomValid(),
     ));
-    Utils.printWhite(
-      'Submit',
-    );
+
     emitter(state.copyWith(
       isFormValid: _checkFomValid(),
     ));

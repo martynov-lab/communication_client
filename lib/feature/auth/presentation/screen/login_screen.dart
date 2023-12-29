@@ -1,11 +1,21 @@
+import 'package:communication_client/feature/auth/domain/state/login_state/login_bloc.dart';
 import 'package:communication_client/feature/auth/presentation/components/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const routeName = '/login';
-
   const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) => BlocProvider(
+        create: (context) => LoginBloc(),
+        child: const _LoginScreen(),
+      );
+}
+
+class _LoginScreen extends StatelessWidget {
+  const _LoginScreen();
 
   @override
   Widget build(BuildContext context) {

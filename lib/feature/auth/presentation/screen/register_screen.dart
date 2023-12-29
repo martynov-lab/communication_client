@@ -1,11 +1,21 @@
+import 'package:communication_client/feature/auth/domain/state/regisrer_state/register_bloc.dart';
+import 'package:communication_client/feature/auth/presentation/components/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../components/register_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
-  static const routeName = '/login';
+  const RegisterScreen({super.key});
 
-  const RegisterScreen({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) => BlocProvider(
+        create: (context) => RegisterBloc(),
+        child: const _RegisterScreen(),
+      );
+}
+
+class _RegisterScreen extends StatelessWidget {
+  const _RegisterScreen();
 
   @override
   Widget build(BuildContext context) {

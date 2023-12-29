@@ -21,7 +21,7 @@ class AuthBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
         builder: ((context, state) {
-          Utils.printGreen('AuthBloc state: ${state}');
+          Utils.printGreen('AuthBloc state: $state');
           return state.when(
             unauthorized: (() => isUnauthorized(context)),
             authorized: ((userEntity) =>
@@ -43,15 +43,4 @@ class AuthBuilder extends StatelessWidget {
                   showErrorSnackBar(context, ErrorEntity.fromException(error)));
         }));
   }
-
-  // void _showSnackBar(BuildContext context, dynamic error) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       duration: const Duration(seconds: 5),
-  //       content: SingleChildScrollView(
-  //         child: Text(
-  //           error.toString(),
-  //           maxLines: 5,
-  //         ),
-  //       )));
-  // }
 }

@@ -1,10 +1,9 @@
+import 'package:communication_client/app/presentation/components/app_button.dart';
+import 'package:communication_client/app/presentation/components/app_snackbar/top_snack_bar.dart';
+import 'package:communication_client/app/presentation/components/app_text_field.dart';
 import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../app/presentation/components/app_button.dart';
-import '../../../../app/presentation/components/app_snackbar/top_snack_bar.dart';
-import '../../../../app/presentation/components/app_text_field.dart';
 
 class RegisterForm extends StatelessWidget {
   RegisterForm({super.key});
