@@ -27,7 +27,7 @@ class AppTextField extends StatelessWidget {
           return TextFormField(
             controller: controller,
             maxLines: 1,
-            obscureText: isObscure ? state.isObscureInput1 : false,
+            obscureText: isObscure ? state.isObscureInput : false,
             obscuringCharacter: '●',
             style: TextStyle(
               fontSize: 16,
@@ -71,7 +71,7 @@ class AppTextField extends StatelessWidget {
                   : null,
               suffixIcon: isObscure
                   ? IconButton(
-                      icon: state.isObscureInput1
+                      icon: state.isObscureInput
                           ? Icon(
                               Icons.visibility,
                               color:
@@ -83,9 +83,7 @@ class AppTextField extends StatelessWidget {
                                   errorText == null ? Colors.grey : Colors.red,
                             ),
                       onPressed: () {
-                        context
-                            .read<ObscurePasswordBloc>()
-                            .add(ObscureInput1());
+                        context.read<ObscurePasswordBloc>().add(ObscureInput());
                       })
                   : null,
             ),

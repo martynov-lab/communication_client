@@ -13,8 +13,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
   RegisterBloc() : super(const RegisterState()) {
     on<RegisterEvent>(
       (event, emitter) async => await event.map<Future<void>>(
+        changeFirstName: (event) => _changeFirstName(event, emitter),
         changeEmail: (event) => _changeEmail(event, emitter),
         changePassword: (event) => _changePassword(event, emitter),
+        unfocusFirstName: (event) => _unfocusFirstName(event, emitter),
         unfocusEmail: (event) => _unfocusEmail(event, emitter),
         unfocusPassword: (event) => _unfocusPassword(event, emitter),
         formSubmit: (event) async => await _formSubmit(event, emitter),
@@ -28,6 +30,19 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     bool result = state.email?.isInputValid == true &&
         state.password?.isInputValid == true;
     return result;
+  }
+
+  Future<void> _changeFirstName(_ChangeFirstNameRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
+    emitter(
+      state.copyWith(
+        firstName: InputState(
+          value: event.value,
+          errorMessage: validateFirstName(event.value),
+        ),
+        isFormValid: false,
+      ),
+    );
   }
 
   Future<void> _changeEmail(
@@ -56,48 +71,60 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     );
   }
 
+  Future<void> _unfocusFirstName(_UnfocusFirstNameRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
+    String? errorMessage = validateFirstNameFinal(state.email?.value ?? '');
+    emitter(state.copyWith(
+      firstName: InputState(
+        value: state.email?.value,
+        isInputValid: errorMessage == null,
+        errorMessage: errorMessage,
+      ),
+    ));
+  }
+
   Future<void> _unfocusEmail(
       _UnfocusEmailRegisterEvent event, Emitter<RegisterState> emitter) async {
+    String? errorMessage = validateEmailFinal(state.email?.value ?? '');
     emitter(state.copyWith(
       email: InputState(
         value: state.email?.value,
-        isInputValid: validateEmailFinal(state.email?.value ?? '') == null,
-        errorMessage: validateEmailFinal(state.email?.value ?? ''),
+        isInputValid: errorMessage == null,
+        errorMessage: errorMessage,
       ),
     ));
-    // emitter(state.copyWith(
-    //   isFormValid: _checkFomValid(),
-    // ));
   }
 
   Future<void> _unfocusPassword(_UnfocusPasswordRegisterEvent event,
       Emitter<RegisterState> emitter) async {
+    String? errorMessage = validatePasswordFinal(state.password?.value ?? '');
     emitter(state.copyWith(
       password: InputState(
         value: state.password?.value,
-        isInputValid:
-            validatePasswordFinal(state.password?.value ?? '') == null,
-        errorMessage: validatePasswordFinal(state.password?.value ?? ''),
+        isInputValid: errorMessage == null,
+        errorMessage: errorMessage,
       ),
     ));
-    // emitter(state.copyWith(
-    //   isFormValid: _checkFomValid(),
-    // ));
+
+    //TODO сделать проверку на совпадение паролей
   }
 
   Future<void> _formSubmit(
       _FormSubmitRegisterEvent event, Emitter<RegisterState> emitter) async {
+    String? errorMessageEmail = validateEmailFinal(state.email?.value ?? '');
+    String? errorMessagePassword =
+        validatePasswordFinal(state.password?.value ?? '');
+
     emitter(state.copyWith(
       email: InputState(
         value: state.email?.value,
-        isInputValid: validateEmailFinal(state.email?.value ?? '') == null,
-        errorMessage: validateEmailFinal(state.email?.value ?? ''),
+        isInputValid: errorMessageEmail == null,
+        errorMessage: errorMessageEmail,
       ),
       password: InputState(
         value: state.password?.value,
-        isInputValid:
-            validatePasswordFinal(state.password?.value ?? '') == null,
-        errorMessage: validatePasswordFinal(state.password?.value ?? ''),
+        isInputValid: errorMessagePassword == null,
+        errorMessage: errorMessagePassword,
       ),
     ));
 

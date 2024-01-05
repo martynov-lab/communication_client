@@ -57,7 +57,7 @@ class _RegisterScreen extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 20),
                       child: const Text(
-                        'Communication',
+                        'Numa',
                         style: TextStyle(
                           fontFamily: 'RedHatDisplay',
                           fontSize: 40,

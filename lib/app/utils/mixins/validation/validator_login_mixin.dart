@@ -8,6 +8,27 @@ mixin class ValidatorLoginMixin {
   final String _validCharPassword =
       'Пароль должен состоять только из букв и цифр';
   final String _validEmailPassword = 'Вы ввели не email';
+  final String _validFirstName = 'Не долзно быть пробелов';
+
+  String? validateFirstName(String? value) {
+    if (value == null && value!.isEmpty) {
+      return null;
+    }
+    if (RegExValid.spacerRegExp.hasMatch(value)) {
+      return _validFirstName;
+    }
+    return null;
+  }
+
+  String? validateFirstNameFinal(String? value) {
+    if (value == null && value!.isEmpty) {
+      return _empty;
+    }
+    if (RegExValid.spacerRegExp.hasMatch(value)) {
+      return _validFirstName;
+    }
+    return null;
+  }
 
   String? validateEmail(String? value) {
     if (value == null) {

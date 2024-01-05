@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RegisterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -27,8 +29,10 @@ mixin _$RegisterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -36,8 +40,10 @@ mixin _$RegisterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -46,9 +52,13 @@ mixin _$RegisterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -57,8 +67,10 @@ mixin _$RegisterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -66,8 +78,10 @@ mixin _$RegisterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -92,6 +106,181 @@ class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ChangeFirstNameRegisterEventImplCopyWith<$Res> {
+  factory _$$ChangeFirstNameRegisterEventImplCopyWith(
+          _$ChangeFirstNameRegisterEventImpl value,
+          $Res Function(_$ChangeFirstNameRegisterEventImpl) then) =
+      __$$ChangeFirstNameRegisterEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$ChangeFirstNameRegisterEventImplCopyWithImpl<$Res>
+    extends _$RegisterEventCopyWithImpl<$Res,
+        _$ChangeFirstNameRegisterEventImpl>
+    implements _$$ChangeFirstNameRegisterEventImplCopyWith<$Res> {
+  __$$ChangeFirstNameRegisterEventImplCopyWithImpl(
+      _$ChangeFirstNameRegisterEventImpl _value,
+      $Res Function(_$ChangeFirstNameRegisterEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ChangeFirstNameRegisterEventImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeFirstNameRegisterEventImpl
+    implements _ChangeFirstNameRegisterEvent {
+  const _$ChangeFirstNameRegisterEventImpl(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'RegisterEvent.changeFirstName(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeFirstNameRegisterEventImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeFirstNameRegisterEventImplCopyWith<
+          _$ChangeFirstNameRegisterEventImpl>
+      get copyWith => __$$ChangeFirstNameRegisterEventImplCopyWithImpl<
+          _$ChangeFirstNameRegisterEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
+    required TResult Function(String value) changeEmail,
+    required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
+    required TResult Function() unfocusEmail,
+    required TResult Function() unfocusPassword,
+    required TResult Function() formSubmit,
+  }) {
+    return changeFirstName(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
+    TResult? Function(String value)? changeEmail,
+    TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
+    TResult? Function()? unfocusEmail,
+    TResult? Function()? unfocusPassword,
+    TResult? Function()? formSubmit,
+  }) {
+    return changeFirstName?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
+    TResult Function(String value)? changeEmail,
+    TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
+    TResult Function()? unfocusEmail,
+    TResult Function()? unfocusPassword,
+    TResult Function()? formSubmit,
+    required TResult orElse(),
+  }) {
+    if (changeFirstName != null) {
+      return changeFirstName(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
+    required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
+    required TResult Function(_ChangePasswordRegisterEvent value)
+        changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
+    required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
+    required TResult Function(_UnfocusPasswordRegisterEvent value)
+        unfocusPassword,
+    required TResult Function(_FormSubmitRegisterEvent value) formSubmit,
+  }) {
+    return changeFirstName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
+    TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
+    TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
+    TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
+    TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
+    TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
+  }) {
+    return changeFirstName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
+    TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
+    TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
+    TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
+    TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
+    TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
+    required TResult orElse(),
+  }) {
+    if (changeFirstName != null) {
+      return changeFirstName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeFirstNameRegisterEvent implements RegisterEvent {
+  const factory _ChangeFirstNameRegisterEvent(final String value) =
+      _$ChangeFirstNameRegisterEventImpl;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$ChangeFirstNameRegisterEventImplCopyWith<
+          _$ChangeFirstNameRegisterEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -161,8 +350,10 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -173,8 +364,10 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -185,8 +378,10 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -201,9 +396,13 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -215,8 +414,10 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -227,8 +428,10 @@ class _$ChangeEmailRegisterEventImpl implements _ChangeEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -319,8 +522,10 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -331,8 +536,10 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -343,8 +550,10 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -359,9 +568,13 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -373,8 +586,10 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -385,8 +600,10 @@ class _$ChangePasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -407,6 +624,148 @@ abstract class _ChangePasswordRegisterEvent implements RegisterEvent {
   @JsonKey(ignore: true)
   _$$ChangePasswordRegisterEventImplCopyWith<_$ChangePasswordRegisterEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnfocusFirstNameRegisterEventImplCopyWith<$Res> {
+  factory _$$UnfocusFirstNameRegisterEventImplCopyWith(
+          _$UnfocusFirstNameRegisterEventImpl value,
+          $Res Function(_$UnfocusFirstNameRegisterEventImpl) then) =
+      __$$UnfocusFirstNameRegisterEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnfocusFirstNameRegisterEventImplCopyWithImpl<$Res>
+    extends _$RegisterEventCopyWithImpl<$Res,
+        _$UnfocusFirstNameRegisterEventImpl>
+    implements _$$UnfocusFirstNameRegisterEventImplCopyWith<$Res> {
+  __$$UnfocusFirstNameRegisterEventImplCopyWithImpl(
+      _$UnfocusFirstNameRegisterEventImpl _value,
+      $Res Function(_$UnfocusFirstNameRegisterEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnfocusFirstNameRegisterEventImpl
+    implements _UnfocusFirstNameRegisterEvent {
+  const _$UnfocusFirstNameRegisterEventImpl();
+
+  @override
+  String toString() {
+    return 'RegisterEvent.unfocusFirstName()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnfocusFirstNameRegisterEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
+    required TResult Function(String value) changeEmail,
+    required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
+    required TResult Function() unfocusEmail,
+    required TResult Function() unfocusPassword,
+    required TResult Function() formSubmit,
+  }) {
+    return unfocusFirstName();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
+    TResult? Function(String value)? changeEmail,
+    TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
+    TResult? Function()? unfocusEmail,
+    TResult? Function()? unfocusPassword,
+    TResult? Function()? formSubmit,
+  }) {
+    return unfocusFirstName?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
+    TResult Function(String value)? changeEmail,
+    TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
+    TResult Function()? unfocusEmail,
+    TResult Function()? unfocusPassword,
+    TResult Function()? formSubmit,
+    required TResult orElse(),
+  }) {
+    if (unfocusFirstName != null) {
+      return unfocusFirstName();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
+    required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
+    required TResult Function(_ChangePasswordRegisterEvent value)
+        changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
+    required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
+    required TResult Function(_UnfocusPasswordRegisterEvent value)
+        unfocusPassword,
+    required TResult Function(_FormSubmitRegisterEvent value) formSubmit,
+  }) {
+    return unfocusFirstName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
+    TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
+    TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
+    TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
+    TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
+    TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
+  }) {
+    return unfocusFirstName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
+    TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
+    TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
+    TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
+    TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
+    TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
+    required TResult orElse(),
+  }) {
+    if (unfocusFirstName != null) {
+      return unfocusFirstName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnfocusFirstNameRegisterEvent implements RegisterEvent {
+  const factory _UnfocusFirstNameRegisterEvent() =
+      _$UnfocusFirstNameRegisterEventImpl;
 }
 
 /// @nodoc
@@ -450,8 +809,10 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -462,8 +823,10 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -474,8 +837,10 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -490,9 +855,13 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -504,8 +873,10 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -516,8 +887,10 @@ class _$UnfocusEmailRegisterEventImpl implements _UnfocusEmailRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -577,8 +950,10 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -589,8 +964,10 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -601,8 +978,10 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -617,9 +996,13 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -631,8 +1014,10 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -643,8 +1028,10 @@ class _$UnfocusPasswordRegisterEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -703,8 +1090,10 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String value) changeFirstName,
     required TResult Function(String value) changeEmail,
     required TResult Function(String value) changePassword,
+    required TResult Function() unfocusFirstName,
     required TResult Function() unfocusEmail,
     required TResult Function() unfocusPassword,
     required TResult Function() formSubmit,
@@ -715,8 +1104,10 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? changeFirstName,
     TResult? Function(String value)? changeEmail,
     TResult? Function(String value)? changePassword,
+    TResult? Function()? unfocusFirstName,
     TResult? Function()? unfocusEmail,
     TResult? Function()? unfocusPassword,
     TResult? Function()? formSubmit,
@@ -727,8 +1118,10 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? changeFirstName,
     TResult Function(String value)? changeEmail,
     TResult Function(String value)? changePassword,
+    TResult Function()? unfocusFirstName,
     TResult Function()? unfocusEmail,
     TResult Function()? unfocusPassword,
     TResult Function()? formSubmit,
@@ -743,9 +1136,13 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeFirstNameRegisterEvent value)
+        changeFirstName,
     required TResult Function(_ChangeEmailRegisterEvent value) changeEmail,
     required TResult Function(_ChangePasswordRegisterEvent value)
         changePassword,
+    required TResult Function(_UnfocusFirstNameRegisterEvent value)
+        unfocusFirstName,
     required TResult Function(_UnfocusEmailRegisterEvent value) unfocusEmail,
     required TResult Function(_UnfocusPasswordRegisterEvent value)
         unfocusPassword,
@@ -757,8 +1154,10 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult? Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult? Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult? Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult? Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult? Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult? Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -769,8 +1168,10 @@ class _$FormSubmitRegisterEventImpl implements _FormSubmitRegisterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeFirstNameRegisterEvent value)? changeFirstName,
     TResult Function(_ChangeEmailRegisterEvent value)? changeEmail,
     TResult Function(_ChangePasswordRegisterEvent value)? changePassword,
+    TResult Function(_UnfocusFirstNameRegisterEvent value)? unfocusFirstName,
     TResult Function(_UnfocusEmailRegisterEvent value)? unfocusEmail,
     TResult Function(_UnfocusPasswordRegisterEvent value)? unfocusPassword,
     TResult Function(_FormSubmitRegisterEvent value)? formSubmit,
@@ -789,6 +1190,7 @@ abstract class _FormSubmitRegisterEvent implements RegisterEvent {
 
 /// @nodoc
 mixin _$RegisterState {
+  InputState? get firstName => throw _privateConstructorUsedError;
   InputState? get email => throw _privateConstructorUsedError;
   InputState? get password => throw _privateConstructorUsedError;
   bool get isFormValid => throw _privateConstructorUsedError;
@@ -804,8 +1206,13 @@ abstract class $RegisterStateCopyWith<$Res> {
           RegisterState value, $Res Function(RegisterState) then) =
       _$RegisterStateCopyWithImpl<$Res, RegisterState>;
   @useResult
-  $Res call({InputState? email, InputState? password, bool isFormValid});
+  $Res call(
+      {InputState? firstName,
+      InputState? email,
+      InputState? password,
+      bool isFormValid});
 
+  $InputStateCopyWith<$Res>? get firstName;
   $InputStateCopyWith<$Res>? get email;
   $InputStateCopyWith<$Res>? get password;
 }
@@ -823,11 +1230,16 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? firstName = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? isFormValid = null,
   }) {
     return _then(_value.copyWith(
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as InputState?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -841,6 +1253,18 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
           : isFormValid // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InputStateCopyWith<$Res>? get firstName {
+    if (_value.firstName == null) {
+      return null;
+    }
+
+    return $InputStateCopyWith<$Res>(_value.firstName!, (value) {
+      return _then(_value.copyWith(firstName: value) as $Val);
+    });
   }
 
   @override
@@ -876,8 +1300,14 @@ abstract class _$$RegisterStateImplCopyWith<$Res>
       __$$RegisterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({InputState? email, InputState? password, bool isFormValid});
+  $Res call(
+      {InputState? firstName,
+      InputState? email,
+      InputState? password,
+      bool isFormValid});
 
+  @override
+  $InputStateCopyWith<$Res>? get firstName;
   @override
   $InputStateCopyWith<$Res>? get email;
   @override
@@ -895,11 +1325,16 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? firstName = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? isFormValid = null,
   }) {
     return _then(_$RegisterStateImpl(
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as InputState?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -920,8 +1355,10 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
 
 class _$RegisterStateImpl implements _RegisterState {
   const _$RegisterStateImpl(
-      {this.email, this.password, this.isFormValid = false});
+      {this.firstName, this.email, this.password, this.isFormValid = false});
 
+  @override
+  final InputState? firstName;
   @override
   final InputState? email;
   @override
@@ -932,7 +1369,7 @@ class _$RegisterStateImpl implements _RegisterState {
 
   @override
   String toString() {
-    return 'RegisterState(email: $email, password: $password, isFormValid: $isFormValid)';
+    return 'RegisterState(firstName: $firstName, email: $email, password: $password, isFormValid: $isFormValid)';
   }
 
   @override
@@ -940,6 +1377,8 @@ class _$RegisterStateImpl implements _RegisterState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterStateImpl &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -948,7 +1387,8 @@ class _$RegisterStateImpl implements _RegisterState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, isFormValid);
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, email, password, isFormValid);
 
   @JsonKey(ignore: true)
   @override
@@ -959,10 +1399,13 @@ class _$RegisterStateImpl implements _RegisterState {
 
 abstract class _RegisterState implements RegisterState {
   const factory _RegisterState(
-      {final InputState? email,
+      {final InputState? firstName,
+      final InputState? email,
       final InputState? password,
       final bool isFormValid}) = _$RegisterStateImpl;
 
+  @override
+  InputState? get firstName;
   @override
   InputState? get email;
   @override

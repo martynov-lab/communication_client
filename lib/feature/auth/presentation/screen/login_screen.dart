@@ -57,7 +57,7 @@ class _LoginScreen extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 20),
                       child: const Text(
-                        'Connect',
+                        'Numa',
                         style: TextStyle(
                           fontFamily: 'RedHatDisplay',
                           fontSize: 40,

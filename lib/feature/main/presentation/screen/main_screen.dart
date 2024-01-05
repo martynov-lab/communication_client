@@ -3,10 +3,13 @@ import 'package:communication_client/app/presentation/components/app_image_widge
 import 'package:communication_client/app/presentation/components/custom_icons.dart';
 import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:communication_client/app/utils/platform/adaptive_widget.dart';
+import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
+import 'package:communication_client/feature/auth/domain/state/login_state/login_bloc.dart';
 import 'package:communication_client/feature/main/presentation/screen/footter.dart';
 import 'package:communication_client/feature/main/presentation/screen/home_screen_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../auth/domain/entities/user_entity/user_entity.dart';
 
 // class MainScreen extends StatefulWidget {
@@ -252,8 +255,7 @@ class MainScreen extends StatelessWidget {
           textButtomOK: 'OK',
           functionOK: () {
             Navigator.of(context).popUntil(ModalRoute.withName('/'));
-
-            // context.read<AuthCubit>().logout();
+            context.read<AuthBloc>().add(const AuthEvent.logout());
           },
         );
 
@@ -273,7 +275,7 @@ class MainScreen extends StatelessWidget {
           leading: GestureDetector(
             onTap: (() {
               Navigator.of(context).popUntil(ModalRoute.withName('/'));
-              //context.read<AuthCubit>().logout();
+              context.read<AuthBloc>().add(const AuthEvent.logout());
             }),
             child: const Icon(CustomIcon.logout),
           ),

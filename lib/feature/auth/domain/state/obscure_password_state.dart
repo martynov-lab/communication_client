@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 sealed class ObscurePasswordEvent {}
 
-final class ObscureInput1 extends ObscurePasswordEvent {}
-
-final class ObscureInput2 extends ObscurePasswordEvent {}
+final class ObscureInput extends ObscurePasswordEvent {}
 
 class ObscurePasswordBloc
     extends Bloc<ObscurePasswordEvent, ObscurePasswordState> {
@@ -13,47 +11,34 @@ class ObscurePasswordBloc
     on<ObscurePasswordEvent>(
       (event, emitter) {
         switch (event) {
-          case ObscureInput1():
-            _obscureInput1(event, emitter);
-          case ObscureInput2():
-            _obscureInput2(event, emitter);
+          case ObscureInput():
+            _obscureInput(event, emitter);
         }
       },
       transformer: bloc_concurrency.droppable(),
     );
   }
 
-  void _obscureInput1(
-      ObscureInput1 event, Emitter<ObscurePasswordState> emitter) {
+  void _obscureInput(
+      ObscureInput event, Emitter<ObscurePasswordState> emitter) {
     emitter(
-      state.copyWith(isObscureInput1: !state.isObscureInput1),
-    );
-  }
-
-  void _obscureInput2(
-      ObscureInput2 event, Emitter<ObscurePasswordState> emitter) {
-    emitter(
-      state.copyWith(isObscureInput2: !state.isObscureInput2),
+      state.copyWith(isObscureInput: !state.isObscureInput),
     );
   }
 }
 
 final class ObscurePasswordState {
-  final bool isObscureInput1;
-  final bool isObscureInput2;
+  final bool isObscureInput;
 
   ObscurePasswordState({
-    this.isObscureInput1 = true,
-    this.isObscureInput2 = true,
+    this.isObscureInput = true,
   });
 
   ObscurePasswordState copyWith({
-    bool? isObscureInput1,
-    bool? isObscureInput2,
+    bool? isObscureInput,
   }) {
     return ObscurePasswordState(
-      isObscureInput1: isObscureInput1 ?? this.isObscureInput1,
-      isObscureInput2: isObscureInput2 ?? this.isObscureInput2,
+      isObscureInput: isObscureInput ?? this.isObscureInput,
     );
   }
 }

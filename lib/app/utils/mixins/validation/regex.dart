@@ -9,4 +9,8 @@ base class RegExValid {
   static final RegExp beginsWithLetterRegExp = RegExp(
     r'^[a-zA-z]{1}',
   );
+
+  static final RegExp spacerRegExp = RegExp(
+    r'^\s+$',
+  );
 }
