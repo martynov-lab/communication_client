@@ -19,7 +19,7 @@ class _LoginFormState extends State<LoginForm> {
   final _userEmailController = TextEditingController();
   //text: 'test@test.com'
   final _passwordController = TextEditingController();
-  //text: '123456Aa'
+  //text: 'test123'
 
   @override
   void initState() {

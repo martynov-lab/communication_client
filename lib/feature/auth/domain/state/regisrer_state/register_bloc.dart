@@ -15,10 +15,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
       (event, emitter) async => await event.map<Future<void>>(
         changeFirstName: (event) => _changeFirstName(event, emitter),
         changeEmail: (event) => _changeEmail(event, emitter),
-        changePassword: (event) => _changePassword(event, emitter),
+        changePasswordFirst: (event) => _changePasswordFirst(event, emitter),
+        changePasswordSecond: (event) => _changePasswordSecond(event, emitter),
         unfocusFirstName: (event) => _unfocusFirstName(event, emitter),
         unfocusEmail: (event) => _unfocusEmail(event, emitter),
-        unfocusPassword: (event) => _unfocusPassword(event, emitter),
+        unfocusPasswordFirst: (event) => _unfocusPasswordFirst(event, emitter),
+        unfocusPasswordSecond: (event) =>
+            _unfocusPasswordSecond(event, emitter),
         formSubmit: (event) async => await _formSubmit(event, emitter),
       ),
       transformer: bloc_concurrency.droppable(),
@@ -28,7 +31,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
   /// Validation form NetworkParams input
   bool _checkFomValid() {
     bool result = state.email?.isInputValid == true &&
-        state.password?.isInputValid == true;
+        state.passwordFirst?.isInputValid == true &&
+        state.passwordSecond?.isInputValid == true;
     return result;
   }
 
@@ -58,11 +62,24 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     );
   }
 
-  Future<void> _changePassword(_ChangePasswordRegisterEvent event,
+  Future<void> _changePasswordFirst(_ChangePasswordFirstRegisterEvent event,
       Emitter<RegisterState> emitter) async {
     emitter(
       state.copyWith(
-        password: InputState(
+        passwordFirst: InputState(
+          value: event.value,
+          errorMessage: validatePassword(event.value),
+        ),
+        isFormValid: false,
+      ),
+    );
+  }
+
+  Future<void> _changePasswordSecond(_ChangePasswordSecondRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
+    emitter(
+      state.copyWith(
+        passwordSecond: InputState(
           value: event.value,
           errorMessage: validatePassword(event.value),
         ),
@@ -95,25 +112,39 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     ));
   }
 
-  Future<void> _unfocusPassword(_UnfocusPasswordRegisterEvent event,
+  Future<void> _unfocusPasswordFirst(_UnfocusPasswordFirstRegisterEvent event,
       Emitter<RegisterState> emitter) async {
-    String? errorMessage = validatePasswordFinal(state.password?.value ?? '');
+    String? errorMessage =
+        validatePasswordFinal(state.passwordFirst?.value ?? '');
     emitter(state.copyWith(
-      password: InputState(
-        value: state.password?.value,
+      passwordFirst: InputState(
+        value: state.passwordFirst?.value,
         isInputValid: errorMessage == null,
         errorMessage: errorMessage,
       ),
     ));
+  }
 
-    //TODO сделать проверку на совпадение паролей
+  Future<void> _unfocusPasswordSecond(_UnfocusPasswordSecondRegisterEvent event,
+      Emitter<RegisterState> emitter) async {
+    String? errorMessage =
+        validatePasswordFinal(state.passwordSecond?.value ?? '');
+    emitter(state.copyWith(
+      passwordSecond: InputState(
+        value: state.passwordSecond?.value,
+        isInputValid: errorMessage == null,
+        errorMessage: errorMessage,
+      ),
+    ));
   }
 
   Future<void> _formSubmit(
       _FormSubmitRegisterEvent event, Emitter<RegisterState> emitter) async {
     String? errorMessageEmail = validateEmailFinal(state.email?.value ?? '');
-    String? errorMessagePassword =
-        validatePasswordFinal(state.password?.value ?? '');
+    String? errorMessagePasswordFirst =
+        validatePasswordFinal(state.passwordFirst?.value ?? '');
+    String? errorMessagePasswordSecond =
+        validatePasswordFinal(state.passwordSecond?.value ?? '');
 
     emitter(state.copyWith(
       email: InputState(
@@ -121,10 +152,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
         isInputValid: errorMessageEmail == null,
         errorMessage: errorMessageEmail,
       ),
-      password: InputState(
-        value: state.password?.value,
-        isInputValid: errorMessagePassword == null,
-        errorMessage: errorMessagePassword,
+      passwordFirst: InputState(
+        value: state.passwordFirst?.value,
+        isInputValid: errorMessagePasswordFirst == null,
+        errorMessage: errorMessagePasswordFirst,
+      ),
+      passwordSecond: InputState(
+        value: state.passwordSecond?.value,
+        isInputValid: errorMessagePasswordSecond == null,
+        errorMessage: errorMessagePasswordSecond,
       ),
     ));
 

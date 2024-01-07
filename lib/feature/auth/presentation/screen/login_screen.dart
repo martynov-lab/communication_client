@@ -1,3 +1,4 @@
+import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:communication_client/feature/auth/domain/state/login_state/login_bloc.dart';
 import 'package:communication_client/feature/auth/presentation/components/login_form.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _LoginScreen extends StatelessWidget {
                           fontFamily: 'RedHatDisplay',
                           fontSize: 40,
                           fontWeight: FontWeight.w900,
-                          color: Color.fromARGB(255, 93, 134, 239),
+                          color: ColorApp.blueButton,
                         ),
                         textAlign: TextAlign.center,
                       ),

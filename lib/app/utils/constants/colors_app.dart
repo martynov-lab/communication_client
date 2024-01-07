@@ -1,11 +1,11 @@
-part of app_constants;
+part of 'app_constants.dart';
 
 class ColorApp {
-  static const Color blueButton = Color.fromRGBO(0, 125, 254, 1);
+  static const Color blueButton = Color.fromARGB(255, 85, 128, 237);
   static const Color blueButtonLight = Color.fromRGBO(0, 125, 254, .05);
   static const Color redButton = Color.fromRGBO(229, 78, 79, 1);
   static const Color green = Color.fromRGBO(89, 130, 0, 1);
-  static const Color blue = Color.fromRGBO(29, 101, 176, 1);
+  static const Color blue = Color.fromARGB(255, 85, 128, 237);
   static const Color grey = Color.fromRGBO(156, 163, 175, 1);
 
   static const Color roomNotActiveButton = Color.fromRGBO(55, 65, 81, 0.5);

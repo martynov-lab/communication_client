@@ -166,6 +166,7 @@ class AppTheme {
                 borderRadius: BorderRadius.circular(28.0)),
             onPrimary: ColorApp.textButton,
             textStyle: const TextStyle(
+                color: ColorApp.textButton,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 fontFamily: Font.inter),
