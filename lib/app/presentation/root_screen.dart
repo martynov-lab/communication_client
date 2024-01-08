@@ -1,3 +1,4 @@
+import 'package:communication_client/app/presentation/components/app_loader.dart';
 import 'package:communication_client/app/utils/transition/fade_transition.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:communication_client/feature/auth/presentation/auth_builder.dart';
@@ -38,13 +39,17 @@ class _RootScreen extends StatelessWidget {
             (_) => Navigator.push(
                 context,
                 FadeRoute(
-                  page: const MainScreen(
-                    user: UserEntity(
-                      userId: '0',
-                      email: 'test@test.ru',
-                      userName: 'Username',
-                      firstname: 'Firstname',
+                  page: AuthBuilder(
+                    isUnauthorized: (context) => const MainScreen(
+                      user: UserEntity(
+                        userId: '0',
+                        userName: 'Guest',
+                      ),
                     ),
+                    isAuthorized: ((context, value, child) => MainScreen(
+                          user: value,
+                        )),
+                    isLading: (context) => const AppLoader(),
                   ),
                 )),
           );
@@ -55,9 +60,7 @@ class _RootScreen extends StatelessWidget {
           isAuthorized: ((context, value, child) => MainScreen(
                 user: value,
               )),
-          isLading: ((context) => const Center(
-                child: CircularProgressIndicator(),
-              )),
+          isLading: ((context) => const AppLoader()),
         );
       },
     );

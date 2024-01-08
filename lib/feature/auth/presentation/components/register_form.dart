@@ -190,6 +190,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         password: state.passwordSecond?.value ?? '',
                       ),
                     );
+                Navigator.pop(context);
               }
             },
             buildWhen: (previous, current) =>
