@@ -16,9 +16,9 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final _userEmailController = TextEditingController();
+  final _userEmailController = TextEditingController(text: 'test@test.com');
   //text: 'test@test.com'
-  final _passwordController = TextEditingController();
+  final _passwordController = TextEditingController(text: 'test123');
   //text: 'test123'
 
   @override

@@ -10,6 +10,25 @@ OverlayEntry? _previousEntry;
 
 late AnimationController localAnimationController;
 
+void showSuccessSnackBar(BuildContext context, String message) {
+  showTopSnackBar(
+    context,
+    CustomSnackBar.success(
+      message: message,
+      button: GestureDetector(
+        child: const Icon(
+          Icons.close,
+          color: Colors.white,
+        ),
+        onTap: () => localAnimationController.reverse(),
+      ),
+    ),
+    //persistent: true,
+    onAnimationControllerInit: (controller) =>
+        localAnimationController = controller,
+  );
+}
+
 void showErrorSnackBar(BuildContext context, ErrorEntity error) {
   showTopSnackBar(
     context,

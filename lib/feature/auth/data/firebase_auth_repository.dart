@@ -1,3 +1,4 @@
+import 'package:communication_client/app/utils/utils.dart';
 import 'package:communication_client/feature/auth/domain/auth_repository.dart';
 import 'package:communication_client/feature/auth/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
@@ -15,6 +16,7 @@ class FirebaseAuthRepository implements AuthRepository {
   Future<UserEntity> getProfile() async {
     try {
       User? userFromFirebase = _firebaseAuth.currentUser;
+
       if (userFromFirebase != null) {
         return UserEntity(
           userId: userFromFirebase.uid,
@@ -33,8 +35,10 @@ class FirebaseAuthRepository implements AuthRepository {
     }
   }
 
+  @override
   UserEntity get currentUser {
     User? userFromFirebase = _firebaseAuth.currentUser;
+    Utils.printRed('userFromFirebase: ${userFromFirebase}');
     if (userFromFirebase != null) {
       return UserEntity(
         userId: userFromFirebase.uid,
@@ -81,19 +85,30 @@ class FirebaseAuthRepository implements AuthRepository {
     required String password,
   }) async {
     try {
-      UserCredential userCredential =
-          await _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
+      // final user = UserEntity(
+      //   userId: userCredential.user?.uid ?? '',
+      //   userName: userCredential.user?.displayName ?? '',
+      //   firstname: userCredential.user?.displayName,
+      //   email: userCredential.user?.email,
+      //   avatarUrl: userCredential.user?.photoURL,
+      //   phoneNumber: userCredential.user?.phoneNumber ?? '',
+      //   surname: '',
+      // );
+
+      User? userFromFirebase = _firebaseAuth.currentUser;
+
       final user = UserEntity(
-        userId: userCredential.user?.uid ?? '',
-        userName: userCredential.user?.displayName ?? '',
-        firstname: userCredential.user?.displayName,
-        email: userCredential.user?.email,
-        avatarUrl: userCredential.user?.photoURL,
-        phoneNumber: userCredential.user?.phoneNumber ?? '',
+        userId: userFromFirebase?.uid ?? '',
+        userName: userFromFirebase?.displayName ?? '',
+        firstname: userFromFirebase?.displayName,
+        email: userFromFirebase?.email,
+        avatarUrl: userFromFirebase?.photoURL,
+        phoneNumber: userFromFirebase?.phoneNumber ?? '',
         surname: '',
       );
       return user;
@@ -109,19 +124,23 @@ class FirebaseAuthRepository implements AuthRepository {
     required String password,
   }) async {
     try {
-      UserCredential userCredential =
-          await _firebaseAuth.createUserWithEmailAndPassword(
+      await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
+      User? userFromFirebase = _firebaseAuth.currentUser;
+      await userFromFirebase?.updateDisplayName(username);
+
+      userFromFirebase = _firebaseAuth.currentUser;
+
       final user = UserEntity(
-        userId: userCredential.user?.uid ?? '',
-        userName: userCredential.user?.displayName ?? '',
-        firstname: userCredential.user?.displayName,
-        email: userCredential.user?.email,
-        avatarUrl: userCredential.user?.photoURL,
-        phoneNumber: userCredential.user?.phoneNumber ?? '',
+        userId: userFromFirebase?.uid ?? '',
+        userName: userFromFirebase?.displayName ?? '',
+        firstname: userFromFirebase?.displayName,
+        email: userFromFirebase?.email,
+        avatarUrl: userFromFirebase?.photoURL,
+        phoneNumber: userFromFirebase?.phoneNumber ?? '',
         surname: '',
       );
       return user;

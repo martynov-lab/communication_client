@@ -3,8 +3,10 @@ import 'package:communication_client/app/presentation/components/app_image_widge
 import 'package:communication_client/app/presentation/components/custom_icons.dart';
 import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:communication_client/app/utils/platform/adaptive_widget.dart';
+import 'package:communication_client/app/utils/transition/fade_transition.dart';
+import 'package:communication_client/app/utils/utils.dart';
 import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
-import 'package:communication_client/feature/auth/domain/state/login_state/login_bloc.dart';
+import 'package:communication_client/feature/auth/presentation/screen/profile_screen.dart';
 import 'package:communication_client/feature/main/presentation/screen/footter.dart';
 import 'package:communication_client/feature/main/presentation/screen/home_screen_buttons.dart';
 import 'package:flutter/material.dart';
@@ -211,6 +213,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Utils.printYellow('User name: ${user.userName}');
+    //context.read<AuthBloc>().add(const AuthEvent.logout());
     return
 
         // BlocListener<VideoRoomCubit, VideoRoomState>(
@@ -241,8 +245,8 @@ class MainScreen extends StatelessWidget {
         //     );
         //   },
         // child:
-        WillPopScope(
-      onWillPop: () async {
+        PopScope(
+      onPopInvoked: (didPop) async {
         AppDialog.openDialog(
           context: context,
           titile: 'Вы действительно хотите выйти из приложения?',
@@ -258,8 +262,6 @@ class MainScreen extends StatelessWidget {
             context.read<AuthBloc>().add(const AuthEvent.logout());
           },
         );
-
-        return false;
       },
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -300,7 +302,7 @@ class MainScreen extends StatelessWidget {
                         radius: 15,
                         backgroundColor: ColorApp.blueButton,
                         child: Text(
-                          (user.userName != '' && user.userName != null)
+                          (user.userName != null || user.userName != '')
                               ? user.userName!.substring(0, 1).toUpperCase()
                               : 'G',
                           textAlign: TextAlign.center,
@@ -313,10 +315,9 @@ class MainScreen extends StatelessWidget {
                         ),
                       ),
                 onPressed: () {
-                  print('Создать встречу!!!!!!!!!!!!!!');
                   // context.read<ImagePickerCubit>().getAllImages();
-                  // Navigator.push(
-                  //     context, FadeRoute(page: const ProfileScreen()));
+                  Navigator.push(
+                      context, FadeRoute(page: ProfileScreen(user: user)));
                 },
               ),
             ),

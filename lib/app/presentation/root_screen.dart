@@ -39,18 +39,25 @@ class _RootScreen extends StatelessWidget {
             (_) => Navigator.push(
                 context,
                 FadeRoute(
-                  page: AuthBuilder(
-                    isUnauthorized: (context) => const MainScreen(
-                      user: UserEntity(
-                        userId: '0',
-                        userName: 'Guest',
-                      ),
+                  page: const MainScreen(
+                    user: UserEntity(
+                      userId: '0',
+                      userName: 'Guest',
                     ),
-                    isAuthorized: ((context, value, child) => MainScreen(
-                          user: value,
-                        )),
-                    isLading: (context) => const AppLoader(),
                   ),
+
+                  // AuthBuilder(
+                  //   isUnauthorized: (context) => const MainScreen(
+                  //     user: UserEntity(
+                  //       userId: '0',
+                  //       userName: 'Guest',
+                  //     ),
+                  //   ),
+                  //   isAuthorized: ((context, value, child) => MainScreen(
+                  //         user: value,
+                  //       )),
+                  //   isLading: (context) => const AppLoader(),
+                  // ),
                 )),
           );
         }
