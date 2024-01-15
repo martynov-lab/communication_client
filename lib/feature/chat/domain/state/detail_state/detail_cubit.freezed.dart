@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DetailState {
   AsyncSnapshot<dynamic> get asyncSnapshot =>
       throw _privateConstructorUsedError;
-  PostEntity? get postEntity => throw _privateConstructorUsedError;
+  MessageEntity? get messageEntity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DetailStateCopyWith<DetailState> get copyWith =>
@@ -31,9 +31,8 @@ abstract class $DetailStateCopyWith<$Res> {
           DetailState value, $Res Function(DetailState) then) =
       _$DetailStateCopyWithImpl<$Res, DetailState>;
   @useResult
-  $Res call({AsyncSnapshot<dynamic> asyncSnapshot, PostEntity? postEntity});
-
-  $PostEntityCopyWith<$Res>? get postEntity;
+  $Res call(
+      {AsyncSnapshot<dynamic> asyncSnapshot, MessageEntity? messageEntity});
 }
 
 /// @nodoc
@@ -50,30 +49,18 @@ class _$DetailStateCopyWithImpl<$Res, $Val extends DetailState>
   @override
   $Res call({
     Object? asyncSnapshot = null,
-    Object? postEntity = freezed,
+    Object? messageEntity = freezed,
   }) {
     return _then(_value.copyWith(
       asyncSnapshot: null == asyncSnapshot
           ? _value.asyncSnapshot
           : asyncSnapshot // ignore: cast_nullable_to_non_nullable
               as AsyncSnapshot<dynamic>,
-      postEntity: freezed == postEntity
-          ? _value.postEntity
-          : postEntity // ignore: cast_nullable_to_non_nullable
-              as PostEntity?,
+      messageEntity: freezed == messageEntity
+          ? _value.messageEntity
+          : messageEntity // ignore: cast_nullable_to_non_nullable
+              as MessageEntity?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PostEntityCopyWith<$Res>? get postEntity {
-    if (_value.postEntity == null) {
-      return null;
-    }
-
-    return $PostEntityCopyWith<$Res>(_value.postEntity!, (value) {
-      return _then(_value.copyWith(postEntity: value) as $Val);
-    });
   }
 }
 
@@ -85,10 +72,8 @@ abstract class _$$DetailStateImplCopyWith<$Res>
       __$$DetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncSnapshot<dynamic> asyncSnapshot, PostEntity? postEntity});
-
-  @override
-  $PostEntityCopyWith<$Res>? get postEntity;
+  $Res call(
+      {AsyncSnapshot<dynamic> asyncSnapshot, MessageEntity? messageEntity});
 }
 
 /// @nodoc
@@ -103,17 +88,17 @@ class __$$DetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? asyncSnapshot = null,
-    Object? postEntity = freezed,
+    Object? messageEntity = freezed,
   }) {
     return _then(_$DetailStateImpl(
       asyncSnapshot: null == asyncSnapshot
           ? _value.asyncSnapshot
           : asyncSnapshot // ignore: cast_nullable_to_non_nullable
               as AsyncSnapshot<dynamic>,
-      postEntity: freezed == postEntity
-          ? _value.postEntity
-          : postEntity // ignore: cast_nullable_to_non_nullable
-              as PostEntity?,
+      messageEntity: freezed == messageEntity
+          ? _value.messageEntity
+          : messageEntity // ignore: cast_nullable_to_non_nullable
+              as MessageEntity?,
     ));
   }
 }
@@ -122,17 +107,17 @@ class __$$DetailStateImplCopyWithImpl<$Res>
 
 class _$DetailStateImpl implements _DetailState {
   const _$DetailStateImpl(
-      {this.asyncSnapshot = const AsyncSnapshot.nothing(), this.postEntity});
+      {this.asyncSnapshot = const AsyncSnapshot.nothing(), this.messageEntity});
 
   @override
   @JsonKey()
   final AsyncSnapshot<dynamic> asyncSnapshot;
   @override
-  final PostEntity? postEntity;
+  final MessageEntity? messageEntity;
 
   @override
   String toString() {
-    return 'DetailState(asyncSnapshot: $asyncSnapshot, postEntity: $postEntity)';
+    return 'DetailState(asyncSnapshot: $asyncSnapshot, messageEntity: $messageEntity)';
   }
 
   @override
@@ -142,12 +127,13 @@ class _$DetailStateImpl implements _DetailState {
             other is _$DetailStateImpl &&
             (identical(other.asyncSnapshot, asyncSnapshot) ||
                 other.asyncSnapshot == asyncSnapshot) &&
-            (identical(other.postEntity, postEntity) ||
-                other.postEntity == postEntity));
+            const DeepCollectionEquality()
+                .equals(other.messageEntity, messageEntity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, asyncSnapshot, postEntity);
+  int get hashCode => Object.hash(runtimeType, asyncSnapshot,
+      const DeepCollectionEquality().hash(messageEntity));
 
   @JsonKey(ignore: true)
   @override
@@ -159,12 +145,12 @@ class _$DetailStateImpl implements _DetailState {
 abstract class _DetailState implements DetailState {
   const factory _DetailState(
       {final AsyncSnapshot<dynamic> asyncSnapshot,
-      final PostEntity? postEntity}) = _$DetailStateImpl;
+      final MessageEntity? messageEntity}) = _$DetailStateImpl;
 
   @override
   AsyncSnapshot<dynamic> get asyncSnapshot;
   @override
-  PostEntity? get postEntity;
+  MessageEntity? get messageEntity;
   @override
   @JsonKey(ignore: true)
   _$$DetailStateImplCopyWith<_$DetailStateImpl> get copyWith =>

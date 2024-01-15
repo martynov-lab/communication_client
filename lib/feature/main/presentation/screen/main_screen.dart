@@ -285,14 +285,13 @@ class MainScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: IconButton(
-                icon: user.avatarUrl != null || user.externalAvatarUrl != null
+                icon: user.avatarUrl == null || user.avatarUrl == ''
                     ? CircleAvatar(
                         radius: 15,
                         child: ClipOval(
                           child: AppImageWidget(
-                            url: user.avatarUrl == null
-                                ? user.externalAvatarUrl ?? ''
-                                : '', //"${locator.get<AppConfig>().apiUrl}/${user.avatarUrl}",
+                            url:
+                                'https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg', //TODO <-delete "${locator.get<AppConfig>().apiUrl}/${user.avatarUrl}",
                             height: 50,
                             width: 50,
                           ),
@@ -386,7 +385,7 @@ class MainScreen extends StatelessWidget {
                     left: 70,
                   ),
                   child: Text(
-                    'Добро пожаловать в Connect!',
+                    'Добро пожаловать!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: ColorApp.blueButton,

@@ -13,7 +13,6 @@ class UserEntity with _$UserEntity {
     String? firstname,
     String? surname,
     String? avatarUrl,
-    String? externalAvatarUrl,
     String? phoneNumber,
     String? accessToken,
     String? refreshToken,

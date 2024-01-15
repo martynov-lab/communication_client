@@ -22,10 +22,10 @@ abstract class AppApi {
   Future<dynamic> refrechToken({String? refreshToken});
   Future<dynamic> request(String path);
   Future<dynamic> fetch(RequestOptions requestOptions);
-  Future<dynamic> fetchPosts(int fetchLimit, int offset);
-  Future<dynamic> fetchPost(String id);
+  Future<dynamic> fetchMessages(int fetchLimit, int offset);
+  Future<dynamic> fetchChats(String id);
 
-  Future<dynamic> deletePost(String id);
+  Future<dynamic> deleteMessage(String id);
 
-  Future<dynamic> createPost(Map args);
+  Future<dynamic> createMessage(Map args);
 }

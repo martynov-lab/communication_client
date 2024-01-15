@@ -16,6 +16,9 @@ class ItemAvatar extends StatefulWidget {
 }
 
 class _ItemAvatarState extends State<ItemAvatar> {
+  String temporaryAvatar =
+      'https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg';
+  //TODO delete temporaryAvatar
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,22 +29,21 @@ class _ItemAvatarState extends State<ItemAvatar> {
         //Avatar
         Stack(
           children: [
-            widget.user?.avatarUrl != null ||
-                    widget.user?.externalAvatarUrl != null
+            widget.user?.avatarUrl == null ||
+                    widget.user?.avatarUrl == '' //TODO changed !=
                 ? CircleAvatar(
                     radius: 60,
                     //backgroundColor: ColorApp.blueButton,
                     child: ClipOval(
                       child: AppImageWidget(
-                        url: widget.user?.avatarUrl == null
-                            ? widget.user?.externalAvatarUrl ?? ''
-                            : 'https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg', // "${locator.get<AppConfig>().apiUrl}/${widget.user?.avatarUrl}",
+                        url:
+                            temporaryAvatar, // "${locator.get<AppConfig>().apiUrl}/${widget.user?.avatarUrl}",
                         height: 330,
                         width: 330,
                       ),
 
-                      // Image.network(
-                      //   '${ApiPath.baseUrl}/${_user.avatarUrl}',
+                      //     Image.network(
+                      //   temporaryAvatar,
                       //   fit: BoxFit.cover,
                       //   cacheWidth: 330,
                       //   cacheHeight: 330,
@@ -49,8 +51,7 @@ class _ItemAvatarState extends State<ItemAvatar> {
                       //   alignment: Alignment.center,
                       //   filterQuality: FilterQuality.high,
                       //   errorBuilder: (context, error, stackTrace) {
-                      //     return Image.asset(
-                      //         'assets/images/raster/avatar.png');
+                      //     return Image.asset('assets/images/raster/avatar.png');
                       //   },
                       // ),
 

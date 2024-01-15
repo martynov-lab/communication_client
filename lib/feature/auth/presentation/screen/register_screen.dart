@@ -1,4 +1,3 @@
-import 'package:communication_client/app/utils/constants/app_constants.dart';
 import 'package:communication_client/feature/auth/domain/state/regisrer_state/register_bloc.dart';
 import 'package:communication_client/feature/auth/presentation/components/register_form.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +20,7 @@ class _RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
@@ -44,7 +44,7 @@ class _RegisterScreen extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(
-              //top: 120,
+              top: 50,
               left: 30,
               right: 30,
             ),
@@ -55,20 +55,10 @@ class _RegisterScreen extends StatelessWidget {
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 20),
-                      child: const Text(
-                        'Numa',
-                        style: TextStyle(
-                          fontFamily: 'RedHatDisplay',
-                          fontSize: 40,
-                          fontWeight: FontWeight.w900,
-                          color: ColorApp.blueButton,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                    SizedBox(
+                      child: Image.asset('assets/images/login.png'),
                     ),
-                    RegisterForm(),
+                    const RegisterForm(),
                   ],
                 ),
               ],

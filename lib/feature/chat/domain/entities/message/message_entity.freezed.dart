@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'post_entity.dart';
+part of 'message_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PostEntity _$PostEntityFromJson(Map<String, dynamic> json) {
-  return _PostEntity.fromJson(json);
+MessageEntity _$MessageEntityFromJson(Map<String, dynamic> json) {
+  return _MessageEntity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PostEntity {
+mixin _$MessageEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
@@ -28,15 +28,15 @@ mixin _$PostEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PostEntityCopyWith<PostEntity> get copyWith =>
+  $MessageEntityCopyWith<MessageEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PostEntityCopyWith<$Res> {
-  factory $PostEntityCopyWith(
-          PostEntity value, $Res Function(PostEntity) then) =
-      _$PostEntityCopyWithImpl<$Res, PostEntity>;
+abstract class $MessageEntityCopyWith<$Res> {
+  factory $MessageEntityCopyWith(
+          MessageEntity value, $Res Function(MessageEntity) then) =
+      _$MessageEntityCopyWithImpl<$Res, MessageEntity>;
   @useResult
   $Res call(
       {int id,
@@ -49,9 +49,9 @@ abstract class $PostEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PostEntityCopyWithImpl<$Res, $Val extends PostEntity>
-    implements $PostEntityCopyWith<$Res> {
-  _$PostEntityCopyWithImpl(this._value, this._then);
+class _$MessageEntityCopyWithImpl<$Res, $Val extends MessageEntity>
+    implements $MessageEntityCopyWith<$Res> {
+  _$MessageEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -105,11 +105,11 @@ class _$PostEntityCopyWithImpl<$Res, $Val extends PostEntity>
 }
 
 /// @nodoc
-abstract class _$$PostEntityImplCopyWith<$Res>
-    implements $PostEntityCopyWith<$Res> {
-  factory _$$PostEntityImplCopyWith(
-          _$PostEntityImpl value, $Res Function(_$PostEntityImpl) then) =
-      __$$PostEntityImplCopyWithImpl<$Res>;
+abstract class _$$MessageEntityImplCopyWith<$Res>
+    implements $MessageEntityCopyWith<$Res> {
+  factory _$$MessageEntityImplCopyWith(
+          _$MessageEntityImpl value, $Res Function(_$MessageEntityImpl) then) =
+      __$$MessageEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -124,11 +124,11 @@ abstract class _$$PostEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PostEntityImplCopyWithImpl<$Res>
-    extends _$PostEntityCopyWithImpl<$Res, _$PostEntityImpl>
-    implements _$$PostEntityImplCopyWith<$Res> {
-  __$$PostEntityImplCopyWithImpl(
-      _$PostEntityImpl _value, $Res Function(_$PostEntityImpl) _then)
+class __$$MessageEntityImplCopyWithImpl<$Res>
+    extends _$MessageEntityCopyWithImpl<$Res, _$MessageEntityImpl>
+    implements _$$MessageEntityImplCopyWith<$Res> {
+  __$$MessageEntityImplCopyWithImpl(
+      _$MessageEntityImpl _value, $Res Function(_$MessageEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +140,7 @@ class __$$PostEntityImplCopyWithImpl<$Res>
     Object? preContent = freezed,
     Object? autor = freezed,
   }) {
-    return _then(_$PostEntityImpl(
+    return _then(_$MessageEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -167,16 +167,16 @@ class __$$PostEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PostEntityImpl implements _PostEntity {
-  const _$PostEntityImpl(
+class _$MessageEntityImpl implements _MessageEntity {
+  const _$MessageEntityImpl(
       {required this.id,
       required this.name,
       this.content,
       this.preContent,
       this.autor});
 
-  factory _$PostEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostEntityImplFromJson(json);
+  factory _$MessageEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageEntityImplFromJson(json);
 
   @override
   final int id;
@@ -191,14 +191,14 @@ class _$PostEntityImpl implements _PostEntity {
 
   @override
   String toString() {
-    return 'PostEntity(id: $id, name: $name, content: $content, preContent: $preContent, autor: $autor)';
+    return 'MessageEntity(id: $id, name: $name, content: $content, preContent: $preContent, autor: $autor)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostEntityImpl &&
+            other is _$MessageEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.content, content) || other.content == content) &&
@@ -215,27 +215,27 @@ class _$PostEntityImpl implements _PostEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostEntityImplCopyWith<_$PostEntityImpl> get copyWith =>
-      __$$PostEntityImplCopyWithImpl<_$PostEntityImpl>(this, _$identity);
+  _$$MessageEntityImplCopyWith<_$MessageEntityImpl> get copyWith =>
+      __$$MessageEntityImplCopyWithImpl<_$MessageEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PostEntityImplToJson(
+    return _$$MessageEntityImplToJson(
       this,
     );
   }
 }
 
-abstract class _PostEntity implements PostEntity {
-  const factory _PostEntity(
+abstract class _MessageEntity implements MessageEntity {
+  const factory _MessageEntity(
       {required final int id,
       required final String name,
       final String? content,
       final String? preContent,
-      final AutorEntity? autor}) = _$PostEntityImpl;
+      final AutorEntity? autor}) = _$MessageEntityImpl;
 
-  factory _PostEntity.fromJson(Map<String, dynamic> json) =
-      _$PostEntityImpl.fromJson;
+  factory _MessageEntity.fromJson(Map<String, dynamic> json) =
+      _$MessageEntityImpl.fromJson;
 
   @override
   int get id;
@@ -249,6 +249,6 @@ abstract class _PostEntity implements PostEntity {
   AutorEntity? get autor;
   @override
   @JsonKey(ignore: true)
-  _$$PostEntityImplCopyWith<_$PostEntityImpl> get copyWith =>
+  _$$MessageEntityImplCopyWith<_$MessageEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

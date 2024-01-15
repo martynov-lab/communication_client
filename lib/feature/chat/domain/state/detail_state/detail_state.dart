@@ -4,6 +4,6 @@ part of 'detail_cubit.dart';
 class DetailState with _$DetailState {
   const factory DetailState({
     @Default(AsyncSnapshot.nothing()) AsyncSnapshot asyncSnapshot,
-    PostEntity? postEntity,
+    MessageEntity? messageEntity,
   }) = _DetailState;
 }

@@ -26,7 +26,6 @@ mixin _$UserEntity {
   String? get firstname => throw _privateConstructorUsedError;
   String? get surname => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
-  String? get externalAvatarUrl => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
@@ -50,7 +49,6 @@ abstract class $UserEntityCopyWith<$Res> {
       String? firstname,
       String? surname,
       String? avatarUrl,
-      String? externalAvatarUrl,
       String? phoneNumber,
       String? accessToken,
       String? refreshToken});
@@ -75,7 +73,6 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? firstname = freezed,
     Object? surname = freezed,
     Object? avatarUrl = freezed,
-    Object? externalAvatarUrl = freezed,
     Object? phoneNumber = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
@@ -104,10 +101,6 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      externalAvatarUrl: freezed == externalAvatarUrl
-          ? _value.externalAvatarUrl
-          : externalAvatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
@@ -140,7 +133,6 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       String? firstname,
       String? surname,
       String? avatarUrl,
-      String? externalAvatarUrl,
       String? phoneNumber,
       String? accessToken,
       String? refreshToken});
@@ -163,7 +155,6 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? firstname = freezed,
     Object? surname = freezed,
     Object? avatarUrl = freezed,
-    Object? externalAvatarUrl = freezed,
     Object? phoneNumber = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
@@ -193,10 +184,6 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      externalAvatarUrl: freezed == externalAvatarUrl
-          ? _value.externalAvatarUrl
-          : externalAvatarUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -223,7 +210,6 @@ class _$UserEntityImpl extends _UserEntity {
       this.firstname,
       this.surname,
       this.avatarUrl,
-      this.externalAvatarUrl,
       this.phoneNumber,
       this.accessToken,
       this.refreshToken})
@@ -245,8 +231,6 @@ class _$UserEntityImpl extends _UserEntity {
   @override
   final String? avatarUrl;
   @override
-  final String? externalAvatarUrl;
-  @override
   final String? phoneNumber;
   @override
   final String? accessToken;
@@ -255,7 +239,7 @@ class _$UserEntityImpl extends _UserEntity {
 
   @override
   String toString() {
-    return 'UserEntity(userId: $userId, userName: $userName, email: $email, firstname: $firstname, surname: $surname, avatarUrl: $avatarUrl, externalAvatarUrl: $externalAvatarUrl, phoneNumber: $phoneNumber, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'UserEntity(userId: $userId, userName: $userName, email: $email, firstname: $firstname, surname: $surname, avatarUrl: $avatarUrl, phoneNumber: $phoneNumber, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -272,8 +256,6 @@ class _$UserEntityImpl extends _UserEntity {
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
-            (identical(other.externalAvatarUrl, externalAvatarUrl) ||
-                other.externalAvatarUrl == externalAvatarUrl) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.accessToken, accessToken) ||
@@ -284,18 +266,8 @@ class _$UserEntityImpl extends _UserEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      userName,
-      email,
-      firstname,
-      surname,
-      avatarUrl,
-      externalAvatarUrl,
-      phoneNumber,
-      accessToken,
-      refreshToken);
+  int get hashCode => Object.hash(runtimeType, userId, userName, email,
+      firstname, surname, avatarUrl, phoneNumber, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -319,7 +291,6 @@ abstract class _UserEntity extends UserEntity {
       final String? firstname,
       final String? surname,
       final String? avatarUrl,
-      final String? externalAvatarUrl,
       final String? phoneNumber,
       final String? accessToken,
       final String? refreshToken}) = _$UserEntityImpl;
@@ -340,8 +311,6 @@ abstract class _UserEntity extends UserEntity {
   String? get surname;
   @override
   String? get avatarUrl;
-  @override
-  String? get externalAvatarUrl;
   @override
   String? get phoneNumber;
   @override

@@ -93,24 +93,24 @@ class DioAppApi implements AppApi {
   }
 
   @override
-  Future<Response> fetchPosts(int fetchLimit, int offset) {
+  Future<Response> fetchMessages(int fetchLimit, int offset) {
     return dio.get('/data/posts',
         queryParameters: {"fetchLimit": fetchLimit, "offset": offset});
   }
 
   @override
-  Future<Response> createPost(Map args) {
+  Future<Response> createMessage(Map args) {
     return dio.post('/data/posts',
         data: {"name": args["name"], "content": args["content"]});
   }
 
   @override
-  Future<Response> fetchPost(String id) {
+  Future<Response> fetchChats(String id) {
     return dio.get('/data/posts/$id');
   }
 
   @override
-  Future deletePost(String id) {
+  Future deleteMessage(String id) {
     return dio.delete('/data/posts/$id');
   }
 

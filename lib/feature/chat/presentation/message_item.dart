@@ -1,13 +1,10 @@
-import 'package:communication_client/feature/post/presentation/detail_post_screen.dart';
+import 'package:communication_client/feature/chat/domain/entities/message/message_entity.dart';
+import 'package:communication_client/feature/chat/presentation/chat_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../domain/entities/post/post_entity.dart';
-
-class PostItem extends StatelessWidget {
-  final PostEntity postEntity;
-  const PostItem({super.key, required this.postEntity});
+class MessageItem extends StatelessWidget {
+  final MessageEntity postEntity;
+  const MessageItem({super.key, required this.postEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +13,7 @@ class PostItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: ((context) => DatailPostScreen(
+                builder: ((context) => ChatScreen(
                       id: postEntity.id.toString(),
                     ))));
       },

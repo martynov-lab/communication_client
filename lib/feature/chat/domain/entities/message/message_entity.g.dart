@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_entity.dart';
+part of 'message_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PostEntityImpl _$$PostEntityImplFromJson(Map<String, dynamic> json) =>
-    _$PostEntityImpl(
+_$MessageEntityImpl _$$MessageEntityImplFromJson(Map<String, dynamic> json) =>
+    _$MessageEntityImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       content: json['content'] as String?,
@@ -17,7 +17,7 @@ _$PostEntityImpl _$$PostEntityImplFromJson(Map<String, dynamic> json) =>
           : AutorEntity.fromJson(json['autor'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$PostEntityImplToJson(_$PostEntityImpl instance) =>
+Map<String, dynamic> _$$MessageEntityImplToJson(_$MessageEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -15,13 +15,13 @@ import '../../feature/auth/data/firebase_auth_repository.dart' as _i6;
 import '../../feature/auth/data/mock_auth_repository.dart' as _i7;
 import '../../feature/auth/data/network_auth_repository.dart' as _i15;
 import '../../feature/auth/domain/auth_repository.dart' as _i5;
+import '../../feature/chat/data/network_chat_service.dart' as _i17;
+import '../../feature/chat/domain/repository/chat_repository.dart' as _i16;
 import '../../feature/main/data/firebase_signaling_service.dart' as _i11;
 import '../../feature/main/data/mock_signaling_service.dart' as _i10;
 import '../../feature/main/data/signaling_service.dart' as _i12;
 import '../../feature/main/domain/repository/video_room_repository.dart' as _i9;
 import '../../feature/main/domain/state/bloc_deep_link.dart' as _i8;
-import '../../feature/post/data/network_post_service.dart' as _i17;
-import '../../feature/post/domain/repository/post_repository.dart' as _i16;
 import '../data/dio_app_api.dart' as _i14;
 import '../data/main_app_config.dart' as _i4;
 import '../domain/app_api.dart' as _i13;
@@ -80,8 +80,8 @@ _i1.GetIt $initDi(
     () => _i15.NetWorkAuthRepository(gh<_i13.AppApi>()),
     registerFor: {_prod},
   );
-  gh.factory<_i16.PostRepository>(
-    () => _i17.NetworkPostService(gh<_i13.AppApi>()),
+  gh.factory<_i16.ChatRepository>(
+    () => _i17.NetworkChatService(gh<_i13.AppApi>()),
     registerFor: {
       _prod,
       _dev,

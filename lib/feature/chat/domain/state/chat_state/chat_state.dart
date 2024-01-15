@@ -1,10 +1,10 @@
-part of 'post_bloc.dart';
+part of 'chat_bloc.dart';
 
 @freezed
-class PostState with _$PostState {
-  const factory PostState({
+class ChatState with _$ChatState {
+  const factory ChatState({
     @JsonKey(ignore: true) AsyncSnapshot? asyncSnapshot,
-    @Default([]) List<PostEntity> postList,
+    @Default([]) List<MessageEntity> messageList,
     @Default(15) int fetchLimit,
     @Default(0) int offset,
   }) = _PostState;

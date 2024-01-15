@@ -1,50 +1,51 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:communication_client/app/di/init_di.dart';
+import 'package:communication_client/app/domain/app_config.dart';
 import 'package:communication_client/feature/auth/domain/state/auth_state/auth_bloc.dart';
-import 'package:communication_client/feature/post/domain/repository/post_repository.dart';
+import 'package:communication_client/feature/chat/domain/entities/message/message_entity.dart';
+import 'package:communication_client/feature/chat/domain/repository/chat_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../../app/di/init_di.dart';
-import '../../../../../app/domain/app_config.dart';
-import '../../entities/post/post_entity.dart';
-part 'post_state.dart';
-part 'post_event.dart';
-part 'post_bloc.freezed.dart';
 
-class PostBloc extends Bloc<PostEvent, PostState> {
-  final PostRepository postRepository;
+part 'chat_state.dart';
+part 'chat_event.dart';
+part 'chat_bloc.freezed.dart';
+
+class ChatBloc extends Bloc<ChatEvent, ChatState> {
+  final ChatRepository chatRepository;
 
   final AuthBloc authCubit;
   late final StreamSubscription authSub;
-  PostBloc(this.postRepository, this.authCubit)
-      : super(const PostState(asyncSnapshot: AsyncSnapshot.nothing())) {
+  ChatBloc(this.chatRepository, this.authCubit)
+      : super(const ChatState(asyncSnapshot: AsyncSnapshot.nothing())) {
     authSub = authCubit.stream.listen((event) {
       event.mapOrNull(
-        authorized: (value) => add(PostEvent.fetch()),
-        unauthorized: (value) => add(PostEvent.logout()),
+        authorized: (value) => add(ChatEvent.fetch()),
+        unauthorized: (value) => add(ChatEvent.logout()),
       );
     });
 
-    on<_PostEventFetch>(fetchPosts);
-    on<_PostEventCreatePost>(createPost);
-    on<_PostEventLogout>(logOut);
+    on<_ChatEventFetch>(fetchMessages);
+    on<_ChatEventCreateMessage>(createMessage);
+    on<_ChatEventLogout>(logOut);
   }
 
-  Future<void> fetchPosts(PostEvent event, Emitter emitter) async {
+  Future<void> fetchMessages(ChatEvent event, Emitter emitter) async {
     if (state.asyncSnapshot?.connectionState == ConnectionState.waiting) return;
     emitter(state.copyWith(asyncSnapshot: const AsyncSnapshot.waiting()));
-    await postRepository
-        .fetchPosts(state.fetchLimit, state.offset)
+    await chatRepository
+        .fetchMessages(state.fetchLimit, state.offset)
         .then((value) {
       final Iterable iterable = value;
       final fetchedList =
-          iterable.map((post) => PostEntity.fromJson(post)).toList();
-      final mergeList = [...state.postList, ...fetchedList];
+          iterable.map((post) => MessageEntity.fromJson(post)).toList();
+      final mergeList = [...state.messageList, ...fetchedList];
       emitter(state.copyWith(
           offset: state.offset + fetchedList.length,
-          postList: mergeList,
+          messageList: mergeList,
           asyncSnapshot:
               const AsyncSnapshot.withData(ConnectionState.done, true)));
     }).catchError((error) {
@@ -52,19 +53,19 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     });
   }
 
-  Future<void> createPost(PostEvent event, Emitter emitter) async {
-    await postRepository
-        .createPost((event as _PostEventCreatePost).args)
+  Future<void> createMessage(ChatEvent event, Emitter emitter) async {
+    await chatRepository
+        .createMessage((event as _ChatEventCreateMessage).args)
         .then((value) {
-      add(PostEvent.fetch());
+      add(ChatEvent.fetch());
     }).catchError((error) {
       addError(error);
     });
   }
 
-  void logOut(PostEvent event, Emitter emitter) {
+  void logOut(ChatEvent event, Emitter emitter) {
     emitter(state.copyWith(
-      postList: [],
+      messageList: [],
       asyncSnapshot: const AsyncSnapshot.nothing(),
     ));
   }
